@@ -59,7 +59,7 @@ public class ManipulationFichier {
             String ligne;
             
             ligne = br.readLine();
-                inventaire= Utilitaire.compterMotsLigne(ligne);
+                inventaire = Utilitaire.compterMotsLigne(ligne);
             
         } catch (IOException ex) {
             Logger.getLogger(ManipulationFichier.class.getName()).log(Level.SEVERE, null, ex);
