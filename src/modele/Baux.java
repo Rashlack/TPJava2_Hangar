@@ -11,7 +11,6 @@ package modele;
  */
 public class Baux {
     private int duree;
-    private String type;
     private String dateDebut;
     private String dateFin;
     private double tarifBaux;
@@ -21,9 +20,8 @@ public class Baux {
     public Baux() {
     }
 
-    public Baux(int duree, String type, String dateDebut, String dateFin, Client leClient) {
+    public Baux(int duree, String dateDebut, String dateFin, Client leClient) {
         this.duree = duree;
-        this.type = type;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
         this.leClient =leClient;
@@ -35,7 +33,7 @@ public class Baux {
 
     @Override
     public String toString() {
-        return "Baux{" + "duree=" + duree + ", type=" + type + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin + ", tarifBaux=" + tarifBaux + ", idBaux=" + idBaux + '}';
+        return "Baux{" + "duree=" + duree + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin + ", tarifBaux=" + tarifBaux + ", idBaux=" + idBaux + '}';
     }
     
     

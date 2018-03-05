@@ -1,0 +1,1 @@
+ID Duree dateDebut dateFin tarifBaux idClient
