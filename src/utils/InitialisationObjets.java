@@ -6,6 +6,7 @@
 package utils;
 
 import java.util.ArrayList;
+import modele.Hangar;
 import persistance.ManipulationFichier;
 
 /**
@@ -14,12 +15,19 @@ import persistance.ManipulationFichier;
  */
 public class InitialisationObjets {
     
-    public static void initialisationHangar(String fichier){
+    public static void initialisationDonnees(String fichier){
         int nbAttribut = ManipulationFichier.lirePremiereLigne(fichier);
         ArrayList<Integer> mesPosition = new ArrayList();
         for(int i = 0; i < nbAttribut; i++){
             mesPosition.add(i);
         }
+        ArrayList<String> mesAttributs = new ArrayList();
+        mesAttributs = ManipulationFichier.lireMotsLigne(fichier, mesPosition);
+        for(int i = 1; i < mesAttributs.size(); i++){
+            System.out.println(mesAttributs.get(i)); 
+            
+        }
+        
         
         
     }

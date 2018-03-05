@@ -20,11 +20,11 @@ public class Hangar {
 
     public Hangar() {
     }
-
-    public Hangar(double superficie, String type, boolean statut) {
+    
+    public Hangar(int idHangar, String type, double superficie) {
         this.superficieHangar = superficie;
         this.type = type;
-        this.statut = statut;
+        this.idHangar = idHangar;
         mesAvions=new ArrayList();
     }
 

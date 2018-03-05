@@ -22,10 +22,9 @@ public class ComboBoxFiller {
         mesPositions.add(2);
         mesPositions.add(4);
         ArrayList<String> maListe = new ArrayList();
-        maListe = ManipulationFichier.lirePourComboBox(fichier, mesPositions);
+        maListe = ManipulationFichier.lireMotsLigne(fichier, mesPositions);
         cb.removeAllItems();
         Collections.sort(maListe.subList(1, maListe.size()));
-        cb.addItem("");
         for(int i = 0; i < maListe.size(); i++){
             cb.addItem(maListe.get(i));
         }
@@ -39,10 +38,9 @@ public class ComboBoxFiller {
         mesPositions.add(2);
         mesPositions.add(3);
         ArrayList<String> maListe = new ArrayList();
-        maListe = ManipulationFichier.lirePourComboBox(fichier, mesPositions);
+        maListe = ManipulationFichier.lireMotsLigne(fichier, mesPositions);
         cb.removeAllItems();
         Collections.sort(maListe.subList(1, maListe.size()));
-        cb.addItem("");
         for(int i = 0; i < maListe.size(); i++){
             cb.addItem(maListe.get(i));     
         }
@@ -55,11 +53,10 @@ public class ComboBoxFiller {
         mesPositions.add(0);
         mesPositions.add(1);
         ArrayList<String> maListe = new ArrayList();
-        maListe = ManipulationFichier.lirePourComboBox(fichier, mesPositions);
+        maListe = ManipulationFichier.lireMotsLigne(fichier, mesPositions);
         cb.removeAllItems();
         Collections.sort(maListe.subList(1, maListe.size()));
-        
-        cb.addItem("");
+
         for(int i = 0; i < maListe.size(); i++){
             cb.addItem(maListe.get(i));     
         }

@@ -5,6 +5,7 @@
  */
 package Control;
 
+import utils.InitialisationObjets;
 import vue.GuiPrincipal;
 
 /**
@@ -18,7 +19,7 @@ public class AppCtr {
      */
     public static void main(String[] args) {
         
-        
+        InitialisationObjets.initialisationDonnees("Hangar.txt");
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new GuiPrincipal().setVisible(true);

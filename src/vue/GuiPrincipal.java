@@ -5,7 +5,12 @@
  */
 package vue;
 
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import modele.Avion;
+import modele.Baux;
+import persistance.ManipulationFichier;
 import utils.ComboBoxFiller;
 
 /**
@@ -19,7 +24,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
      */
     public GuiPrincipal() {
         initComponents();
-        ComboBoxFiller.comboBoxClientFiller(comboboxClient);
+        ComboBoxFiller.comboBoxClientFiller(comboBoxClient);
         ComboBoxFiller.comboBoxModeleAvionFiller(comboBoxModeleAvion);
         ComboBoxFiller.comboBoxHangarFiller(comboBoxHangar1);
         ComboBoxFiller.comboBoxHangarFiller(comboBoxHangar2);
@@ -67,7 +72,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
         btnAnnulerBail = new javax.swing.JButton();
         btnConfirmer = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        comboboxClient = new javax.swing.JComboBox<>();
+        comboBoxClient = new javax.swing.JComboBox<>();
         comboBoxChoixHangar = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         comboBoxHangar1 = new javax.swing.JComboBox<>();
@@ -269,6 +274,12 @@ public class GuiPrincipal extends javax.swing.JFrame {
         lblDureeContrat.setText("Durée du contrat");
         lblDureeContrat.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        txtDureeContrat.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDureeContratKeyTyped(evt);
+            }
+        });
+
         btnAnnulerBail.setText("Annuler");
         btnAnnulerBail.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btnAnnulerBail.addActionListener(new java.awt.event.ActionListener() {
@@ -287,7 +298,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
 
         jLabel3.setText("jour(s)");
 
-        comboboxClient.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxClient.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         comboBoxChoixHangar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -319,7 +330,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
                                 .addComponent(lblImmatriculation, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtImmatriculation, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(comboboxClient, 0, 218, Short.MAX_VALUE))
+                            .addComponent(comboBoxClient, 0, 218, Short.MAX_VALUE))
                         .addGap(1, 1, 1))
                     .addComponent(comboBoxChoixHangar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
@@ -333,7 +344,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
                     .addComponent(lblImmatriculation)
                     .addComponent(txtImmatriculation, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(16, 16, 16)
-                .addComponent(comboboxClient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(comboBoxClient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(comboBoxModeleAvion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -426,12 +437,39 @@ public class GuiPrincipal extends javax.swing.JFrame {
         txtDureeContrat.setText("");
         txtImmatriculation.setText("");
         comboBoxModeleAvion.setSelectedIndex(0);
-        comboboxClient.setSelectedIndex(0);
+        comboBoxClient.setSelectedIndex(0);
         
     }//GEN-LAST:event_btnAnnulerBailActionPerformed
 
     private void btnConfirmerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmerActionPerformed
-        // TODO add your handling code here:
+      
+        if("".equals(txtImmatriculation.getText()) || txtImmatriculation.getText() == null){
+            JOptionPane.showMessageDialog(null, "Veuillez entrer l'immatriculation de l'avion");
+        return;
+        }
+        
+        if(comboBoxClient.getSelectedIndex() == 0){
+            JOptionPane.showMessageDialog(null, "Veuillez entrer un client");
+            return;
+        }
+
+        if(comboBoxModeleAvion.getSelectedIndex() == 0){
+            JOptionPane.showMessageDialog(null, "Veuillez entrer un modèle d'");
+            return;
+        }
+        
+        if(comboBoxChoixHangar.getSelectedIndex() == 0){
+            JOptionPane.showMessageDialog(null, "Veuillez entrer un choix de hangar");
+            return;
+        }
+        
+        if("".equals(txtDureeContrat.getText()) || txtDureeContrat.getText() == null){
+            JOptionPane.showMessageDialog(null, "Veuillez entrer une durée de contrat");
+            return;
+        }
+        int nouveauID = ManipulationFichier.lireID("Contrat.txt");
+        Avion avion = new Avion();
+        Baux nouveauBaux = new Baux();
     }//GEN-LAST:event_btnConfirmerActionPerformed
 
     private void btnListeAvion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListeAvion1ActionPerformed
@@ -457,6 +495,15 @@ public class GuiPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_comboBoxHangar1ActionPerformed
 
+    private void txtDureeContratKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDureeContratKeyTyped
+        char vChar = evt.getKeyChar();
+        if(!(Character.isDigit(vChar))
+                ||(vChar ==  KeyEvent.VK_BACK_SPACE)
+                ||(vChar == KeyEvent.VK_DELETE)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtDureeContratKeyTyped
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -465,10 +512,10 @@ public class GuiPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnListeAvion1;
     private javax.swing.JButton btnNouveauClient;
     private javax.swing.JComboBox<String> comboBoxChoixHangar;
+    private javax.swing.JComboBox<String> comboBoxClient;
     private javax.swing.JComboBox<String> comboBoxHangar1;
     private javax.swing.JComboBox<String> comboBoxHangar2;
     private javax.swing.JComboBox<String> comboBoxModeleAvion;
-    private javax.swing.JComboBox<String> comboboxClient;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

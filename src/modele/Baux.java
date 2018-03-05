@@ -16,8 +16,16 @@ public class Baux {
     private double tarifBaux;
     private int idBaux;
     private Client leClient;
+    private Avion monAvion;
 
     public Baux() {
+    }
+
+    public Baux(int duree, int idBaux, Client leClient, Avion monAvion) {
+        this.duree = duree;
+        this.idBaux = idBaux;
+        this.leClient = leClient;
+        this.monAvion = monAvion;
     }
 
     public Baux(int duree, String dateDebut, String dateFin, Client leClient) {

@@ -15,11 +15,19 @@ public class Avion {
     private int idAvion;
     private Client client;
     private Hangar hangar;
-    private int id;
+    private Baux monBail;
     
     public Avion() {
     }
 
+    public Avion(ModeleAvion modele, int idAvion, Client client, Baux monBail) {
+        this.modele = modele;
+        this.idAvion = idAvion;
+        this.client = client;
+        this.monBail = monBail;
+    }
+
+    
     public Avion(boolean statut, Client client){ 
         
         this.statut = statut;

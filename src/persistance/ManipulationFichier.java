@@ -20,18 +20,18 @@ import utils.Utilitaire;
  * @author 1795511
  */
 public class ManipulationFichier {
-    public static ArrayList<String> lirePourComboBox(String fichier, ArrayList mesPositions){
+    public static ArrayList<String> lireMotsLigne(String fichier, ArrayList mesPositions){
         File file = new File(fichier);
         FileReader fr = null;
         BufferedReader br = null;
-        ArrayList<String> inventaire = new ArrayList();
+        ArrayList<String> mots = new ArrayList();
         try {
             fr = new FileReader(file);
             br =  new BufferedReader(fr);
             String ligne;
             
             while((ligne = br.readLine()) != null){
-                inventaire.add(Utilitaire.ligneSplitXMots(ligne, mesPositions));
+                mots.add(Utilitaire.ligneSplitXMots(ligne, mesPositions));
             }
         } catch (IOException ex) {
             Logger.getLogger(ManipulationFichier.class.getName()).log(Level.SEVERE, null, ex);
@@ -44,7 +44,7 @@ public class ManipulationFichier {
                     Logger.getLogger(ManipulationFichier.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-           return inventaire; 
+           return mots; 
         }
     }
 
@@ -75,6 +75,45 @@ public class ManipulationFichier {
             }
            return inventaire; 
         }
+    }
+    
+    public static int lireID(String fichier){
+        File file = new File(fichier);
+        FileReader fr = null;
+        BufferedReader br = null;
+        String mots = "";
+        ArrayList<Integer> mesPositions = new ArrayList();
+        mesPositions.add(0);
+        try {
+            fr = new FileReader(file);
+            br =  new BufferedReader(fr);
+            String ligne;
+            
+            while((ligne = br.readLine()) != null){
+                mots = (Utilitaire.ligneSplitXMots(ligne, mesPositions));
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(ManipulationFichier.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            if(fr != null){
+                try {
+                        fr.close();
+                        br.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(ManipulationFichier.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+           int nouveauID = ManipulationFichier.nouveauID(mots);
+           return nouveauID; 
+        }
+    }
+    
+    public static int nouveauID(String idTexte){ 
+        if("ID".equalsIgnoreCase(idTexte)){
+            return 1;
+        }
+        int nouveauID = Integer.parseInt(idTexte) + 1;
+        return nouveauID;
     }
 
 }
