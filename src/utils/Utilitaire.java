@@ -59,6 +59,11 @@ public class Utilitaire {
         }
         return mesMots;
     }
+    
+    public static String[] ligneSplitXMots(String ligne){
+        String[] liste = ligne.split(" ");
+        return liste;
+    }
       
     public static int compterMotsLigne(String ligne){
         String[] liste = ligne.split(" ");

@@ -493,6 +493,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
         }else if(comboBoxHangar1.getSelectedIndex() == 1){
             JOptionPane.showMessageDialog(null, "Votre choix de hangar n'est pas valide!");
         }
+        
     }//GEN-LAST:event_comboBoxHangar1ActionPerformed
 
     private void txtDureeContratKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDureeContratKeyTyped

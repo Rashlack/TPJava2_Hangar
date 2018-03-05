@@ -5,6 +5,8 @@
  */
 package Control;
 
+import java.util.ArrayList;
+import modele.Hangar;
 import utils.InitialisationObjets;
 import vue.GuiPrincipal;
 
@@ -18,8 +20,8 @@ public class AppCtr {
      * @param args the command line arguments22
      */
     public static void main(String[] args) {
-        
-        InitialisationObjets.initialisationDonnees("Hangar.txt");
+        ArrayList<Hangar> mesHangar = new ArrayList();
+        InitialisationObjets.initialisationDonnees("Hangar.txt", mesHangar);
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new GuiPrincipal().setVisible(true);
