@@ -7,6 +7,7 @@ package utils;
 
 import java.util.ArrayList;
 import modele.Hangar;
+import modele.ModeleAvion;
 import persistance.ManipulationFichier;
 
 /**
@@ -15,21 +16,21 @@ import persistance.ManipulationFichier;
  */
 public class InitialisationObjets {
     
-    public static void initialisationDonnees(String fichier, ArrayList<Hangar> listeHangar){
-        int nbAttribut = ManipulationFichier.lirePremiereLigne(fichier);
-        ArrayList<Integer> mesPosition = new ArrayList();
-        for(int i = 0; i < nbAttribut; i++){
-            mesPosition.add(i);
-        }
+    public static void initialisationHangars(String fichier, ArrayList<Hangar> listeHangar){
         ArrayList<String> mesAttributs = new ArrayList();
-        mesAttributs = ManipulationFichier.lireMotsLigne(fichier, mesPosition);
+        mesAttributs = ManipulationFichier.lireFichier(fichier);
         for(int i = 1; i < mesAttributs.size(); i++){
              String[] liste = Utilitaire.ligneSplitXMots(mesAttributs.get(i));
-             listeHangar.add(new Hangar(Integer.parseInt(liste[0]), liste[1], Double.parseDouble(liste[2])));            
-            
-        }
-        
-        
-        
+             listeHangar.add(new Hangar(Integer.parseInt(liste[0]), liste[1], Double.parseDouble(liste[2])));                        
+        }   
+    }
+    
+    public static void initialisationModeleAvion(String fichier, ArrayList<ModeleAvion> listeModele){
+        ArrayList<String> mesAttributs = new ArrayList();
+        mesAttributs = ManipulationFichier.lireFichier(fichier);
+        for(int i = 1; i < mesAttributs.size(); i++){
+            String[] liste = Utilitaire.ligneSplitXMots(mesAttributs.get(i));
+            listeModele.add(new ModeleAvion(Integer.parseInt(liste[0]), liste[1], Double.parseDouble(liste[2]), liste[3]));            
+            }       
     }
 }

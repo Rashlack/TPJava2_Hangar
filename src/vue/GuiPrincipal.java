@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modele.Avion;
 import modele.Baux;
+import modele.Hangar;
 import persistance.ManipulationFichier;
 import utils.ComboBoxFiller;
 
@@ -18,17 +19,18 @@ import utils.ComboBoxFiller;
  * @author 1795511
  */
 public class GuiPrincipal extends javax.swing.JFrame {
-
+    private ArrayList<Hangar> mesHangars;
     /**
      * Creates new form GuiPrincipal
      */
-    public GuiPrincipal() {
+    public GuiPrincipal(ArrayList<Hangar> mesHangars) {
         initComponents();
         ComboBoxFiller.comboBoxClientFiller(comboBoxClient);
         ComboBoxFiller.comboBoxModeleAvionFiller(comboBoxModeleAvion);
         ComboBoxFiller.comboBoxHangarFiller(comboBoxHangar1);
         ComboBoxFiller.comboBoxHangarFiller(comboBoxHangar2);
         ComboBoxFiller.comboBoxHangarFiller(comboBoxChoixHangar);
+        this.mesHangars = mesHangars;
 
     }
 
@@ -481,19 +483,16 @@ public class GuiPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void comboBoxHangar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxHangar1ActionPerformed
-        if(comboBoxHangar1.getSelectedItem() != "" && comboBoxHangar1.getSelectedItem() != null && comboBoxHangar1.getSelectedIndex() != 1){
+        if(comboBoxHangar1.getSelectedItem() != "" && comboBoxHangar1.getSelectedItem() != null && comboBoxHangar1.getSelectedIndex() != 0){
             System.out.println(comboBoxHangar1.getSelectedItem());
-            txtNbAvion1.setText("999");
-            txtTotalLocation1.setText("999");
-            txtSuperficieDispo1.setText("999");
-        }else if(comboBoxHangar1.getSelectedItem() == ""){
+            txtTotalLocation1.setText("999");          
+            txtSuperficieDispo1.setText(String.valueOf(mesHangars.get(comboBoxHangar1.getSelectedIndex()-1).calculerSuperficieRestante()));
+            txtNbAvion1.setText(String.valueOf(mesHangars.get(comboBoxHangar1.getSelectedIndex()-1).getMesAvions().size()));
+        }else if(comboBoxHangar1.getSelectedItem() == "" || comboBoxHangar1.getSelectedIndex() == 0){
             txtNbAvion1.setText("");
             txtTotalLocation1.setText("");
             txtSuperficieDispo1.setText("");
-        }else if(comboBoxHangar1.getSelectedIndex() == 1){
-            JOptionPane.showMessageDialog(null, "Votre choix de hangar n'est pas valide!");
         }
-        
     }//GEN-LAST:event_comboBoxHangar1ActionPerformed
 
     private void txtDureeContratKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDureeContratKeyTyped

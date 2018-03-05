@@ -115,5 +115,33 @@ public class ManipulationFichier {
         int nouveauID = Integer.parseInt(idTexte) + 1;
         return nouveauID;
     }
+    
+        public static ArrayList<String> lireFichier(String fichier){
+        File file = new File(fichier);
+        FileReader fr = null;
+        BufferedReader br = null;
+        ArrayList<String> mots = new ArrayList();
+        try {
+            fr = new FileReader(file);
+            br =  new BufferedReader(fr);
+            String ligne;
+            
+            while((ligne = br.readLine()) != null){
+                mots.add(ligne);
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(ManipulationFichier.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            if(fr != null){
+                try {
+                        fr.close();
+                        br.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(ManipulationFichier.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+           return mots; 
+        }
+    }
 
 }

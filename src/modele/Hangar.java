@@ -54,4 +54,13 @@ public class Hangar {
         return nbrAvion;
     }
     
+    public double calculerSuperficieRestante(){
+        double superficieTotalAvion = 0.0;
+        for(int i = 0; i < mesAvions.size(); i++){
+            superficieTotalAvion = superficieTotalAvion + mesAvions.get(i).getModele().getSuperficie();
+        }
+        Double superficieRestante = superficieHangar - superficieTotalAvion;     
+        return superficieRestante;
+    }
+    
 }

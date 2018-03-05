@@ -20,11 +20,11 @@ public class AppCtr {
      * @param args the command line arguments22
      */
     public static void main(String[] args) {
-        ArrayList<Hangar> mesHangar = new ArrayList();
-        InitialisationObjets.initialisationDonnees("Hangar.txt", mesHangar);
+        ArrayList<Hangar> mesHangars = new ArrayList();
+        InitialisationObjets.initialisationHangars("Hangar.txt", mesHangars);
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GuiPrincipal().setVisible(true);
+                new GuiPrincipal(mesHangars).setVisible(true);
                 ;
             }
         });

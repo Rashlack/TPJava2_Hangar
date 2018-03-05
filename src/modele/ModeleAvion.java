@@ -13,11 +13,13 @@ public class ModeleAvion {
     private String modele;
     private double superficieAvion;
     private String type;
+    private int idModeleAvion;
 
     public ModeleAvion() {
     }
 
-    public ModeleAvion(String modele, double superficie, String type) {
+    public ModeleAvion(int idModeleAvion, String modele, double superficie, String type) {
+        this.idModeleAvion = idModeleAvion;
         this.modele = modele;
         this.superficieAvion = superficie;
         this.type = type;
