@@ -14,7 +14,7 @@ import vue.GuiPrincipal;
 public class AppCtr {
 
     /**
-     * @param args the command line arguments
+     * @param args the command line arguments22
      */
     public static void main(String[] args) {
         
