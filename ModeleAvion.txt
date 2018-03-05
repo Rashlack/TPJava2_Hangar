@@ -1,0 +1,6 @@
+Hawker400 2200 SmallCabin
+Learjet31 2200 SmallCabin
+CitationJet 2100 SmallCabin
+GlobalExpress 9350 LargeCabin
+GulfstreamIV 7100 LargeCabin
+Falcon900 4400 LargeCabin
