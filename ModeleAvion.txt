@@ -1,6 +1,7 @@
-Hawker400 2200 SmallCabin
-Learjet31 2200 SmallCabin
-CitationJet 2100 SmallCabin
-GlobalExpress 9350 LargeCabin
-GulfstreamIV 7100 LargeCabin
-Falcon900 4400 LargeCabin
+ID Nom Superficie Type
+1 Hawker400 2200 SmallCabin
+2 Learjet31 2200 SmallCabin
+3 CitationJet 2100 SmallCabin
+4 GlobalExpress 9350 LargeCabin
+5 GulfstreamIV 7100 LargeCabin
+6 Falcon900 4400 LargeCabin

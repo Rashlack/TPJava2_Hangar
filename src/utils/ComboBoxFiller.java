@@ -6,6 +6,7 @@
 package utils;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import javax.swing.JComboBox;
 import persistance.ManipulationFichier;
 
@@ -14,19 +15,55 @@ import persistance.ManipulationFichier;
  * @author 1795511
  */
 public class ComboBoxFiller {
-    public static JComboBox comboBoxClientFiller(JComboBox client){
+    public static JComboBox comboBoxClientFiller(JComboBox cb){
         String fichier = "Client.txt";
         ArrayList<Integer> mesPositions = new ArrayList();
         mesPositions.add(1);
         mesPositions.add(2);
         mesPositions.add(4);
-        ArrayList<String> listeClient = new ArrayList();
-        listeClient = ManipulationFichier.lirePourComboBox(fichier, mesPositions);
-        client.removeAllItems();
-        for(int i = 0; i < listeClient.size(); i++){
-            client.addItem(listeClient.get(i));
+        ArrayList<String> maListe = new ArrayList();
+        maListe = ManipulationFichier.lirePourComboBox(fichier, mesPositions);
+        cb.removeAllItems();
+        Collections.sort(maListe.subList(1, maListe.size()));
+        cb.addItem("");
+        for(int i = 0; i < maListe.size(); i++){
+            cb.addItem(maListe.get(i));
         }
-        return client;
+        return cb;
     }
-
+    
+    public static JComboBox comboBoxModeleAvionFiller(JComboBox cb){
+        String fichier = "ModeleAvion.txt";
+        ArrayList<Integer> mesPositions = new ArrayList();
+        mesPositions.add(1);
+        mesPositions.add(2);
+        mesPositions.add(3);
+        ArrayList<String> maListe = new ArrayList();
+        maListe = ManipulationFichier.lirePourComboBox(fichier, mesPositions);
+        cb.removeAllItems();
+        Collections.sort(maListe.subList(1, maListe.size()));
+        cb.addItem("");
+        for(int i = 0; i < maListe.size(); i++){
+            cb.addItem(maListe.get(i));     
+        }
+        return cb;
+    }
+    
+    public static JComboBox comboBoxHangarFiller(JComboBox cb){
+        String fichier = "Hangar.txt";
+        ArrayList<Integer> mesPositions = new ArrayList();
+        mesPositions.add(0);
+        mesPositions.add(1);
+        ArrayList<String> maListe = new ArrayList();
+        maListe = ManipulationFichier.lirePourComboBox(fichier, mesPositions);
+        cb.removeAllItems();
+        Collections.sort(maListe.subList(1, maListe.size()));
+        
+        cb.addItem("");
+        for(int i = 0; i < maListe.size(); i++){
+            cb.addItem(maListe.get(i));     
+        }
+        return cb;
+    }
+    
 }

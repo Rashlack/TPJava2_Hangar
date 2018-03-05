@@ -38,7 +38,6 @@ public class ManipulationFichier {
         }finally{
             if(fr != null){
                 try {
-
                         fr.close();
                         br.close();
                 } catch (IOException ex) {

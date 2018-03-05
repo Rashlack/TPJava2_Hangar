@@ -1,2 +1,3 @@
+ID Type Superficie
 1 HangarSmallCabin 25000
 2 HangarLargeCabin 75000
