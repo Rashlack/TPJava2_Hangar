@@ -51,7 +51,7 @@ public class Utilitaire {
         return nom;
     }
     
-      public static String ligneSplitXMots(String ligne, ArrayList<Integer> mesPositions){
+    public static String ligneSplitXMots(String ligne, ArrayList<Integer> mesPositions){
         String mesMots = "";
         String[] liste = ligne.split(" ");
         for(int i = 0; i < mesPositions.size(); i++){
@@ -60,9 +60,14 @@ public class Utilitaire {
         return mesMots;
     }
       
-      public static int compterMotsLigne(String ligne){
+    public static int compterMotsLigne(String ligne){
         String[] liste = ligne.split(" ");
         return liste.length;
+    }
+      
+    public static int comparerID(String stringID){
+            
+        return 0;
     }
 
 }

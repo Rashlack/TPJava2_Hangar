@@ -7,7 +7,6 @@ package vue;
 
 import javax.swing.JOptionPane;
 import utils.ComboBoxFiller;
-import utils.ItemChangeListener;
 
 /**
  *
@@ -388,7 +387,6 @@ public class GuiPrincipal extends javax.swing.JFrame {
         jLabel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         comboBoxHangar1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        comboBoxHangar1.addItemListener(new ItemChangeListener());
         comboBoxHangar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxHangar1ActionPerformed(evt);
@@ -477,7 +475,18 @@ public class GuiPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void comboBoxHangar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxHangar1ActionPerformed
-        //JOptionPane.showMessageDialog(null, "Hello world!!!");
+        if(comboBoxHangar1.getSelectedItem() != "" && comboBoxHangar1.getSelectedItem() != null && comboBoxHangar1.getSelectedIndex() != 1){
+            System.out.println(comboBoxHangar1.getSelectedItem());
+            txtNbAvion1.setText("999");
+            txtTotalLocation1.setText("999");
+            txtSuperficieDispo1.setText("999");
+        }else if(comboBoxHangar1.getSelectedItem() == ""){
+            txtNbAvion1.setText("");
+            txtTotalLocation1.setText("");
+            txtSuperficieDispo1.setText("");
+        }else if(comboBoxHangar1.getSelectedIndex() == 1){
+            JOptionPane.showMessageDialog(null, "Votre choix de hangar n'est pas valide!");
+        }
     }//GEN-LAST:event_comboBoxHangar1ActionPerformed
 
 
