@@ -74,7 +74,9 @@ public class Utilitaire {
             
         return 0;
     }
-
+    public static void validationChiffres(){
+        
+    }
 }
 
     

@@ -5,6 +5,8 @@
  */
 package vue;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 1795511
@@ -76,6 +78,7 @@ public class GuiNouveauContrat extends javax.swing.JFrame {
 
         txtCompagnie.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        txtTelephone.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtTelephone.setToolTipText("");
         txtTelephone.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -118,7 +121,7 @@ public class GuiNouveauContrat extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txtClientID, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtTelephone, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(txtTelephone, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(0, 0, Short.MAX_VALUE))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(90, 90, 90)
@@ -163,47 +166,70 @@ public class GuiNouveauContrat extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAnnulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnnulerActionPerformed
-        // TODO add your handling code here:
+        txtNom.setText("");
+        txtPrenom.setText("");
+        txtCompagnie.setText("");
+        txtTelephone.setText("");
     }//GEN-LAST:event_btnAnnulerActionPerformed
 
     private void btnConfirmerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmerActionPerformed
-        // TODO add your handling code here:
+            if("".equals(txtNom.getText()) || txtNom.getText() == null){
+               JOptionPane.showMessageDialog(null, "Veuillez entrer le nom du client");
+            return;
+            }
+            
+            if("".equals(txtPrenom.getText()) || txtPrenom.getText() == null){
+               JOptionPane.showMessageDialog(null, "Veuillez entrer le prénom du client");
+            return;
+            }
+            
+            if("".equals(txtCompagnie.getText()) || txtCompagnie.getText() == null){
+               JOptionPane.showMessageDialog(null, "Veuillez entrer le nom de la compagnie du client");
+            return;
+            }
+            
+            if("".equals(txtTelephone.getText()) || txtTelephone.getText() == null){
+               JOptionPane.showMessageDialog(null, "Veuillez entrer le numéro de téléphone du client");
+            return;
+            }
+            
+            
     }//GEN-LAST:event_btnConfirmerActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GuiNouveauContrat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GuiNouveauContrat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GuiNouveauContrat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GuiNouveauContrat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GuiNouveauContrat().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(GuiNouveauContrat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(GuiNouveauContrat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(GuiNouveauContrat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(GuiNouveauContrat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new GuiNouveauContrat().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnnuler;
