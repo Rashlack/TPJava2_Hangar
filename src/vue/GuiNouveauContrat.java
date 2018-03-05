@@ -5,6 +5,8 @@
  */
 package vue;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 1795511
@@ -171,7 +173,27 @@ public class GuiNouveauContrat extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAnnulerActionPerformed
 
     private void btnConfirmerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmerActionPerformed
-        // TODO add your handling code here:
+            if("".equals(txtNom.getText()) || txtNom.getText() == null){
+               JOptionPane.showMessageDialog(null, "Veuillez entrer le nom du client");
+            return;
+            }
+            
+            if("".equals(txtPrenom.getText()) || txtPrenom.getText() == null){
+               JOptionPane.showMessageDialog(null, "Veuillez entrer le prénom du client");
+            return;
+            }
+            
+            if("".equals(txtCompagnie.getText()) || txtCompagnie.getText() == null){
+               JOptionPane.showMessageDialog(null, "Veuillez entrer le nom de la compagnie du client");
+            return;
+            }
+            
+            if("".equals(txtTelephone.getText()) || txtTelephone.getText() == null){
+               JOptionPane.showMessageDialog(null, "Veuillez entrer le numéro de téléphone du client");
+            return;
+            }
+            
+            
     }//GEN-LAST:event_btnConfirmerActionPerformed
 
     /**
