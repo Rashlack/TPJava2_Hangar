@@ -16,16 +16,17 @@ public class Baux {
     private String dateFin;
     private double tarifBaux;
     private int idBaux;
+    private Client leClient;
 
     public Baux() {
     }
 
-    public Baux(int duree, String type, String dateDebut, String dateFin) {
+    public Baux(int duree, String type, String dateDebut, String dateFin, Client leClient) {
         this.duree = duree;
         this.type = type;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
-       
+        this.leClient =leClient;
     }
 
     public double getTarifBaux() {

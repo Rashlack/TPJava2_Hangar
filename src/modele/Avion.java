@@ -10,20 +10,24 @@ package modele;
  * @author 1795511
  */
 public class Avion {
-    private String modele;
-    private int superficie;
-    private String type;
+    private ModeleAvion modele;
     private boolean statut;
     private int idAvion;
+    private Client client;
+    private Hangar hangar;
+    private int id;
     
     public Avion() {
     }
 
-    public Avion(String modele, int superficie, String type, boolean statut) {
-        this.modele = modele;
-        this.superficie = superficie;
-        this.type = type;
+    public Avion(boolean statut, Client client){ 
+        
         this.statut = statut;
+        this.client=client;
+    }
+
+    public ModeleAvion getModele() {
+        return modele;
     }
 
     public boolean isStatut() {
@@ -34,10 +38,7 @@ public class Avion {
         this.statut = statut;
     }
 
-    @Override
-    public String toString() {
-        return "Avion{" + "modele=" + modele + ", superficie=" + superficie + ", type=" + type + ", statut=" + statut + ", idAvion=" + idAvion + '}';
-    }
+    
     
     
     

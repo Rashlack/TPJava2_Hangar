@@ -5,16 +5,20 @@
  */
 package modele;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author 1795511
  */
 public class Client {
+    private int idClient;
     private String nom;
     private String prenom;
     private String compagnie;
     private int telephone;
-    private int idClient;
+    private ArrayList<Avion>mesAvions;//nice to have
+    
 
     public Client() {
     }
@@ -24,6 +28,7 @@ public class Client {
         this.prenom = prenom;
         this.compagnie = compagnie;
         this.telephone = telephone;
+        mesAvions = new ArrayList();
     }
 
     public int getIdClient() {
