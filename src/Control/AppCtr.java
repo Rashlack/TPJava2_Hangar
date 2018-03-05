@@ -5,6 +5,8 @@
  */
 package Control;
 
+import vue.GuiPrincipal;
+
 /**
  *
  * @author 1795511
@@ -15,9 +17,14 @@ public class AppCtr {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        //This is for test2 5 minutes pasword 7776
-        //Une autre modication 45
+        
+        
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new GuiPrincipal().setVisible(true);
+                ;
+            }
+        });
     }
     
 }
