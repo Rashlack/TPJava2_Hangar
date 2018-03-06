@@ -18,6 +18,11 @@ public class ModeleAvion {
     public ModeleAvion() {
     }
 
+    @Override
+    public String toString() {
+        return "ModeleAvion{" + "modele=" + modele + ", superficieAvion=" + superficieAvion + ", type=" + type + ", idModeleAvion=" + idModeleAvion + '}';
+    }
+
     public ModeleAvion(int idModeleAvion, String modele, double superficie, String type) {
         this.idModeleAvion = idModeleAvion;
         this.modele = modele;

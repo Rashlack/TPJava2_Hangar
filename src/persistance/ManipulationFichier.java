@@ -87,15 +87,14 @@ public class ManipulationFichier {
         FileReader fr = null;
         BufferedReader br = null;
         String mots = "";
-        ArrayList<Integer> mesPositions = new ArrayList();
-        mesPositions.add(0);
+
         try {
             fr = new FileReader(file);
             br =  new BufferedReader(fr);
             String ligne;
             
             while((ligne = br.readLine()) != null){
-                mots = (Utilitaire.ligneSplitXMots(ligne, mesPositions));
+                mots = (Utilitaire.ligneSplitPremierMot(ligne));
             }
         } catch (IOException ex) {
             Logger.getLogger(ManipulationFichier.class.getName()).log(Level.SEVERE, null, ex);
@@ -108,20 +107,13 @@ public class ManipulationFichier {
                     Logger.getLogger(ManipulationFichier.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-           int nouveauID = ManipulationFichier.nouveauID(mots);
+           int nouveauID = Utilitaire.nouveauID(mots);
            return nouveauID; 
         }
     }
     
-    public static int nouveauID(String idTexte){ 
-        if("ID".equalsIgnoreCase(idTexte)){
-            return 1;
-        }
-        int nouveauID = Integer.parseInt(idTexte) + 1;
-        return nouveauID;
-    }
     
-        public static ArrayList<String> lireFichier(String fichier){
+    public static ArrayList<String> lireFichier(String fichier){
         File file = new File(fichier);
         FileReader fr = null;
         BufferedReader br = null;
@@ -158,7 +150,7 @@ public class ManipulationFichier {
     }
     
     public static void lireOutputStream(String fichier) throws IOException{
-        System.out.println("Maintenant la lecture!!!");
+        System.out.println("Maintenant la lecture du fichier " + fichier );
         ObjectInputStream in = new ObjectInputStream(new FileInputStream(fichier));
         ArrayList monTest = new ArrayList();
         try {

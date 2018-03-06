@@ -21,6 +21,7 @@ public class ComboBoxFiller {
         mesPositions.add(1);
         mesPositions.add(2);
         mesPositions.add(4);
+        mesPositions.add(0);
         ArrayList<String> maListe = new ArrayList();
         maListe = ManipulationFichier.lireMotsLigne(fichier, mesPositions);
         cb.removeAllItems();

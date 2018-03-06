@@ -8,6 +8,7 @@ package utils;
 
 import java.util.ArrayList;
 import modele.Avion;
+import modele.Client;
 import modele.Hangar;
 import modele.ModeleAvion;
 import modele.ListeAvion;
@@ -64,6 +65,12 @@ public class Utilitaire {
         String[] liste = ligne.split(" ");
         return liste;
     }
+    
+    public static String ligneSplitMotPositionX(String ligne, int x){
+        String[] liste = ligne.split(" ");
+        String monMot = liste[x];
+        return monMot;
+    }
       
     public static int compterMotsLigne(String ligne){
         String[] liste = ligne.split(" ");
@@ -78,6 +85,30 @@ public class Utilitaire {
         
     }
     
+    public static int nouveauID(String idTexte){ 
+        if("ID".equals(idTexte)== true){
+            return 1;
+        }
+        int nouveauID = Integer.parseInt(idTexte) + 1;
+        return nouveauID;
+    }
+    
+    public static ModeleAvion trouverModeleAvion(String s, ArrayList<ModeleAvion> list){
+        int i = 0;
+        while(!list.get(i).getModele().equalsIgnoreCase(s)){
+            i++;
+        }
+        return list.get(i);
+    }
+    
+    public static Client trouverClient(int id, ArrayList<Client> list){
+        int i = 0;
+        while(id != list.get(i).getIdClient()){
+            i++;
+        }
+        list.get(id).getIdClient();
+        return list.get(i);
+    }
 
 }
 

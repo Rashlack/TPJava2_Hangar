@@ -64,4 +64,11 @@ public class Hangar implements Serializable {
         return superficieRestante;
     }
     
+    public void ajouterAvion(Avion a){
+        double superficieRestante = calculerSuperficieRestante();
+        if(superficieRestante < a.getModele().getSuperficie()){
+            return;
+        }
+        mesAvions.add(a);
+    }
 }

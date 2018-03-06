@@ -8,11 +8,11 @@ package vue;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import modele.Avion;
-import modele.Baux;
-import modele.Hangar;
+import modele.*;
+
 import persistance.ManipulationFichier;
 import utils.ComboBoxFiller;
+import utils.Utilitaire;
 
 /**
  *
@@ -20,10 +20,13 @@ import utils.ComboBoxFiller;
  */
 public class GuiPrincipal extends javax.swing.JFrame {
     private ArrayList<Hangar> mesHangars;
+    private ArrayList<Baux> mesBaux;
+    private ArrayList<Avion> mesAvions;
+    private ArrayList<ModeleAvion> mesModeleAvion;
     /**
      * Creates new form GuiPrincipal
      */
-    public GuiPrincipal(ArrayList<Hangar> mesHangars) {
+    public GuiPrincipal(ArrayList<Hangar> mesHangars, ArrayList<Baux> mesBaux, ArrayList<Avion> mesAvions, ArrayList<ModeleAvion> mesModeleAvion) {
         initComponents();
         ComboBoxFiller.comboBoxClientFiller(comboBoxClient);
         ComboBoxFiller.comboBoxModeleAvionFiller(comboBoxModeleAvion);
@@ -31,7 +34,9 @@ public class GuiPrincipal extends javax.swing.JFrame {
         ComboBoxFiller.comboBoxHangarFiller(comboBoxHangar2);
         ComboBoxFiller.comboBoxHangarFiller(comboBoxChoixHangar);
         this.mesHangars = mesHangars;
-
+        this.mesBaux = mesBaux;
+        this.mesAvions = mesAvions;
+        this.mesModeleAvion = mesModeleAvion;
     }
 
     /**
@@ -472,7 +477,12 @@ public class GuiPrincipal extends javax.swing.JFrame {
             return;
         }
         int nouveauID = ManipulationFichier.lireID("Contrat.txt");
-        Avion avion = new Avion();
+        String leModele = Utilitaire.ligneSplitPremierMot((String)comboBoxModeleAvion.getSelectedItem());
+        int leClient = Integer.parseInt(Utilitaire.ligneSplitMotPositionX((String)comboBoxClient.getSelectedItem(),3));
+        System.out.println(leModele);
+        System.out.println(Utilitaire.trouverModeleAvion(leModele, mesModeleAvion));
+        
+        //Avion avion = new Avion(Utilitaire.trouverModeleAvion(leModele, mesModeleAvion), nouveauID, comboBoxClient.getSelectedItem());
         Baux nouveauBaux = new Baux();
     }//GEN-LAST:event_btnConfirmerActionPerformed
 

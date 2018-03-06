@@ -22,11 +22,11 @@ public class Avion implements Serializable {
     public Avion() {
     }
 
-    public Avion(ModeleAvion modele, int idAvion, Client client, Baux monBail) {
+    public Avion(ModeleAvion modele, int idAvion, Client client) {
         this.modele = modele;
         this.idAvion = idAvion;
         this.client = client;
-        this.monBail = monBail;
+        //this.monBail = monBail;
     }
 
     

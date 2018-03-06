@@ -22,6 +22,8 @@ public class AppCtr {
      * @param args the command line arguments22
      */
     public static void main(String[] args) throws IOException {
+        ArrayList<Baux> mesBaux = new ArrayList();
+        ArrayList<Avion> mesAvions = new ArrayList();
         ArrayList<Hangar> mesHangars = new ArrayList();
         ArrayList<ModeleAvion> mesModeleAvion = new ArrayList();
         InitialisationObjets.initialisationHangars("Hangar.txt", mesHangars);
@@ -30,7 +32,7 @@ public class AppCtr {
         ManipulationFichier.lireOutputStream("test.txt");
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GuiPrincipal(mesHangars).setVisible(true);
+                new GuiPrincipal(mesHangars, mesBaux, mesAvions, mesModeleAvion).setVisible(true);
                 ;
             }
         });
