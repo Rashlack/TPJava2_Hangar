@@ -3,7 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/NetBeans/Exercises/TPJava2_Hangar/src/vue/GuiNouveauClient.java</file>
+            <file>file:/D:/Prog/TPJava2_Hangar/src/Control/AppCtr.java</file>
+            <file>file:/D:/Prog/TPJava2_Hangar/src/modele/Hangar.java</file>
+            <file>file:/D:/Prog/TPJava2_Hangar/src/utils/InitialisationObjets.java</file>
+            <file>file:/D:/Prog/TPJava2_Hangar/src/utils/Utilitaire.java</file>
         </group>
     </open-files>
 </project-private>

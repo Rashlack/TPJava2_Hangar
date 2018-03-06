@@ -5,11 +5,13 @@
  */
 package modele;
 
+import java.io.Serializable;
+
 /**
  *
  * @author 1795511
  */
-public class Baux {
+public class Baux implements Serializable {
     private int duree;
     private String dateDebut;
     private String dateFin;

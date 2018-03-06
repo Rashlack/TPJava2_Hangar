@@ -5,13 +5,14 @@
  */
 package modele;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author 1795511
  */
-public class Hangar {
+public class Hangar implements Serializable {
     private double superficieHangar;
     private String type;
     private boolean statut;

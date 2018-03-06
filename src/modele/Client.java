@@ -5,13 +5,14 @@
  */
 package modele;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author 1795511
  */
-public class Client {
+public class Client implements Serializable {
     private int idClient;
     private String nom;
     private String prenom;

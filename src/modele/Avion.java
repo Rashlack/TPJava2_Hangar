@@ -5,11 +5,13 @@
  */
 package modele;
 
+import java.io.Serializable;
+
 /**
  *
  * @author 1795511
  */
-public class Avion {
+public class Avion implements Serializable {
     private ModeleAvion modele;
     private boolean statut;
     private int idAvion;

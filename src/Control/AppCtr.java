@@ -5,8 +5,10 @@
  */
 package Control;
 
+import java.io.IOException;
 import java.util.ArrayList;
-import modele.Hangar;
+import modele.*;
+import persistance.ManipulationFichier;
 import utils.InitialisationObjets;
 import vue.GuiPrincipal;
 
@@ -19,9 +21,13 @@ public class AppCtr {
     /**
      * @param args the command line arguments22
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         ArrayList<Hangar> mesHangars = new ArrayList();
+        ArrayList<ModeleAvion> mesModeleAvion = new ArrayList();
         InitialisationObjets.initialisationHangars("Hangar.txt", mesHangars);
+        InitialisationObjets.initialisationModeleAvion("ModeleAvion.txt", mesModeleAvion);
+        ManipulationFichier.sauvegardeListeObjet("test.txt", mesHangars);
+        ManipulationFichier.lireOutputStream("test.txt");
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new GuiPrincipal(mesHangars).setVisible(true);
