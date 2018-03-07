@@ -177,22 +177,22 @@ public class GuiNouveauClient extends javax.swing.JFrame {
 
     private void btnConfirmerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmerActionPerformed
             if("".equals(txtNom.getText()) || txtNom.getText() == null){
-               JOptionPane.showMessageDialog(null, "Veuillez remplir tous les champs");
+               JOptionPane.showMessageDialog(null, "Veuillez entrez le nom");
             return;
             }
             
             if("".equals(txtPrenom.getText()) || txtPrenom.getText() == null){
-               JOptionPane.showMessageDialog(null, "Veuillez remplir tous les champs");
+               JOptionPane.showMessageDialog(null, "Veuillez entrez le prénom");
             return;
             }
             
             if("".equals(txtCompagnie.getText()) || txtCompagnie.getText() == null){
-               JOptionPane.showMessageDialog(null, "Veuillez remplir tous les champs");
+               JOptionPane.showMessageDialog(null, "Veuillez entrez le nom de la compagnie");
             return;
             }
             
             if("".equals(txtTelephone.getText()) || txtTelephone.getText() == null){
-               JOptionPane.showMessageDialog(null, "Veuillez remplir tous les champs");
+               JOptionPane.showMessageDialog(null, "Veuillez entrez le numéro de téléphone");
             return;
             }
             
