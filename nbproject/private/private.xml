@@ -3,10 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Prog/TPJava2_Hangar/src/Control/AppCtr.java</file>
-            <file>file:/D:/Prog/TPJava2_Hangar/src/modele/Hangar.java</file>
-            <file>file:/D:/Prog/TPJava2_Hangar/src/utils/InitialisationObjets.java</file>
-            <file>file:/D:/Prog/TPJava2_Hangar/src/utils/Utilitaire.java</file>
+            <file>file:/D:/NetBeans/Exercises/TPJava2_Hangar/src/utils/InitialisationObjets.java</file>
+            <file>file:/D:/NetBeans/Exercises/TPJava2_Hangar/src/Control/AppCtr.java</file>
+            <file>file:/D:/NetBeans/Exercises/TPJava2_Hangar/src/modele/Client.java</file>
+            <file>file:/D:/NetBeans/Exercises/TPJava2_Hangar/src/utils/ComboBoxFiller.java</file>
+            <file>file:/D:/NetBeans/Exercises/TPJava2_Hangar/src/modele/Hangar.java</file>
+            <file>file:/D:/NetBeans/Exercises/TPJava2_Hangar/src/modele/ListeAvion.java</file>
+            <file>file:/D:/NetBeans/Exercises/TPJava2_Hangar/src/modele/Baux.java</file>
+            <file>file:/D:/NetBeans/Exercises/TPJava2_Hangar/src/vue/GuiNouveauClient.java</file>
+            <file>file:/D:/NetBeans/Exercises/TPJava2_Hangar/src/modele/Avion.java</file>
+            <file>file:/D:/NetBeans/Exercises/TPJava2_Hangar/src/modele/ModeleAvion.java</file>
+            <file>file:/D:/NetBeans/Exercises/TPJava2_Hangar/src/vue/GuiPrincipal.java</file>
         </group>
     </open-files>
 </project-private>

@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author 1795511
  */
 public class ListeClient {
-    private ArrayList<Client>mesCLients;
+    private ArrayList<Client>mesClients;
 
     public ListeClient() {
     }
@@ -20,7 +20,7 @@ public class ListeClient {
     @Override
     public String toString() {
         
-        return "ListeClient{" + "mesCLients=" + mesCLients + '}';
+        return "ListeClient{" + "mesCLients=" + mesClients + '}';
     }
     
     

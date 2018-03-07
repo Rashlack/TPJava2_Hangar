@@ -26,6 +26,7 @@ public class AppCtr {
         ArrayList<Avion> mesAvions = new ArrayList();
         ArrayList<Hangar> mesHangars = new ArrayList();
         ArrayList<ModeleAvion> mesModeleAvion = new ArrayList();
+        ArrayList<Client>mesCLients = new ArrayList();
         InitialisationObjets.initialisationHangars("Hangar.txt", mesHangars);
         InitialisationObjets.initialisationModeleAvion("ModeleAvion.txt", mesModeleAvion);
         ManipulationFichier.sauvegardeListeObjet("test.txt", mesHangars);

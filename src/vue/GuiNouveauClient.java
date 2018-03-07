@@ -6,17 +6,19 @@
 package vue;
 
 import javax.swing.JOptionPane;
-
+import modele.Client;
+import persistance.ManipulationFichier;
+import modele.ListeClient;
 /**
  *
  * @author 1795511
  */
-public class GuiNouveauContrat extends javax.swing.JFrame {
+public class GuiNouveauClient extends javax.swing.JFrame {
 
     /**
      * Creates new form GuiNouveauContrat
      */
-    public GuiNouveauContrat() {
+    public GuiNouveauClient() {
         initComponents();
     }
 
@@ -44,6 +46,7 @@ public class GuiNouveauContrat extends javax.swing.JFrame {
         btnConfirmer = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("EXECUTIVE FLIGTH SERVICES");
@@ -78,7 +81,6 @@ public class GuiNouveauContrat extends javax.swing.JFrame {
 
         txtCompagnie.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        txtTelephone.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtTelephone.setToolTipText("");
         txtTelephone.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -163,6 +165,7 @@ public class GuiNouveauContrat extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAnnulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnnulerActionPerformed
@@ -174,26 +177,29 @@ public class GuiNouveauContrat extends javax.swing.JFrame {
 
     private void btnConfirmerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmerActionPerformed
             if("".equals(txtNom.getText()) || txtNom.getText() == null){
-               JOptionPane.showMessageDialog(null, "Veuillez entrer le nom du client");
+               JOptionPane.showMessageDialog(null, "Veuillez remplir tous les champs");
             return;
             }
             
             if("".equals(txtPrenom.getText()) || txtPrenom.getText() == null){
-               JOptionPane.showMessageDialog(null, "Veuillez entrer le prénom du client");
+               JOptionPane.showMessageDialog(null, "Veuillez remplir tous les champs");
             return;
             }
             
             if("".equals(txtCompagnie.getText()) || txtCompagnie.getText() == null){
-               JOptionPane.showMessageDialog(null, "Veuillez entrer le nom de la compagnie du client");
+               JOptionPane.showMessageDialog(null, "Veuillez remplir tous les champs");
             return;
             }
             
             if("".equals(txtTelephone.getText()) || txtTelephone.getText() == null){
-               JOptionPane.showMessageDialog(null, "Veuillez entrer le numéro de téléphone du client");
+               JOptionPane.showMessageDialog(null, "Veuillez remplir tous les champs");
             return;
             }
             
-            
+            int nouveauId = ManipulationFichier.lireID("Client.txt");
+            int telephone = Integer.parseInt(txtTelephone.getText());
+            Client c = new Client(txtNom.getText(),txtPrenom.getText(),txtCompagnie.getText(),telephone,nouveauId);
+           // mesClients.add(c);
     }//GEN-LAST:event_btnConfirmerActionPerformed
 
     /**
@@ -213,20 +219,20 @@ public class GuiNouveauContrat extends javax.swing.JFrame {
 //                }
 //            }
 //        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(GuiNouveauContrat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(GuiNouveauClient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(GuiNouveauContrat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(GuiNouveauClient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(GuiNouveauContrat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(GuiNouveauClient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(GuiNouveauContrat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(GuiNouveauClient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        }
 //        //</editor-fold>
 //
 //        /* Create and display the form */
 //        java.awt.EventQueue.invokeLater(new Runnable() {
 //            public void run() {
-//                new GuiNouveauContrat().setVisible(true);
+//                new GuiNouveauClient().setVisible(true);
 //            }
 //        });
 //    }
