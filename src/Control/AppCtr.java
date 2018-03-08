@@ -26,14 +26,14 @@ public class AppCtr {
         ArrayList<Avion> mesAvions = new ArrayList();
         ArrayList<Hangar> mesHangars = new ArrayList();
         ArrayList<ModeleAvion> mesModeleAvion = new ArrayList();
-        ArrayList<Client>mesCLients = new ArrayList();
+        ArrayList<Client>mesClients = new ArrayList();
         InitialisationObjets.initialisationHangars("Hangar.txt", mesHangars);
         InitialisationObjets.initialisationModeleAvion("ModeleAvion.txt", mesModeleAvion);
         ManipulationFichier.sauvegardeListeObjet("hangar.dat", mesHangars);
         ManipulationFichier.lireObjectInputStream("hangar.dat");
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GuiPrincipal(mesHangars, mesBaux, mesAvions, mesModeleAvion).setVisible(true);
+                new GuiPrincipal(mesHangars, mesBaux, mesAvions, mesModeleAvion, mesClients).setVisible(true);
                 ;
             }
         });

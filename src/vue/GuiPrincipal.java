@@ -23,10 +23,11 @@ public class GuiPrincipal extends javax.swing.JFrame {
     private ArrayList<Baux> mesBaux;
     private ArrayList<Avion> mesAvions;
     private ArrayList<ModeleAvion> mesModeleAvion;
+    private ArrayList<Client>mesClients;
     /**
      * Creates new form GuiPrincipal
      */
-    public GuiPrincipal(ArrayList<Hangar> mesHangars, ArrayList<Baux> mesBaux, ArrayList<Avion> mesAvions, ArrayList<ModeleAvion> mesModeleAvion) {
+    public GuiPrincipal(ArrayList<Hangar> mesHangars, ArrayList<Baux> mesBaux, ArrayList<Avion> mesAvions, ArrayList<ModeleAvion> mesModeleAvion,ArrayList<Client>mesClients) {
         initComponents();
         ComboBoxFiller.comboBoxClientFiller(comboBoxClient);
         ComboBoxFiller.comboBoxModeleAvionFiller(comboBoxModeleAvion);
@@ -37,6 +38,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
         this.mesBaux = mesBaux;
         this.mesAvions = mesAvions;
         this.mesModeleAvion = mesModeleAvion;
+        this.mesClients=mesClients;
     }
 
     /**
@@ -443,7 +445,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNouveauClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNouveauClientActionPerformed
-        GuiNouveauClient newClient = new GuiNouveauClient();
+        GuiNouveauClient newClient = new GuiNouveauClient(mesClients);
         newClient.setVisible(true);
     }//GEN-LAST:event_btnNouveauClientActionPerformed
 
@@ -485,7 +487,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
         System.out.println(champs);
         if(plein == false){
             JOptionPane.showMessageDialog(null, champs);
-            return;//
+            return;
         }
         int nouveauID = ManipulationFichier.lireID("Contrat.txt");
         String leModele = Utilitaire.ligneSplitPremierMot((String)comboBoxModeleAvion.getSelectedItem());

@@ -5,6 +5,7 @@
  */
 package vue;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modele.Client;
 import persistance.ManipulationFichier;
@@ -14,12 +15,13 @@ import modele.ListeClient;
  * @author 1795511
  */
 public class GuiNouveauClient extends javax.swing.JFrame {
-
+    private ArrayList<Client>mesClients;
     /**
      * Creates new form GuiNouveauContrat
      */
-    public GuiNouveauClient() {
+    public GuiNouveauClient(ArrayList<Client> mesClients) {
         initComponents();
+        this.mesClients=mesClients;
     }
 
     /**
@@ -176,30 +178,38 @@ public class GuiNouveauClient extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAnnulerActionPerformed
 
     private void btnConfirmerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmerActionPerformed
-            if("".equals(txtNom.getText()) || txtNom.getText() == null){
-               JOptionPane.showMessageDialog(null, "Veuillez remplir le champ nom");
+            String champs = "Veuillez remplir les choix suivants: ";
+        boolean plein = true;
+        if("".equals(txtNom.getText()) || txtNom.getText() == null){
+            plein = false;
+            champs = champs + "\nNom";
+        }
+        
+        if("".equals(txtPrenom.getText()) || txtPrenom.getText() == null){           
+            plein = false;
+            champs = champs + "\nPrenom";
+        }
+        
+        if("".equals(txtCompagnie.getText()) || txtCompagnie.getText() == null){           
+            plein = false;
+            champs = champs + "\nCompagnie";
+        }
+        
+        if("".equals(txtTelephone.getText()) || txtTelephone.getText() == null){           
+            plein = false;
+            champs = champs + "\nTelephone";
+        }
+        
+        System.out.println(champs);
+        if(plein == false){
+            JOptionPane.showMessageDialog(null, champs);
             return;
-            }
-            
-            if("".equals(txtPrenom.getText()) || txtPrenom.getText() == null){
-               JOptionPane.showMessageDialog(null, "Veuillez entrez le prénom");
-            return;
-            }
-            //
-            if("".equals(txtCompagnie.getText()) || txtCompagnie.getText() == null){
-               JOptionPane.showMessageDialog(null, "Veuillez entrez le nom de la compagnie");
-            return;
-            }
-            
-            if("".equals(txtTelephone.getText()) || txtTelephone.getText() == null){
-               JOptionPane.showMessageDialog(null, "Veuillez entrez le numéro de téléphone");
-            return;
-            }
-            
-            int nouveauId = ManipulationFichier.lireID("Client.txt");
+        }
+            int nouveauID = ManipulationFichier.lireID("Client.txt");
             int telephone = Integer.parseInt(txtTelephone.getText());
-            Client c = new Client(txtNom.getText(),txtPrenom.getText(),txtCompagnie.getText(),telephone,nouveauId);
-           // mesClients.add(c);
+            Client c = new Client(txtNom.getText(),txtPrenom.getText(),txtCompagnie.getText(),telephone,nouveauID);
+            mesClients.add(c);
+            System.exit(0);
     }//GEN-LAST:event_btnConfirmerActionPerformed
 
     /**
