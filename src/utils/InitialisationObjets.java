@@ -34,7 +34,7 @@ public class InitialisationObjets {
             }       
     }
     
-    public static <T>void initialisationDonnees(String fichier, ArrayList<T> mesObjets){
+    public static void initialisationModeleAvion2(String fichier, ArrayList<ModeleAvion> mesObjets){
         
     }
 }

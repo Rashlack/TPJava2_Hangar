@@ -15,6 +15,14 @@ import java.util.ArrayList;
 public class Hangar implements Serializable {
     private double superficieHangar;
     private String type;
+
+    public String getType() {
+        return type;
+    }
+
+    public int getIdHangar() {
+        return idHangar;
+    }
     private boolean statut;
     private int idHangar;
     private ArrayList<Avion>mesAvions;

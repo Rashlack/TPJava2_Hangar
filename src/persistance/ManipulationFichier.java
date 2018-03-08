@@ -149,7 +149,7 @@ public class ManipulationFichier {
         out.writeObject(maListe);
     }
     //
-    public static <T>void lireObjectInputStream(String fichier){
+    public static <T>void lireObjectInputStream(String fichier, ArrayList<T> mesobjets){
         System.out.println("Maintenant la lecture du fichier " + fichier );
         ArrayList<T> mesObjets = new ArrayList();
         ObjectInputStream in;

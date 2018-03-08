@@ -8,6 +8,7 @@ package utils;
 import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.JComboBox;
+import modele.Hangar;
 import persistance.ManipulationFichier;
 
 /**
@@ -64,4 +65,14 @@ public class ComboBoxFiller {
         return cb;
     }
     
+    public static JComboBox comboBoxFiller(JComboBox cb, ArrayList<Hangar> list){
+        String laligne = "";
+        for(int i = 0; i < list.size(); i++){
+            laligne = String.valueOf(list.get(i).getIdHangar());
+            laligne = laligne + list.get(i).getType();
+            cb.addItem(list.get(i));
+        }
+        
+        return cb;
+    }
 }

@@ -47,7 +47,8 @@ public class GuiNouveauClient extends javax.swing.JFrame {
         btnAnnuler = new javax.swing.JButton();
         btnConfirmer = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Nouveau Client");
         setResizable(false);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -209,7 +210,7 @@ public class GuiNouveauClient extends javax.swing.JFrame {
             int telephone = Integer.parseInt(txtTelephone.getText());
             Client c = new Client(txtNom.getText(),txtPrenom.getText(),txtCompagnie.getText(),telephone,nouveauID);
             mesClients.add(c);
-            System.exit(0);
+            super.dispose();
     }//GEN-LAST:event_btnConfirmerActionPerformed
 
     /**
