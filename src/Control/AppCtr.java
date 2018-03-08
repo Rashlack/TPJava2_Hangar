@@ -29,8 +29,8 @@ public class AppCtr {
         ArrayList<Client>mesCLients = new ArrayList();
         InitialisationObjets.initialisationHangars("Hangar.txt", mesHangars);
         InitialisationObjets.initialisationModeleAvion("ModeleAvion.txt", mesModeleAvion);
-        ManipulationFichier.sauvegardeListeObjet("test.txt", mesHangars);
-        ManipulationFichier.lireOutputStream("test.txt");
+        ManipulationFichier.sauvegardeListeObjet("hangar.dat", mesHangars);
+        ManipulationFichier.lireObjectInputStream("hangar.dat");
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new GuiPrincipal(mesHangars, mesBaux, mesAvions, mesModeleAvion).setVisible(true);

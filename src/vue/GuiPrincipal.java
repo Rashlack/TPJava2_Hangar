@@ -456,29 +456,35 @@ public class GuiPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAnnulerBailActionPerformed
 
     private void btnConfirmerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmerActionPerformed
-      
+        String champs = "Veuillez remplir les choix suivants: ";
+        boolean plein = true;
         if("".equals(txtImmatriculation.getText()) || txtImmatriculation.getText() == null){
-            JOptionPane.showMessageDialog(null, "Veuillez entrer l'immatriculation de l'avion");
-        return;
+            plein = false;
+            champs = champs + "\nImmatriculation";
         }
         
         if(comboBoxClient.getSelectedIndex() == 0){
-            JOptionPane.showMessageDialog(null, "Veuillez entrer un client");
-            return;
+            plein = false;
+            champs = champs + "\nClient";
         }
 
         if(comboBoxModeleAvion.getSelectedIndex() == 0){
-            JOptionPane.showMessageDialog(null, "Veuillez entrer un modèle d'");
-            return;
+            plein = false;
+            champs = champs + "\nModèle d'avion";
         }
         
         if(comboBoxChoixHangar.getSelectedIndex() == 0){
-            JOptionPane.showMessageDialog(null, "Veuillez entrer un choix de hangar");
-            return;
+            plein = false;
+            champs = champs + "\nHangar";
         }
         
-        if("".equals(txtDureeContrat.getText()) || txtDureeContrat.getText() == null){
-            JOptionPane.showMessageDialog(null, "Veuillez entrer une durée de contrat");
+        if("".equals(txtDureeContrat.getText()) || txtDureeContrat.getText() == null){           
+            plein = false;
+            champs = champs + "\nDurée de contrat";
+        }
+        System.out.println(champs);
+        if(plein == false){
+            JOptionPane.showMessageDialog(null, champs);
             return;
         }
         int nouveauID = ManipulationFichier.lireID("Contrat.txt");

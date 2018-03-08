@@ -149,10 +149,10 @@ public class ManipulationFichier {
         out.writeObject(maListe);
     }
     
-    public static void lireOutputStream(String fichier) throws IOException{
+    public static <T>void lireObjectInputStream(String fichier) throws IOException{
         System.out.println("Maintenant la lecture du fichier " + fichier );
         ObjectInputStream in = new ObjectInputStream(new FileInputStream(fichier));
-        ArrayList monTest = new ArrayList();
+        ArrayList<T> monTest = new ArrayList();
         try {
             monTest = (ArrayList) in.readObject();
         } catch (ClassNotFoundException ex) {

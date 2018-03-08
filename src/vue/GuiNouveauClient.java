@@ -177,12 +177,12 @@ public class GuiNouveauClient extends javax.swing.JFrame {
 
     private void btnConfirmerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmerActionPerformed
             if("".equals(txtNom.getText()) || txtNom.getText() == null){
-               JOptionPane.showMessageDialog(null, "Veuillez remplir tous les champs");
+               JOptionPane.showMessageDialog(null, "Veuillez remplir le champ nom");
             return;
             }
             
             if("".equals(txtPrenom.getText()) || txtPrenom.getText() == null){
-               JOptionPane.showMessageDialog(null, "Veuillez remplir tous les champs");
+               JOptionPane.showMessageDialog(null, "Veuillez remplis le champ prénom");
             return;
             }
             
