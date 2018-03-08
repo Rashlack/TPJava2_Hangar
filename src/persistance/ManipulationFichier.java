@@ -149,15 +149,24 @@ public class ManipulationFichier {
         out.writeObject(maListe);
     }
     //
-    public static <T>void lireObjectInputStream(String fichier) throws IOException{
+    public static <T>void lireObjectInputStream(String fichier){
         System.out.println("Maintenant la lecture du fichier " + fichier );
-        ObjectInputStream in = new ObjectInputStream(new FileInputStream(fichier));
-        ArrayList<T> monTest = new ArrayList();
+        ArrayList<T> mesObjets = new ArrayList();
+        ObjectInputStream in;
         try {
-            monTest = (ArrayList) in.readObject();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ManipulationFichier.class.getName()).log(Level.SEVERE, null, ex);
+            FileInputStream file = new FileInputStream(fichier);
+            in = new ObjectInputStream(file);
+            try {
+                mesObjets = (ArrayList) in.readObject();
+            } catch (ClassNotFoundException ex) {
+                //Logger.getLogger(ManipulationFichier.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } catch (IOException ex) {
+            System.out.println("fichier non disponible: " + fichier);
+            //Logger.getLogger(ManipulationFichier.class.getName()).log(Level.SEVERE, null, ex);
         }
+        ArrayList<T> monTest = new ArrayList();
+ 
         for(int i = 0; i < monTest.size(); i++){
             System.out.println(monTest.get(i));
         }

@@ -33,4 +33,8 @@ public class InitialisationObjets {
             listeModele.add(new ModeleAvion(Integer.parseInt(liste[0]), liste[1], Double.parseDouble(liste[2]), liste[3]));            
             }       
     }
+    
+    public static <T>void initialisationDonnees(String fichier, ArrayList<T> mesObjets){
+        
+    }
 }

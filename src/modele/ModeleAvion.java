@@ -5,11 +5,13 @@
  */
 package modele;
 
+import java.io.Serializable;
+
 /**
  *
  * @author 1795511
  */
-public class ModeleAvion {
+public class ModeleAvion implements Serializable  {
     private String modele;
     private double superficieAvion;
     private String type;
