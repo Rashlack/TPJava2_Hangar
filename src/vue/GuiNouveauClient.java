@@ -185,7 +185,7 @@ public class GuiNouveauClient extends javax.swing.JFrame {
                JOptionPane.showMessageDialog(null, "Veuillez remplis le champ prénom");
             return;
             }
-            
+            //
             if("".equals(txtCompagnie.getText()) || txtCompagnie.getText() == null){
                JOptionPane.showMessageDialog(null, "Veuillez remplir tous les champs");
             return;

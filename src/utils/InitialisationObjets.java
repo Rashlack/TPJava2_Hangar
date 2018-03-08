@@ -24,7 +24,7 @@ public class InitialisationObjets {
              listeHangar.add(new Hangar(Integer.parseInt(liste[0]), liste[1], Double.parseDouble(liste[2])));                        
         }   
     }
-    
+    //
     public static void initialisationModeleAvion(String fichier, ArrayList<ModeleAvion> listeModele){
         ArrayList<String> mesAttributs = new ArrayList();
         mesAttributs = ManipulationFichier.lireFichier(fichier);

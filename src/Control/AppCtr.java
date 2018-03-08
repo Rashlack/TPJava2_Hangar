@@ -17,7 +17,7 @@ import vue.GuiPrincipal;
  * @author 1795511
  */
 public class AppCtr {
-
+//
     /**
      * @param args the command line arguments22
      */

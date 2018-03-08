@@ -485,7 +485,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
         System.out.println(champs);
         if(plein == false){
             JOptionPane.showMessageDialog(null, champs);
-            return;
+            return;//
         }
         int nouveauID = ManipulationFichier.lireID("Contrat.txt");
         String leModele = Utilitaire.ligneSplitPremierMot((String)comboBoxModeleAvion.getSelectedItem());

@@ -148,7 +148,7 @@ public class ManipulationFichier {
         }
         out.writeObject(maListe);
     }
-    
+    //
     public static <T>void lireObjectInputStream(String fichier) throws IOException{
         System.out.println("Maintenant la lecture du fichier " + fichier );
         ObjectInputStream in = new ObjectInputStream(new FileInputStream(fichier));
