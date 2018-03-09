@@ -6,8 +6,11 @@
             <file>file:/E:/Prog/TPJava2_Hangar/src/vue/GuiPrincipal.java</file>
             <file>file:/E:/Prog/TPJava2_Hangar/src/persistance/ManipulationFichier.java</file>
             <file>file:/E:/Prog/TPJava2_Hangar/src/vue/GuiNouveauClient.java</file>
+            <file>file:/E:/Prog/TPJava2_Hangar/src/utils/ComboBoxFiller.java</file>
+            <file>file:/E:/Prog/TPJava2_Hangar/src/modele/Hangar.java</file>
             <file>file:/E:/Prog/TPJava2_Hangar/src/Control/AppCtr.java</file>
             <file>file:/E:/Prog/TPJava2_Hangar/src/utils/InitialisationObjets.java</file>
+            <file>file:/E:/Prog/TPJava2_Hangar/src/modele/ModeleAvion.java</file>
         </group>
     </open-files>
 </project-private>

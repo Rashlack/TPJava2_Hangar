@@ -30,11 +30,11 @@ public class AppCtr {
         //InitialisationObjets.initialisationHangars("Hangar.txt", mesHangars);
         InitialisationObjets.initialisationModeleAvion("ModeleAvion.txt", mesModeleAvion);
         ManipulationFichier.sauvegardeListeObjet("hangar.dat", mesHangars);
-        ManipulationFichier.lireObjectInputStream("Client.dat");
-        ManipulationFichier.lireObjectInputStream("ModeleAvion.dat");
-        ManipulationFichier.lireObjectInputStream("Baux.dat");
-        ManipulationFichier.lireObjectInputStream("Avion.dat");
-        ManipulationFichier.lireObjectInputStream("hangar.dat");
+        ManipulationFichier.lireObjectInputStream("Client.dat", mesClients);
+        ManipulationFichier.lireObjectInputStream("ModeleAvion.dat", mesModeleAvion);
+        ManipulationFichier.lireObjectInputStream("Baux.dat", mesBaux);
+        ManipulationFichier.lireObjectInputStream("Avion.dat", mesAvions);
+        ManipulationFichier.lireObjectInputStream("hangar.dat", mesHangars);
         
         for(ModeleAvion m: mesModeleAvion){
             System.out.println(m);
