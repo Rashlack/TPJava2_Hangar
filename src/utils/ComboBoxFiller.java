@@ -66,12 +66,13 @@ public class ComboBoxFiller {
     }
     
     public static JComboBox comboBoxFiller(JComboBox cb, ArrayList<Hangar> list){
-        String laligne = "";
+        String laLigne = "";
+        cb.removeAllItems();
         for(int i = 0; i < list.size(); i++){
             System.out.println(list.get(i).getIdHangar());
-            laligne = String.valueOf(list.get(i).getIdHangar());
-            laligne = laligne + list.get(i).getType();
-            cb.addItem(list.get(i));
+            laLigne = String.valueOf(list.get(i).getIdHangar());
+            laLigne = laLigne + " " + list.get(i).getType();
+            cb.addItem(laLigne);
         }
         
         return cb;
