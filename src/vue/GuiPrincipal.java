@@ -36,7 +36,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
         this.mesClients=mesClients;
         ComboBoxFiller.comboBoxClientFiller(comboBoxClient);
         ComboBoxFiller.comboBoxModeleAvionFiller(comboBoxModeleAvion);
-        //ComboBoxFiller.comboBoxFiller(comboBoxHangar1, mesHangars);
+        ComboBoxFiller.comboBoxFiller(comboBoxHangar1, mesHangars);
         ComboBoxFiller.comboBoxHangarFiller(comboBoxHangar2);
         ComboBoxFiller.comboBoxHangarFiller(comboBoxChoixHangar);
     }

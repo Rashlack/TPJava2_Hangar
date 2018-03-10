@@ -21,24 +21,24 @@ public class AppCtr {
     /**
      * @param args the command line arguments22
      */
-    public static void main(String[] args) throws IOException {
-        ArrayList<Baux> mesBaux = new ArrayList();
-        ArrayList<Avion> mesAvions = new ArrayList();
-        ArrayList<Hangar> mesHangars = new ArrayList();
-        ArrayList<ModeleAvion> mesModeleAvion = new ArrayList();
-        ArrayList<Client>mesClients = new ArrayList();
+    public static void main(String[] args) throws Exception{
+        ArrayList<Baux> mesBaux = new ArrayList(ManipulationFichier.lireObjectInputStream("Baux.dat"));
+        ArrayList<Avion> mesAvions = new ArrayList(ManipulationFichier.lireObjectInputStream("Avion.dat"));
+        ArrayList<Hangar> mesHangars = new ArrayList(ManipulationFichier.lireObjectInputStream("Hangar.dat"));
+        ArrayList<ModeleAvion> mesModeleAvion = new ArrayList(ManipulationFichier.lireObjectInputStream("ModeleAvion.dat"));
+        ArrayList<Client>mesClients = new ArrayList(ManipulationFichier.lireObjectInputStream("Client.dat"));
         //InitialisationObjets.initialisationHangars("Hangar.txt", mesHangars);
-        InitialisationObjets.initialisationModeleAvion("ModeleAvion.txt", mesModeleAvion);
-        ManipulationFichier.sauvegardeListeObjet("hangar.dat", mesHangars);
-        ManipulationFichier.lireObjectInputStream("Client.dat", mesClients);
-        ManipulationFichier.lireObjectInputStream("ModeleAvion.dat", mesModeleAvion);
-        ManipulationFichier.lireObjectInputStream("Baux.dat", mesBaux);
-        ManipulationFichier.lireObjectInputStream("Avion.dat", mesAvions);
-        ManipulationFichier.lireObjectInputStream("hangar.dat", mesHangars);
+        //InitialisationObjets.initialisationModeleAvion("ModeleAvion.txt", mesModeleAvion);
+        //ManipulationFichier.sauvegardeListeObjet("hangar.dat", mesHangars);
+//        ManipulationFichier.lireObjectInputStream("Client.dat", mesClients);
+//        ManipulationFichier.lireObjectInputStream("ModeleAvion.dat", mesModeleAvion);
+//        ManipulationFichier.lireObjectInputStream("Baux.dat", mesBaux);
+//        ManipulationFichier.lireObjectInputStream("Avion.dat", mesAvions);
+        //ManipulationFichier.lireObjectInputStream("hangar.dat", mesHangars);
         
-        for(ModeleAvion m: mesModeleAvion){
-            System.out.println(m);
-        }
+//        for(ModeleAvion m: mesModeleAvion){
+//            System.out.println(m);
+//        }
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

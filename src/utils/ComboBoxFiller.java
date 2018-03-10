@@ -68,6 +68,7 @@ public class ComboBoxFiller {
     public static JComboBox comboBoxFiller(JComboBox cb, ArrayList<Hangar> list){
         String laligne = "";
         for(int i = 0; i < list.size(); i++){
+            System.out.println(list.get(i).getIdHangar());
             laligne = String.valueOf(list.get(i).getIdHangar());
             laligne = laligne + list.get(i).getType();
             cb.addItem(list.get(i));

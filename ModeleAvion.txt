@@ -1,4 +1,3 @@
-ID Nom Superficie Type
 1 Hawker400 2200 SmallCabin
 2 Learjet31 2200 SmallCabin
 3 CitationJet 2100 SmallCabin

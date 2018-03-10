@@ -19,7 +19,7 @@ public class InitialisationObjets {
     public static void initialisationHangars(String fichier, ArrayList<Hangar> listeHangar){
         ArrayList<String> mesAttributs = new ArrayList();
         mesAttributs = ManipulationFichier.lireFichier(fichier);
-        for(int i = 1; i < mesAttributs.size(); i++){
+        for(int i = 0; i < mesAttributs.size(); i++){
              String[] liste = Utilitaire.ligneSplitXMots(mesAttributs.get(i));
              listeHangar.add(new Hangar(Integer.parseInt(liste[0]), liste[1], Double.parseDouble(liste[2])));                        
         }   
@@ -28,7 +28,7 @@ public class InitialisationObjets {
     public static void initialisationModeleAvion(String fichier, ArrayList<ModeleAvion> listeModele){
         ArrayList<String> mesAttributs = new ArrayList();
         mesAttributs = ManipulationFichier.lireFichier(fichier);
-        for(int i = 1; i < mesAttributs.size(); i++){
+        for(int i = 0; i < mesAttributs.size(); i++){
             String[] liste = Utilitaire.ligneSplitXMots(mesAttributs.get(i));
             listeModele.add(new ModeleAvion(Integer.parseInt(liste[0]), liste[1], Double.parseDouble(liste[2]), liste[3]));            
             }       

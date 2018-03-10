@@ -6,6 +6,7 @@
 package persistance;
 
 import java.io.BufferedReader;
+import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -145,11 +146,12 @@ public class ManipulationFichier {
         ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fichier));
         for(int i = 0; i < maListe.size(); i++){
             System.out.println(maListe.get(i));
+            out.writeObject(maListe.get(i));
         }
-        out.writeObject(maListe);
+        
     }
     //
-    public static <T>void lireObjectInputStream(String fichier, ArrayList<T> mesobjets){
+    public static <T> ArrayList<T> lireObjectInputStream2(String fichier){
         System.out.println("Maintenant la lecture du fichier " + fichier );
         ArrayList<T> mesObjets = new ArrayList();
         ObjectInputStream in;
@@ -157,7 +159,9 @@ public class ManipulationFichier {
             FileInputStream file = new FileInputStream(fichier);
             in = new ObjectInputStream(file);
             try {
-                mesObjets = (ArrayList) in.readObject();
+                
+                mesObjets.add((T) in.readObject());
+                //mesObjets = (ArrayList) in.readObject();
             } catch (ClassNotFoundException ex) {
                 //Logger.getLogger(ManipulationFichier.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -170,6 +174,33 @@ public class ManipulationFichier {
         for(int i = 0; i < monTest.size(); i++){
             System.out.println(monTest.get(i));
         }
+        return mesObjets;
     }
-
+    
+    public static <T> ArrayList<Hangar> lireObjectInputStream(String fichier) throws Exception{
+        System.out.println("Maintenant la lecture du fichier " + fichier );
+        ArrayList<Hangar> mesObjets = new ArrayList();
+        Hangar monObjet;
+        ObjectInputStream in;
+        try{
+            FileInputStream file = new FileInputStream(fichier); 
+            in = new ObjectInputStream(file);
+            boolean eof = false;
+            while(!eof){
+            try{
+                monObjet = (Hangar) in.readObject();
+                mesObjets.add(monObjet);
+                System.out.println(monObjet);
+            } catch(EOFException e){
+                eof = true;
+            }
+        } in.close();
+       
+        
+    } catch (IOException ex) {
+            System.out.println("fichier non disponible: " + fichier);
+            //Logger.getLogger(ManipulationFichier.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    return mesObjets;
+    }
 }
