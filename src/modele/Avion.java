@@ -22,10 +22,11 @@ public class Avion implements Serializable {
     public Avion() {
     }
 
-    public Avion(ModeleAvion modele, int idAvion, Client client) {
+    public Avion( int idAvion, ModeleAvion modele, Client client, Hangar hangar) {
         this.modele = modele;
         this.idAvion = idAvion;
         this.client = client;
+        this.hangar = hangar;
         //this.monBail = monBail;
     }
 
@@ -46,6 +47,11 @@ public class Avion implements Serializable {
 
     public void setStatut(boolean statut) {
         this.statut = statut;
+    }
+
+    @Override
+    public String toString() {
+        return "Avion{" + "modele=" + modele + ", statut=" + statut + ", idAvion=" + idAvion + ", client=" + client + ", hangar=" + hangar + ", monBail=" + monBail + '}';
     }
 
     

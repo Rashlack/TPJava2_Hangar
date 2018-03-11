@@ -6,7 +6,10 @@
 package vue;
 
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modele.*;
 
@@ -489,19 +492,42 @@ public class GuiPrincipal extends javax.swing.JFrame {
             plein = false;
             champs = champs + "\nDurée de contrat";
         }
-        System.out.println(champs);
+        
         if(plein == false){
             JOptionPane.showMessageDialog(null, champs);
             return;
         }
-        int nouveauID = ManipulationFichier.lireID("Contrat.txt");
-        String leModele = Utilitaire.ligneSplitPremierMot((String)comboBoxModeleAvion.getSelectedItem());
-        int leClient = Integer.parseInt(Utilitaire.ligneSplitMotPositionX((String)comboBoxClient.getSelectedItem(),3));
-        System.out.println(leModele);
-        System.out.println(Utilitaire.trouverModeleAvion(leModele, mesModeleAvion));
+        //int nouveauID = mesBaux.size() + 1;
+        //String leModele = Utilitaire.ligneSplitPremierMot((String)comboBoxModeleAvion.getSelectedItem());
+        //int leClient = Integer.parseInt(Utilitaire.ligneSplitMotPositionX((String)comboBoxClient.getSelectedItem(),3));
+        //System.out.println(leModele);
+        //System.out.println(Utilitaire.trouverModeleAvion(leModele, mesModeleAvion));
+        Hangar hangar = (Hangar) comboBoxChoixHangar.getSelectedItem();
+        Avion avion = new Avion(mesAvions.size() + 1, (ModeleAvion) comboBoxModeleAvion.getSelectedItem(), (Client) comboBoxClient.getSelectedItem(), (Hangar) comboBoxChoixHangar.getSelectedItem());
+        Client leClient = (Client) comboBoxClient.getSelectedItem();
         
-        //Avion avion = new Avion(Utilitaire.trouverModeleAvion(leModele, mesModeleAvion), nouveauID, comboBoxClient.getSelectedItem());
-        Baux nouveauBaux = new Baux();
+//        String messageSauvegarde = "Veuillez valider les informations et cliquer sur OK pour sauvegarder." + "\nImmatriculation : " + txtImmatriculation.getText()
+//                                    + "\nClient : " + leClient.getNom() + " " + leClient.getPrenom()
+//                                    + "\nModele d'avion : " + avion.getModele().getModele()
+//                                    + "\nHangar : " + hangar.getIdHangar()
+//                                    + "\nDurée du bail : " + txtDureeContrat.getText() + " jour(s)";
+//        int input = JOptionPane.showConfirmDialog(null, messageSauvegarde, "Nouveau bail",
+//				JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
+//        if(input == 2){
+//            return;
+//        }
+ 
+        mesAvions.add(avion);
+        hangar.ajouterAvion(avion);
+        mesBaux.add(new Baux(mesBaux.size() + 1, Integer.parseInt(txtDureeContrat.getText()), (Client) comboBoxClient.getSelectedItem(), avion));
+//        JOptionPane.showMessageDialog(null,"Bail enregistré");
+        //System.out.println(hangar);
+//        try {
+//            ManipulationFichier.sauvegardeListeObjet("Baux.dat", mesBaux);
+//            ManipulationFichier.sauvegardeListeObjet("Avion.dat", mesAvions);
+//        } catch (IOException ex) {
+//            System.out.println("Erreur de sauvegarde");
+//        }
     }//GEN-LAST:event_btnConfirmerActionPerformed
 
     private void btnListeAvion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListeAvion1ActionPerformed

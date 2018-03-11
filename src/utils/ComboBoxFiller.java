@@ -19,6 +19,7 @@ public class ComboBoxFiller {
     
     public static <T> JComboBox comboBoxFiller(JComboBox cb, ArrayList<T> list){
         cb.removeAllItems();
+        cb.addItem("");
         for(int i = 0; i < list.size(); i++){
             cb.addItem(list.get(i));
         }      
