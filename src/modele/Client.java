@@ -17,18 +17,19 @@ public class Client implements Serializable {
     private String nom;
     private String prenom;
     private String compagnie;
-    private int telephone;
+    private String telephone;
     private ArrayList<Avion>mesAvions;//nice to have
     
 
     public Client() {
     }
 
-    public Client(String nom, String prenom, String compagnie, int telephone,int idClient) {
+    public Client(int idClient, String nom, String prenom, String compagnie, String telephone) {
         this.nom = nom;
         this.prenom = prenom;
         this.compagnie = compagnie;
         this.telephone = telephone;
+        this.idClient = idClient;
         mesAvions = new ArrayList();
     }
 
@@ -64,11 +65,11 @@ public class Client implements Serializable {
         this.compagnie = compagnie;
     }
 
-    public int getTelephone() {
+    public String getTelephone() {
         return telephone;
     }
 
-    public void setTelephone(int telephone) {
+    public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
 

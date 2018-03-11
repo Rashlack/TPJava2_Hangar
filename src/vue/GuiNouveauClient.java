@@ -208,7 +208,7 @@ public class GuiNouveauClient extends javax.swing.JFrame {
         }
             int nouveauID = ManipulationFichier.lireID("Client.txt");
             int telephone = Integer.parseInt(txtTelephone.getText());
-            Client c = new Client(txtNom.getText(),txtPrenom.getText(),txtCompagnie.getText(),telephone,nouveauID);
+            Client c = new Client(nouveauID, txtNom.getText(),txtPrenom.getText(),txtCompagnie.getText(),txtTelephone.getText());
             mesClients.add(c);
             super.dispose();
     }//GEN-LAST:event_btnConfirmerActionPerformed

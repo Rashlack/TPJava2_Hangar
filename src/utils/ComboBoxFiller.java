@@ -8,7 +8,7 @@ package utils;
 import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.JComboBox;
-import modele.Hangar;
+import modele.*;
 import persistance.ManipulationFichier;
 
 /**
@@ -16,65 +16,41 @@ import persistance.ManipulationFichier;
  * @author 1795511
  */
 public class ComboBoxFiller {
-    public static JComboBox comboBoxClientFiller(JComboBox cb){
-        String fichier = "Client.txt";
-        ArrayList<Integer> mesPositions = new ArrayList();
-        mesPositions.add(1);
-        mesPositions.add(2);
-        mesPositions.add(4);
-        mesPositions.add(0);
-        ArrayList<String> maListe = new ArrayList();
-        maListe = ManipulationFichier.lireMotsLigne(fichier, mesPositions);
-        cb.removeAllItems();
-        Collections.sort(maListe.subList(1, maListe.size()));
-        for(int i = 0; i < maListe.size(); i++){
-            cb.addItem(maListe.get(i));
-        }
-        return cb;
-    }
     
-    public static JComboBox comboBoxModeleAvionFiller(JComboBox cb){
-        String fichier = "ModeleAvion.txt";
-        ArrayList<Integer> mesPositions = new ArrayList();
-        mesPositions.add(1);
-        mesPositions.add(2);
-        mesPositions.add(3);
-        ArrayList<String> maListe = new ArrayList();
-        maListe = ManipulationFichier.lireMotsLigne(fichier, mesPositions);
-        cb.removeAllItems();
-        Collections.sort(maListe.subList(1, maListe.size()));
-        for(int i = 0; i < maListe.size(); i++){
-            cb.addItem(maListe.get(i));     
-        }
-        return cb;
-    }
-    
-    public static JComboBox comboBoxHangarFiller(JComboBox cb){
-        String fichier = "Hangar.txt";
-        ArrayList<Integer> mesPositions = new ArrayList();
-        mesPositions.add(0);
-        mesPositions.add(1);
-        ArrayList<String> maListe = new ArrayList();
-        maListe = ManipulationFichier.lireMotsLigne(fichier, mesPositions);
-        cb.removeAllItems();
-        Collections.sort(maListe.subList(1, maListe.size()));
-
-        for(int i = 0; i < maListe.size(); i++){
-            cb.addItem(maListe.get(i));     
-        }
-        return cb;
-    }
-    
-    public static JComboBox comboBoxFiller(JComboBox cb, ArrayList<Hangar> list){
+    public static JComboBox comboBoxFillerHangar(JComboBox cb, ArrayList<Hangar> list){
         String laLigne = "";
         cb.removeAllItems();
         for(int i = 0; i < list.size(); i++){
-            System.out.println(list.get(i).getIdHangar());
             laLigne = String.valueOf(list.get(i).getIdHangar());
             laLigne = laLigne + " " + list.get(i).getType();
             cb.addItem(laLigne);
-        }
-        
+        }      
+        return cb;
+    }
+
+    public static JComboBox comboBoxFillerClient(JComboBox cb, ArrayList<Client> list){
+        String laLigne = "";
+        cb.removeAllItems();
+        for(int i = 0; i < list.size(); i++){
+            laLigne = String.valueOf(list.get(i).getIdClient());
+            laLigne = laLigne + " " + list.get(i).getNom();
+            laLigne = laLigne + " " + list.get(i).getPrenom();
+            laLigne = laLigne + " " + list.get(i).getTelephone();
+            cb.addItem(laLigne);
+        }      
+        return cb;
+    }
+    
+    public static JComboBox comboBoxFillerModeleAvion(JComboBox cb, ArrayList<ModeleAvion> list){
+        String laLigne = "";
+        cb.removeAllItems();
+        for(int i = 0; i < list.size(); i++){
+            laLigne = list.get(i).getModele();
+            laLigne = laLigne + " " + list.get(i).getType();
+            laLigne = laLigne + " " + list.get(i).getSuperficie();
+            
+            cb.addItem(laLigne);
+        }      
         return cb;
     }
 }

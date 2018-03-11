@@ -1,3 +1,2 @@
-ID Nom Prenom Compagnie Telephone
 1 Taylor John IrvingInc. 444-584-8795 
 2 Baldwin Jeff ShawCommunication 534-895-6524

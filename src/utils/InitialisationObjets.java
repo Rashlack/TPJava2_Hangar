@@ -6,6 +6,7 @@
 package utils;
 
 import java.util.ArrayList;
+import modele.Client;
 import modele.Hangar;
 import modele.ModeleAvion;
 import persistance.ManipulationFichier;
@@ -34,7 +35,14 @@ public class InitialisationObjets {
             }       
     }
     
-    public static void initialisationModeleAvion2(String fichier, ArrayList<ModeleAvion> mesObjets){
-        
+    public static void initialisationClient(String fichier, ArrayList<Client> listeClient){
+        ArrayList<String> mesAttributs = new ArrayList();
+        mesAttributs = ManipulationFichier.lireFichier(fichier);
+        for(int i = 0; i < mesAttributs.size(); i++){
+            String[] liste = Utilitaire.ligneSplitXMots(mesAttributs.get(i));
+            listeClient.add(new Client(Integer.parseInt(liste[0]), liste[1], liste[2], liste[3], liste[4]));            
+            }       
     }
+    
+
 }

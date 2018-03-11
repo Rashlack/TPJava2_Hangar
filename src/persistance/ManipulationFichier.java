@@ -177,10 +177,10 @@ public class ManipulationFichier {
         return mesObjets;
     }
     
-    public static <T> ArrayList<Hangar> lireObjectInputStream(String fichier) throws Exception{
+    public static <T> ArrayList<T> lireObjectInputStream(String fichier) throws Exception{
         System.out.println("Maintenant la lecture du fichier " + fichier );
-        ArrayList<Hangar> mesObjets = new ArrayList();
-        Hangar monObjet;
+        ArrayList<T> mesObjets = new ArrayList();
+        T monObjet;
         ObjectInputStream in;
         try{
             FileInputStream file = new FileInputStream(fichier); 
@@ -188,7 +188,7 @@ public class ManipulationFichier {
             boolean eof = false;
             while(!eof){
             try{
-                monObjet = (Hangar) in.readObject();
+                monObjet = (T) in.readObject();
                 mesObjets.add(monObjet);
                 System.out.println(monObjet);
             } catch(EOFException e){

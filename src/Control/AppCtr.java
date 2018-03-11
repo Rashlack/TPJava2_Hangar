@@ -27,18 +27,18 @@ public class AppCtr {
         ArrayList<Hangar> mesHangars = new ArrayList(ManipulationFichier.lireObjectInputStream("Hangar.dat"));
         ArrayList<ModeleAvion> mesModeleAvion = new ArrayList(ManipulationFichier.lireObjectInputStream("ModeleAvion.dat"));
         ArrayList<Client>mesClients = new ArrayList(ManipulationFichier.lireObjectInputStream("Client.dat"));
-        //InitialisationObjets.initialisationHangars("Hangar.txt", mesHangars);
+        //InitialisationObjets.initialisationClient("Client.txt", mesClients);
         //InitialisationObjets.initialisationModeleAvion("ModeleAvion.txt", mesModeleAvion);
-        //ManipulationFichier.sauvegardeListeObjet("hangar.dat", mesHangars);
+        //ManipulationFichier.sauvegardeListeObjet("Client.dat", mesClients);
 //        ManipulationFichier.lireObjectInputStream("Client.dat", mesClients);
 //        ManipulationFichier.lireObjectInputStream("ModeleAvion.dat", mesModeleAvion);
 //        ManipulationFichier.lireObjectInputStream("Baux.dat", mesBaux);
 //        ManipulationFichier.lireObjectInputStream("Avion.dat", mesAvions);
         //ManipulationFichier.lireObjectInputStream("hangar.dat", mesHangars);
         
-//        for(ModeleAvion m: mesModeleAvion){
-//            System.out.println(m);
-//        }
+        for(ModeleAvion m: mesModeleAvion){
+            System.out.println(m);
+        }
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
