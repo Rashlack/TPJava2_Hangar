@@ -34,11 +34,16 @@ public class GuiPrincipal extends javax.swing.JFrame {
         this.mesAvions = mesAvions;
         this.mesModeleAvion = mesModeleAvion;
         this.mesClients=mesClients;
-        ComboBoxFiller.comboBoxFillerClient(comboBoxClient, mesClients);
-        ComboBoxFiller.comboBoxFillerModeleAvion(comboBoxModeleAvion, mesModeleAvion);
-        ComboBoxFiller.comboBoxFillerHangar(comboBoxHangar1, mesHangars);
-        ComboBoxFiller.comboBoxFillerHangar(comboBoxHangar2, mesHangars);
-        ComboBoxFiller.comboBoxFillerHangar(comboBoxChoixHangar, mesHangars);
+        comboBoxClient.setRenderer(new ClientRenderer());
+        comboBoxModeleAvion.setRenderer(new ModeleAvionRenderer());
+        comboBoxHangar1.setRenderer(new HangarRenderer());
+        comboBoxHangar2.setRenderer(new HangarRenderer());
+        comboBoxChoixHangar.setRenderer(new HangarRenderer());
+        ComboBoxFiller.comboBoxFiller(comboBoxClient, mesClients);
+        ComboBoxFiller.comboBoxFiller(comboBoxModeleAvion, mesModeleAvion);
+        ComboBoxFiller.comboBoxFiller(comboBoxHangar1, mesHangars);
+        ComboBoxFiller.comboBoxFiller(comboBoxHangar2, mesHangars);
+        ComboBoxFiller.comboBoxFiller(comboBoxChoixHangar, mesHangars);
     }
 
     /**

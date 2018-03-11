@@ -18,7 +18,7 @@ import persistance.ManipulationFichier;
 public class ComboBoxFiller {
     
     public static JComboBox comboBoxFillerHangar(JComboBox cb, ArrayList<Hangar> list){
-        String laLigne = "";
+        String laLigne;
         cb.removeAllItems();
         for(int i = 0; i < list.size(); i++){
             laLigne = String.valueOf(list.get(i).getIdHangar());
@@ -28,29 +28,43 @@ public class ComboBoxFiller {
         return cb;
     }
 
-    public static JComboBox comboBoxFillerClient(JComboBox cb, ArrayList<Client> list){
-        String laLigne = "";
+    public static <T> JComboBox comboBoxFiller(JComboBox cb, ArrayList<T> list){
         cb.removeAllItems();
         for(int i = 0; i < list.size(); i++){
-            laLigne = String.valueOf(list.get(i).getIdClient());
-            laLigne = laLigne + " " + list.get(i).getNom();
-            laLigne = laLigne + " " + list.get(i).getPrenom();
-            laLigne = laLigne + " " + list.get(i).getTelephone();
-            cb.addItem(laLigne);
+            cb.addItem(list.get(i));
         }      
         return cb;
     }
     
     public static JComboBox comboBoxFillerModeleAvion(JComboBox cb, ArrayList<ModeleAvion> list){
-        String laLigne = "";
+        String laLigne;
+        ArrayList<String> mesLignes = new ArrayList();
         cb.removeAllItems();
         for(int i = 0; i < list.size(); i++){
             laLigne = list.get(i).getModele();
             laLigne = laLigne + " " + list.get(i).getType();
             laLigne = laLigne + " " + list.get(i).getSuperficie();
-            
-            cb.addItem(laLigne);
-        }      
+            mesLignes.add(laLigne);
+        } 
+        System.out.println("--------------------------------------------------");
+        for(int i = 0; i < mesLignes.size(); i++){
+            System.out.println(mesLignes.get(i));
+        }
+        System.out.println("----------------------------------------------------");
+        Collections.sort(mesLignes);
+        for(int i = 0; i < mesLignes.size(); i++){
+            cb.addItem(mesLignes.get(i));
+            System.out.println(mesLignes.get(i));
+        }
+        
+        
+//        for(int i = 0; i < list.size(); i++){
+//            laLigne = list.get(i).getModele();
+//            laLigne = laLigne + " " + list.get(i).getType();
+//            laLigne = laLigne + " " + list.get(i).getSuperficie();
+//            
+//            cb.addItem(laLigne);
+//        }      
         return cb;
     }
 }
