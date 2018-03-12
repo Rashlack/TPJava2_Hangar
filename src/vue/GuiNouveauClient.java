@@ -7,6 +7,7 @@ package vue;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import modele.Client;
 import persistance.ManipulationFichier;
@@ -18,14 +19,16 @@ import modele.ListeClient;
 public class GuiNouveauClient extends javax.swing.JFrame {
     private ArrayList<Client>mesClients;
     private int nouveauID;
+    private JComboBox cb;
     /**
      * Creates new form GuiNouveauContrat
      */
-    public GuiNouveauClient(ArrayList<Client> mesClients) {
+    public GuiNouveauClient(ArrayList<Client> mesClients,JComboBox cb) {
         initComponents();
         this.mesClients=mesClients;
         nouveauID = mesClients.size()+1;
         txtClientID.setText(String.valueOf(mesClients.size()+1));
+        this.cb=cb;
     }
 
     /**
@@ -210,17 +213,16 @@ public class GuiNouveauClient extends javax.swing.JFrame {
             champs = champs + "\nTelephone";
         }
         
-        
-        System.out.println(champs);
         if(plein == false){
             JOptionPane.showMessageDialog(null, champs);
             return;
         }
-            
-            int telephone = Integer.parseInt(txtTelephone.getText());
+           
             Client c = new Client(nouveauID, txtNom.getText(),txtPrenom.getText(),txtCompagnie.getText(),txtTelephone.getText());
             mesClients.add(c);
+            cb.addItem(c);
             super.dispose();
+            
     }//GEN-LAST:event_btnConfirmerActionPerformed
 
     private void txtTelephoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelephoneKeyTyped
@@ -230,6 +232,8 @@ public class GuiNouveauClient extends javax.swing.JFrame {
                 ||(vChar == KeyEvent.VK_DELETE)){
             evt.consume();
         }
+        
+        
     }//GEN-LAST:event_txtTelephoneKeyTyped
 
     /**

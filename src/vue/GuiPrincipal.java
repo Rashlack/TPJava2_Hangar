@@ -459,7 +459,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNouveauClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNouveauClientActionPerformed
-        GuiNouveauClient newClient = new GuiNouveauClient(mesClients);
+        GuiNouveauClient newClient = new GuiNouveauClient(mesClients,comboBoxClient);
         newClient.setVisible(true);
     }//GEN-LAST:event_btnNouveauClientActionPerformed
 
@@ -526,6 +526,8 @@ public class GuiPrincipal extends javax.swing.JFrame {
         mesAvions.add(avion);
         hangar.ajouterAvion(avion);
         mesBaux.add(new Baux(mesBaux.size() + 1, Integer.parseInt(txtDureeContrat.getText()), (Client) comboBoxClient.getSelectedItem(), avion));
+        
+        
 //        JOptionPane.showMessageDialog(null,"Bail enregistré");
         //System.out.println(hangar);
 //        try {
