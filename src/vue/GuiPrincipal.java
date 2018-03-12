@@ -47,6 +47,8 @@ public class GuiPrincipal extends javax.swing.JFrame {
         ComboBoxFiller.comboBoxFiller(comboBoxHangar1, mesHangars);
         ComboBoxFiller.comboBoxFiller(comboBoxHangar2, mesHangars);
         ComboBoxFiller.comboBoxFiller(comboBoxChoixHangar, mesHangars);
+        comboBoxHangar1.setSelectedItem(mesHangars.get(0));
+        comboBoxHangar2.setSelectedItem(mesHangars.get(1));
     }
 
     /**
@@ -104,7 +106,6 @@ public class GuiPrincipal extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         lblHangar1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHangar1.setText("Hangar 1 (Small Cabin)");
         lblHangar1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         lblNbAvion1.setText("nombre avion:");
@@ -190,7 +191,6 @@ public class GuiPrincipal extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         lblHangar2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHangar2.setText("Hangar 2 (Large Cabin)");
         lblHangar2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         lblNbAvion2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -206,6 +206,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
 
         txtTotalLocation2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtTotalLocation2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txtTotalLocation2.setEnabled(false);
 
         jButton1.setText("Liste d'avion");
         jButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -394,6 +395,11 @@ public class GuiPrincipal extends javax.swing.JFrame {
         });
 
         comboBoxHangar2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxHangar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxHangar2ActionPerformed(evt);
+            }
+        });
 
         btnNouveauClient.setText("Nouveau client");
         btnNouveauClient.addActionListener(new java.awt.event.ActionListener() {
@@ -421,7 +427,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(14, 14, 14)
                                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 8, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnNouveauClient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -539,11 +545,14 @@ public class GuiPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void comboBoxHangar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxHangar1ActionPerformed
+
         if(comboBoxHangar1.getSelectedItem() != "" && comboBoxHangar1.getSelectedItem() != null && comboBoxHangar1.getSelectedIndex() != 0){
+            Hangar h = (Hangar) comboBoxHangar1.getSelectedItem();
             System.out.println(comboBoxHangar1.getSelectedItem());
             txtTotalLocation1.setText("999");          
-            txtSuperficieDispo1.setText(String.valueOf(mesHangars.get(comboBoxHangar1.getSelectedIndex()-1).calculerSuperficieRestante()));
-            txtNbAvion1.setText(String.valueOf(mesHangars.get(comboBoxHangar1.getSelectedIndex()-1).getMesAvions().size()));
+            txtSuperficieDispo1.setText(String.valueOf(h.calculerSuperficieRestante()));
+            txtNbAvion1.setText(String.valueOf(h.getMesAvions().size()));
+            lblHangar1.setText("Hangar " + String.valueOf(h.getIdHangar())+ " (" + h.getType() + ")");
         }else if(comboBoxHangar1.getSelectedItem() == "" || comboBoxHangar1.getSelectedIndex() == 0){
             txtNbAvion1.setText("");
             txtTotalLocation1.setText("");
@@ -559,6 +568,20 @@ public class GuiPrincipal extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_txtDureeContratKeyTyped
+
+    private void comboBoxHangar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxHangar2ActionPerformed
+        if(comboBoxHangar2.getSelectedItem() != "" && comboBoxHangar2.getSelectedItem() != null && comboBoxHangar2.getSelectedIndex() != 0){
+            Hangar h = (Hangar) comboBoxHangar2.getSelectedItem();
+            txtTotalLocation2.setText("999");          
+            txtSuperficieDispo2.setText(String.valueOf(h.calculerSuperficieRestante()));
+            txtNbAvion2.setText(String.valueOf(h.getMesAvions().size()));
+            lblHangar2.setText("Hangar " + String.valueOf(h.getIdHangar())+ " (" + h.getType() + ")");
+        }else if(comboBoxHangar2.getSelectedItem() == "" || comboBoxHangar2.getSelectedIndex() == 0){
+            txtNbAvion2.setText("");
+            txtTotalLocation2.setText("");
+            txtSuperficieDispo2.setText("");
+        }
+    }//GEN-LAST:event_comboBoxHangar2ActionPerformed
 
 
 
