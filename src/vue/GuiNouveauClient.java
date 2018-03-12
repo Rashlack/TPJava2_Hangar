@@ -5,6 +5,7 @@
  */
 package vue;
 
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modele.Client;
@@ -16,12 +17,15 @@ import modele.ListeClient;
  */
 public class GuiNouveauClient extends javax.swing.JFrame {
     private ArrayList<Client>mesClients;
+    private int nouveauID;
     /**
      * Creates new form GuiNouveauContrat
      */
     public GuiNouveauClient(ArrayList<Client> mesClients) {
         initComponents();
         this.mesClients=mesClients;
+        nouveauID = mesClients.size()+1;
+        txtClientID.setText(String.valueOf(mesClients.size()+1));
     }
 
     /**
@@ -86,6 +90,11 @@ public class GuiNouveauClient extends javax.swing.JFrame {
 
         txtTelephone.setToolTipText("");
         txtTelephone.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txtTelephone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelephoneKeyTyped(evt);
+            }
+        });
 
         btnAnnuler.setText("Annuler");
         btnAnnuler.addActionListener(new java.awt.event.ActionListener() {
@@ -201,17 +210,27 @@ public class GuiNouveauClient extends javax.swing.JFrame {
             champs = champs + "\nTelephone";
         }
         
+        
         System.out.println(champs);
         if(plein == false){
             JOptionPane.showMessageDialog(null, champs);
             return;
         }
-            int nouveauID = ManipulationFichier.lireID("Client.txt");
+            
             int telephone = Integer.parseInt(txtTelephone.getText());
             Client c = new Client(nouveauID, txtNom.getText(),txtPrenom.getText(),txtCompagnie.getText(),txtTelephone.getText());
             mesClients.add(c);
             super.dispose();
     }//GEN-LAST:event_btnConfirmerActionPerformed
+
+    private void txtTelephoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelephoneKeyTyped
+         char vChar = evt.getKeyChar();
+        if(!(Character.isDigit(vChar))
+                ||(vChar ==  KeyEvent.VK_BACK_SPACE)
+                ||(vChar == KeyEvent.VK_DELETE)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtTelephoneKeyTyped
 
     /**
      * @param args the command line arguments
