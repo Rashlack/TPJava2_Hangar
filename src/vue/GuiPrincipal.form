@@ -557,6 +557,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtDureeContrat">
           <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDureeContratActionPerformed"/>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDureeContratKeyTyped"/>
           </Events>
         </Component>

@@ -506,16 +506,16 @@ public class GuiPrincipal extends javax.swing.JFrame {
         Avion avion = new Avion(mesAvions.size() + 1, (ModeleAvion) comboBoxModeleAvion.getSelectedItem(), (Client) comboBoxClient.getSelectedItem(), (Hangar) comboBoxChoixHangar.getSelectedItem());
         Client leClient = (Client) comboBoxClient.getSelectedItem();
         
-//        String messageSauvegarde = "Veuillez valider les informations et cliquer sur OK pour sauvegarder." + "\nImmatriculation : " + txtImmatriculation.getText()
-//                                    + "\nClient : " + leClient.getNom() + " " + leClient.getPrenom()
-//                                    + "\nModele d'avion : " + avion.getModele().getModele()
-//                                    + "\nHangar : " + hangar.getIdHangar()
-//                                    + "\nDurée du bail : " + txtDureeContrat.getText() + " jour(s)";
-//        int input = JOptionPane.showConfirmDialog(null, messageSauvegarde, "Nouveau bail",
-//				JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
-//        if(input == 2){
-//            return;
-//        }
+        String messageSauvegarde = "Veuillez valider les informations et cliquer sur OK pour sauvegarder." + "\nImmatriculation : " + txtImmatriculation.getText()
+                                    + "\nClient : " + leClient.getNom() + " " + leClient.getPrenom()
+                                    + "\nModele d'avion : " + avion.getModele().getModele()
+                                    + "\nHangar : " + hangar.getIdHangar()
+                                    + "\nDurée du bail : " + txtDureeContrat.getText() + " jour(s)";
+        int input = JOptionPane.showConfirmDialog(null, messageSauvegarde, "Nouveau bail",
+				JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
+        if(input == 2){
+            return;
+        }
  
         mesAvions.add(avion);
         hangar.ajouterAvion(avion);

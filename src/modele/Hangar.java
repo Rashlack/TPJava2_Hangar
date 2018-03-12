@@ -52,10 +52,16 @@ public class Hangar implements Serializable {
     public int getIdHangar() {
         return idHangar;
     }
+
     @Override
     public String toString() {
-        return "Hangar{" + "superficie=" + superficieHangar + ", type=" + type + ", statut=" + statut + ", idHangar=" + idHangar + ", mesAvions=" + mesAvions + '}';
+        String maString = "";
+        maString = maString + "HangarID = " + idHangar;
+        maString = maString         + "\nSuperficie = " + superficieHangar;
+        maString = maString         + "\nAvion = " + mesAvions;
+        return maString;
     }
+
     
     public int calculerNbrAvion(){
         int nbrAvion = mesAvions.size();
