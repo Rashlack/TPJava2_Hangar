@@ -17,26 +17,7 @@ import modele.ListeAvion;
  * @author 1795511
  */
 public class Utilitaire {
-    public static void creerNouveauClient(){
-        
-    }
-    
-    public static void creerNouveauBail(){
-    
-    }
-    
-    public static void ajouterAvionHangar(){
-    
-    }
-    
-    public static void enleverAvionHangar(){
-    
-    }
-    
-    public static void calculerTotalLocationAvion(){
-    
-    }
-    
+
     public static double calculerTarifLocationTotal(Hangar h){
         double prixLocationTotal = 0;
         ArrayList<Avion> lesAvions = h.getMesAvions();
@@ -106,9 +87,6 @@ public class Utilitaire {
     public static int comparerID(String stringID){
             
         return 0;
-    }
-    public static void validationChiffres(){
-        
     }
     
     public static int nouveauID(String idTexte){ 

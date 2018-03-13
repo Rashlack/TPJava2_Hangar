@@ -82,12 +82,10 @@ public class GuiPrincipal extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        lblHangar1 = new javax.swing.JLabel();
         lblNbAvion1 = new javax.swing.JLabel();
         txtNbAvion1 = new javax.swing.JTextField();
         lblTotalLoc1 = new javax.swing.JLabel();
         txtTotalLocation1 = new javax.swing.JTextField();
-        btnListeAvion1 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         txtSuperficieDispo1 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -95,12 +93,10 @@ public class GuiPrincipal extends javax.swing.JFrame {
         tableHangar1 = new javax.swing.JTable();
         comboBoxHangar1 = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
-        lblHangar2 = new javax.swing.JLabel();
         lblNbAvion2 = new javax.swing.JLabel();
         txtNbAvion2 = new javax.swing.JTextField();
         lbl = new javax.swing.JLabel();
         txtTotalLocation2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         txtSuperficieDispo2 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -134,9 +130,6 @@ public class GuiPrincipal extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        lblHangar1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHangar1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
         lblNbAvion1.setText("nombre avion:");
         lblNbAvion1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -147,15 +140,6 @@ public class GuiPrincipal extends javax.swing.JFrame {
         lblTotalLoc1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         txtTotalLocation1.setEnabled(false);
-
-        btnListeAvion1.setText("Liste d'avion");
-        btnListeAvion1.setActionCommand("Liste d'avion ");
-        btnListeAvion1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        btnListeAvion1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnListeAvion1ActionPerformed(evt);
-            }
-        });
 
         jLabel5.setText("Superficie disponible:");
         jLabel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -205,7 +189,6 @@ public class GuiPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
                     .addComponent(comboBoxHangar1, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblHangar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -222,8 +205,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                     .addComponent(lblTotalLoc1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtTotalLocation1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(btnListeAvion1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtTotalLocation1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -231,9 +213,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(comboBoxHangar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblHangar1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(46, 46, 46)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -249,17 +229,12 @@ public class GuiPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTotalLoc1)
                     .addComponent(txtTotalLocation1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addComponent(btnListeAvion1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                .addGap(56, 56, 56)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        lblHangar2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHangar2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         lblNbAvion2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNbAvion2.setText("Nombre avion:");
@@ -275,14 +250,6 @@ public class GuiPrincipal extends javax.swing.JFrame {
         txtTotalLocation2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtTotalLocation2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         txtTotalLocation2.setEnabled(false);
-
-        jButton1.setText("Liste d'avion");
-        jButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         jLabel7.setText("Superficie disponible:");
         jLabel7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -320,39 +287,31 @@ public class GuiPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblHangar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtSuperficieDispo2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addComponent(jLabel7)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtSuperficieDispo2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(lblNbAvion2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(txtNbAvion2)
-                                                    .addComponent(txtTotalLocation2))))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel8)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())))
+                                    .addComponent(lblNbAvion2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtNbAvion2)
+                                    .addComponent(txtTotalLocation2))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel8)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(comboBoxHangar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblHangar2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(50, 50, 50)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -368,9 +327,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl)
                     .addComponent(txtTotalLocation2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
+                .addGap(62, 62, 62)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -667,14 +624,6 @@ public class GuiPrincipal extends javax.swing.JFrame {
 //        }
     }//GEN-LAST:event_btnConfirmerActionPerformed
 
-    private void btnListeAvion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListeAvion1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnListeAvion1ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void comboBoxHangar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxHangar1ActionPerformed
 
         if(comboBoxHangar1.getSelectedItem() != "" && comboBoxHangar1.getSelectedItem() != null && comboBoxHangar1.getSelectedIndex() != 0){
@@ -683,7 +632,6 @@ public class GuiPrincipal extends javax.swing.JFrame {
             txtTotalLocation1.setText(String.valueOf(Utilitaire.calculerTarifLocationTotal((Hangar) comboBoxHangar1.getSelectedItem())));          
             txtSuperficieDispo1.setText(String.valueOf(h.calculerSuperficieRestante()));
             txtNbAvion1.setText(String.valueOf(h.getMesAvions().size()));
-            lblHangar1.setText("Hangar " + String.valueOf(h.getIdHangar())+ " (" + h.getType() + ")");
             Hangar hangar1 = (Hangar) comboBoxHangar1.getSelectedItem();
             FieldFiller.tableHangarFiller((DefaultTableModel) tableHangar1.getModel(), hangar1.getMesAvions());
         }else if(comboBoxHangar1.getSelectedItem() == "" || comboBoxHangar1.getSelectedIndex() == 0){
@@ -699,7 +647,6 @@ public class GuiPrincipal extends javax.swing.JFrame {
             txtTotalLocation2.setText("999");          
             txtSuperficieDispo2.setText(String.valueOf(h.calculerSuperficieRestante()));
             txtNbAvion2.setText(String.valueOf(h.getMesAvions().size()));
-            lblHangar2.setText("Hangar " + String.valueOf(h.getIdHangar())+ " (" + h.getType() + ")");
             Hangar hangar2 = (Hangar) comboBoxHangar2.getSelectedItem();
             FieldFiller.tableHangarFiller((DefaultTableModel) tableHangar2.getModel(), hangar2.getMesAvions());
         }else if(comboBoxHangar2.getSelectedItem() == "" || comboBoxHangar2.getSelectedIndex() == 0){
@@ -750,14 +697,12 @@ public class GuiPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnnulerBail;
     private javax.swing.JButton btnConfirmer;
-    private javax.swing.JButton btnListeAvion1;
     private javax.swing.JButton btnNouveauClient;
     private javax.swing.JComboBox<String> comboBoxChoixHangar;
     private javax.swing.JComboBox<String> comboBoxClient;
     private javax.swing.JComboBox<String> comboBoxHangar1;
     private javax.swing.JComboBox<String> comboBoxHangar2;
     private javax.swing.JComboBox<String> comboBoxModeleAvion;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -777,8 +722,6 @@ public class GuiPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lbl;
     private javax.swing.JLabel lblBail;
     private javax.swing.JLabel lblDureeContrat;
-    private javax.swing.JLabel lblHangar1;
-    private javax.swing.JLabel lblHangar2;
     private javax.swing.JLabel lblImmatriculation;
     private javax.swing.JLabel lblNbAvion1;
     private javax.swing.JLabel lblNbAvion2;
