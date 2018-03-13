@@ -145,7 +145,7 @@ public class ManipulationFichier {
     public static void sauvegardeListeObjet(String fichier, ArrayList maListe) throws IOException{
         ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fichier));
         for(int i = 0; i < maListe.size(); i++){
-            System.out.println(maListe.get(i));
+            
             out.writeObject(maListe.get(i));
         }
         

@@ -148,6 +148,8 @@ public class GuiPrincipal extends javax.swing.JFrame {
 
         jLabel6.setText("pi2");
 
+        jScrollPane2.setAutoscrolls(true);
+
         tableHangar1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -257,6 +259,8 @@ public class GuiPrincipal extends javax.swing.JFrame {
         txtSuperficieDispo2.setEnabled(false);
 
         jLabel8.setText("pi2");
+
+        jScrollPane1.setAutoscrolls(true);
 
         tableHangar2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -606,10 +610,10 @@ public class GuiPrincipal extends javax.swing.JFrame {
         Hangar hangar2 = (Hangar) comboBoxHangar2.getSelectedItem();
         FieldFiller.tableHangarFiller((DefaultTableModel) tableHangar2.getModel(), hangar2.getMesAvions());
         if(hangar == comboBoxHangar1.getSelectedItem()){
-            txtTotalLocation1.setText(String.valueOf(Utilitaire.calculerTarifLocationTotal(hangar)));
+            FieldFiller.labelFiller(hangar, txtTotalLocation1, txtSuperficieDispo1, txtNbAvion1, tableHangar1);
             
         }else if(hangar == comboBoxHangar2.getSelectedItem()){
-            txtTotalLocation2.setText(String.valueOf(Utilitaire.calculerTarifLocationTotal(hangar)));
+            FieldFiller.labelFiller(hangar, txtTotalLocation2, txtSuperficieDispo2, txtNbAvion2, tableHangar2);
             
         }
         //txtTotalLocation1.setText("salut");
@@ -625,15 +629,9 @@ public class GuiPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConfirmerActionPerformed
 
     private void comboBoxHangar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxHangar1ActionPerformed
-
         if(comboBoxHangar1.getSelectedItem() != "" && comboBoxHangar1.getSelectedItem() != null && comboBoxHangar1.getSelectedIndex() != 0){
             Hangar h = (Hangar) comboBoxHangar1.getSelectedItem();
-            System.out.println(comboBoxHangar1.getSelectedItem());
-            txtTotalLocation1.setText(String.valueOf(Utilitaire.calculerTarifLocationTotal((Hangar) comboBoxHangar1.getSelectedItem())));          
-            txtSuperficieDispo1.setText(String.valueOf(h.calculerSuperficieRestante()));
-            txtNbAvion1.setText(String.valueOf(h.getMesAvions().size()));
-            Hangar hangar1 = (Hangar) comboBoxHangar1.getSelectedItem();
-            FieldFiller.tableHangarFiller((DefaultTableModel) tableHangar1.getModel(), hangar1.getMesAvions());
+            FieldFiller.labelFiller(h, txtTotalLocation1, txtSuperficieDispo1, txtNbAvion1, tableHangar1);
         }else if(comboBoxHangar1.getSelectedItem() == "" || comboBoxHangar1.getSelectedIndex() == 0){
             txtNbAvion1.setText("");
             txtTotalLocation1.setText("");
@@ -644,11 +642,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
     private void comboBoxHangar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxHangar2ActionPerformed
         if(comboBoxHangar2.getSelectedItem() != "" && comboBoxHangar2.getSelectedItem() != null && comboBoxHangar2.getSelectedIndex() != 0){
             Hangar h = (Hangar) comboBoxHangar2.getSelectedItem();
-            txtTotalLocation2.setText("999");          
-            txtSuperficieDispo2.setText(String.valueOf(h.calculerSuperficieRestante()));
-            txtNbAvion2.setText(String.valueOf(h.getMesAvions().size()));
-            Hangar hangar2 = (Hangar) comboBoxHangar2.getSelectedItem();
-            FieldFiller.tableHangarFiller((DefaultTableModel) tableHangar2.getModel(), hangar2.getMesAvions());
+            FieldFiller.labelFiller(h, txtTotalLocation2, txtSuperficieDispo2, txtNbAvion2, tableHangar2);
         }else if(comboBoxHangar2.getSelectedItem() == "" || comboBoxHangar2.getSelectedIndex() == 0){
             txtNbAvion2.setText("");
             txtTotalLocation2.setText("");
