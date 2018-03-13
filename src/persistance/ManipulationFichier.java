@@ -114,18 +114,18 @@ public class ManipulationFichier {
     }
     
     
-    public static ArrayList<String> lireFichier(String fichier){
+    public static String lireFichier(String fichier){
         File file = new File(fichier);
         FileReader fr = null;
         BufferedReader br = null;
-        ArrayList<String> mots = new ArrayList();
+        String mots ="";
         try {
             fr = new FileReader(file);
             br =  new BufferedReader(fr);
             String ligne;
             
             while((ligne = br.readLine()) != null){
-                mots.add(ligne);
+                mots = ligne;
             }
         } catch (IOException ex) {
             Logger.getLogger(ManipulationFichier.class.getName()).log(Level.SEVERE, null, ex);

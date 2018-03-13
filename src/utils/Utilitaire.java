@@ -124,7 +124,14 @@ public class Utilitaire {
         list.get(id).getIdClient();
         return list.get(i);
     }
-
+    public static double[] convertirTableStringDouble(String[]ligne){
+        double[] mesDoubles = new double[ligne.length];
+        for(int i = 0;i<ligne.length;i++){
+            
+            mesDoubles[i] = Double.parseDouble(ligne[i]);
+        }
+        return mesDoubles;
+    }
 }
 
     

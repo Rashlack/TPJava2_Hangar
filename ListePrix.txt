@@ -1,0 +1,2 @@
+prixBase prix4-14jours prix15+
+1 0.90 0.85

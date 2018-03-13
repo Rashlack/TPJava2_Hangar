@@ -616,7 +616,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
  
         mesAvions.add(avion);
         hangar.ajouterAvion(avion);
-        //calculerTarifLocation(double.parseDouble(avion.getModele().getSuperficie())
+        
         mesBaux.add(new Baux(mesBaux.size() + 1, Integer.parseInt(txtDureeContrat.getText()), (Client) comboBoxClient.getSelectedItem(), avion));
         Hangar hangar1 = (Hangar) comboBoxHangar1.getSelectedItem();
         FieldFiller.tableHangarFiller((DefaultTableModel) tableHangar1.getModel(), hangar1.getMesAvions());

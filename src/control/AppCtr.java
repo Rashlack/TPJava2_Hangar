@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import modele.*;
 import persistance.ManipulationFichier;
 import utils.InitialisationObjets;
+import utils.Utilitaire;
 import vue.GuiPrincipal;
 
 /**
@@ -27,11 +28,15 @@ public class AppCtr {
         ArrayList<Hangar> mesHangars = new ArrayList(ManipulationFichier.lireObjectInputStream("Hangar.dat"));
         ArrayList<ModeleAvion> mesModeleAvion = new ArrayList(ManipulationFichier.lireObjectInputStream("ModeleAvion.dat"));
         ArrayList<Client>mesClients = new ArrayList(ManipulationFichier.lireObjectInputStream("Client.dat"));
+        String mesPrixTexte = ManipulationFichier.lireFichier("ListePrix.txt");
+        String[] stringSplit = mesPrixTexte.split(" ");
+        double[]mesPrix = Utilitaire.convertirTableStringDouble(stringSplit);
+        System.out.println(mesPrix[0]);
         //InitialisationObjets.initialisationClient("Client.txt", mesClients);
         //InitialisationObjets.initialisationModeleAvion("ModeleAvion.txt", mesModeleAvion);
         //ManipulationFichier.sauvegardeListeObjet("Client.dat", mesClients);
 //        ManipulationFichier.lireObjectInputStream("Client.dat", mesClients);
-//        ManipulationFichier.lireObjectInputStream("ModeleAvion.dat", mesModeleAvion);
+//        ManipulationFichier.lireObjectInputSream("ModeleAvion.dat", mesModeleAvion);
 //        ManipulationFichier.lireObjectInputStream("Baux.dat", mesBaux);
 //        ManipulationFichier.lireObjectInputStream("Avion.dat", mesAvions);
         //ManipulationFichier.lireObjectInputStream("hangar.dat", mesHangars);
