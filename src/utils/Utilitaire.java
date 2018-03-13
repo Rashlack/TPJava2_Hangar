@@ -35,7 +35,22 @@ public class Utilitaire {
     
     public static void calculerTotalLocationAvion(){
     
-    }   
+    }  
+    
+    public static double calculerTarifLocation(double superficieAvion, int duree){
+        double prixLocationTotal;
+        double prixPiCarre = 0.05;
+        if(duree>15){
+            prixLocationTotal = (prixPiCarre*superficieAvion)*0.15;
+        }
+        if(duree>4){
+            prixLocationTotal = (prixPiCarre*superficieAvion)*0.10;
+         }else{
+            prixLocationTotal = prixPiCarre*superficieAvion;
+        }
+        return prixLocationTotal;
+    }
+    
     public static double calculerSuperficie(ModeleAvion a, Hangar h){
         ArrayList<Avion> mesAvions = h.getMesAvions();
         double superficieTotalAvion = 0.0;
