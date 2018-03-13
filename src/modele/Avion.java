@@ -41,6 +41,22 @@ public class Avion implements Serializable {
         return modele;
     }
 
+    public Hangar getHangar() {
+        return hangar;
+    }
+
+    public void setHangar(Hangar hangar) {
+        this.hangar = hangar;
+    }
+
+    public Baux getMonBail() {
+        return monBail;
+    }
+
+    public void setMonBail(Baux monBail) {
+        this.monBail = monBail;
+    }
+
     public boolean isStatut() {
         return statut;
     }

@@ -35,20 +35,29 @@ public class Utilitaire {
     
     public static void calculerTotalLocationAvion(){
     
-    }  
+    }
     
-    public static double calculerTarifLocation(double superficieAvion, int duree){
-        double prixLocationTotal;
-        double prixPiCarre = 0.05;
-        if(duree>15){
-            prixLocationTotal = (prixPiCarre*superficieAvion)*0.15;
-        }
-        if(duree>4){
-            prixLocationTotal = (prixPiCarre*superficieAvion)*0.10;
-         }else{
-            prixLocationTotal = prixPiCarre*superficieAvion;
+    public static double calculerTarifLocationTotal(Hangar h){
+        double prixLocationTotal = 0;
+        ArrayList<Avion> lesAvions = h.getMesAvions();
+        for(Avion a: lesAvions){
+            prixLocationTotal += a.getMonBail().getTarifBaux();
         }
         return prixLocationTotal;
+    }
+    
+    public static double calculerTarifLocation(double superficieAvion, int duree, double[] mesPrix){
+        double prixLocationAvion;
+        double prixPiCarre = mesPrix[0];
+        if(duree>mesPrix[3]){
+            prixLocationAvion = (prixPiCarre*superficieAvion)*mesPrix[4] * duree;
+        }
+        if(duree>mesPrix[1]){
+            prixLocationAvion = (prixPiCarre*superficieAvion)*mesPrix[2] * duree;
+         }else{
+            prixLocationAvion = prixPiCarre*superficieAvion * duree;
+        }
+        return prixLocationAvion;
     }
     
     public static double calculerSuperficie(ModeleAvion a, Hangar h){

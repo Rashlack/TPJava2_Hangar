@@ -28,10 +28,13 @@ public class AppCtr {
         ArrayList<Hangar> mesHangars = new ArrayList(ManipulationFichier.lireObjectInputStream("Hangar.dat"));
         ArrayList<ModeleAvion> mesModeleAvion = new ArrayList(ManipulationFichier.lireObjectInputStream("ModeleAvion.dat"));
         ArrayList<Client>mesClients = new ArrayList(ManipulationFichier.lireObjectInputStream("Client.dat"));
-        String mesPrixTexte = ManipulationFichier.lireFichier("ListePrix.txt");
-        String[] stringSplit = mesPrixTexte.split(" ");
-        double[]mesPrix = Utilitaire.convertirTableStringDouble(stringSplit);
-        System.out.println(mesPrix[0]);
+        //String mesPrixTexte = ManipulationFichier.lireFichier("ListePrix.txt");
+        //String[] stringSplit = mesPrixTexte.split(" ");
+        double[]mesPrix = Utilitaire.convertirTableStringDouble(ManipulationFichier.lireFichier("ListePrix.txt").split(" "));
+        for (int i = 0; i<mesPrix.length;i++){
+            System.out.println(mesPrix[i]);
+        }
+        
         //InitialisationObjets.initialisationClient("Client.txt", mesClients);
         //InitialisationObjets.initialisationModeleAvion("ModeleAvion.txt", mesModeleAvion);
         //ManipulationFichier.sauvegardeListeObjet("Client.dat", mesClients);
@@ -41,13 +44,13 @@ public class AppCtr {
 //        ManipulationFichier.lireObjectInputStream("Avion.dat", mesAvions);
         //ManipulationFichier.lireObjectInputStream("hangar.dat", mesHangars);
         
-        for(ModeleAvion m: mesModeleAvion){
-            System.out.println(m);
-        }
+//        for(ModeleAvion m: mesModeleAvion){
+//            System.out.println(m);
+//        }
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GuiPrincipal(mesHangars, mesBaux, mesAvions, mesModeleAvion, mesClients).setVisible(true);
+                new GuiPrincipal(mesHangars, mesBaux, mesAvions, mesModeleAvion, mesClients, mesPrix).setVisible(true);
                 ;
             }
         });

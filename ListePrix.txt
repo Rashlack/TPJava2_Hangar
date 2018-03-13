@@ -1,2 +1,2 @@
-prixBase prix4-14jours prix15+
-1 0.90 0.85
+prixBase Rabais1 prix4-14jours Rabais2 prix15+ 
+0.05 4 0.90 15 0.85 
