@@ -8,6 +8,8 @@ package utils;
 import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.JComboBox;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import modele.*;
 import persistance.ManipulationFichier;
 
@@ -15,16 +17,23 @@ import persistance.ManipulationFichier;
  *
  * @author 1795511
  */
-public class ComboBoxFiller {
+public class FieldFiller {
     
-    public static <T> JComboBox comboBoxFiller(JComboBox cb, ArrayList<T> list){
+    public static <T> void comboBoxFiller(JComboBox cb, ArrayList<T> list){
         cb.removeAllItems();
         cb.addItem(" ");
         for(int i = 0; i < list.size(); i++){
             cb.addItem(list.get(i));
         }      
-        return cb;
-    }    
+        
+    }
+    
+    public static void tableHangarFiller(DefaultTableModel model, ArrayList<Avion> list){
+        model.setRowCount(0);
+        for(Avion a: list){
+        model.addRow(new Object[]{a.getIdAvion(), a.getModele().getModele(), a.getModele().getSuperficie(), a.getClient().getNom()}); 
+        }
+    }
 //    public static JComboBox comboBoxFillerHangar(JComboBox cb, ArrayList<Hangar> list){
 //        String laLigne;
 //        cb.removeAllItems();

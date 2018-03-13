@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
 import modele.*;
 
 import persistance.ManipulationFichier;
-import utils.ComboBoxFiller;
+import utils.FieldFiller;
 import utils.Utilitaire;
 
 /**
@@ -45,19 +45,20 @@ public class GuiPrincipal extends javax.swing.JFrame {
         comboBoxHangar1.setRenderer(new HangarRenderer());
         comboBoxHangar2.setRenderer(new HangarRenderer());
         comboBoxChoixHangar.setRenderer(new HangarRenderer());
-        ComboBoxFiller.comboBoxFiller(comboBoxClient, mesClients);
-        ComboBoxFiller.comboBoxFiller(comboBoxModeleAvion, mesModeleAvion);
-        ComboBoxFiller.comboBoxFiller(comboBoxHangar1, mesHangars);
-        ComboBoxFiller.comboBoxFiller(comboBoxHangar2, mesHangars);
-        ComboBoxFiller.comboBoxFiller(comboBoxChoixHangar, mesHangars);
+        FieldFiller.comboBoxFiller(comboBoxClient, mesClients);
+        FieldFiller.comboBoxFiller(comboBoxModeleAvion, mesModeleAvion);
+        FieldFiller.comboBoxFiller(comboBoxHangar1, mesHangars);
+        FieldFiller.comboBoxFiller(comboBoxHangar2, mesHangars);
+        FieldFiller.comboBoxFiller(comboBoxChoixHangar, mesHangars);
         comboBoxHangar1.setSelectedItem(mesHangars.get(0));
         comboBoxHangar2.setSelectedItem(mesHangars.get(1));
         DefaultTableModel model = (DefaultTableModel) tableHangar1.getModel();
-        model.setRowCount(12);
-        ArrayList<Avion> testTable = mesHangars.get(0).getMesAvions();
-        for(Avion a: testTable){
-           model.addRow(new Object[]{a.getIdAvion(), a.getModele().getModele(), a.getModele().getSuperficie(), a.getClient().getNom()}); 
-        }
+        Hangar hangar1 = (Hangar) comboBoxHangar1.getSelectedItem();
+        FieldFiller.tableHangarFiller((DefaultTableModel) tableHangar1.getModel(), hangar1.getMesAvions());
+        Hangar hangar2 = (Hangar) comboBoxHangar2.getSelectedItem();
+        FieldFiller.tableHangarFiller((DefaultTableModel) tableHangar2.getModel(), hangar2.getMesAvions());
+
+
         
 //        String[] titreTable = {"IdAvion", "Modele", "Superficie", "Client"};
 //        String[][] donnees = {{"1"}, {"2"}};
@@ -617,7 +618,10 @@ public class GuiPrincipal extends javax.swing.JFrame {
         hangar.ajouterAvion(avion);
         //calculerTarifLocation(double.parseDouble(avion.getModele().getSuperficie())
         mesBaux.add(new Baux(mesBaux.size() + 1, Integer.parseInt(txtDureeContrat.getText()), (Client) comboBoxClient.getSelectedItem(), avion));
-        
+        Hangar hangar1 = (Hangar) comboBoxHangar1.getSelectedItem();
+        FieldFiller.tableHangarFiller((DefaultTableModel) tableHangar1.getModel(), hangar1.getMesAvions());
+        Hangar hangar2 = (Hangar) comboBoxHangar2.getSelectedItem();
+        FieldFiller.tableHangarFiller((DefaultTableModel) tableHangar2.getModel(), hangar2.getMesAvions());
         
 //        JOptionPane.showMessageDialog(null,"Bail enregistré");
         //System.out.println(hangar);
@@ -646,6 +650,8 @@ public class GuiPrincipal extends javax.swing.JFrame {
             txtSuperficieDispo1.setText(String.valueOf(h.calculerSuperficieRestante()));
             txtNbAvion1.setText(String.valueOf(h.getMesAvions().size()));
             lblHangar1.setText("Hangar " + String.valueOf(h.getIdHangar())+ " (" + h.getType() + ")");
+            Hangar hangar1 = (Hangar) comboBoxHangar1.getSelectedItem();
+            FieldFiller.tableHangarFiller((DefaultTableModel) tableHangar1.getModel(), hangar1.getMesAvions());
         }else if(comboBoxHangar1.getSelectedItem() == "" || comboBoxHangar1.getSelectedIndex() == 0){
             txtNbAvion1.setText("");
             txtTotalLocation1.setText("");
@@ -669,6 +675,8 @@ public class GuiPrincipal extends javax.swing.JFrame {
             txtSuperficieDispo2.setText(String.valueOf(h.calculerSuperficieRestante()));
             txtNbAvion2.setText(String.valueOf(h.getMesAvions().size()));
             lblHangar2.setText("Hangar " + String.valueOf(h.getIdHangar())+ " (" + h.getType() + ")");
+            Hangar hangar2 = (Hangar) comboBoxHangar2.getSelectedItem();
+            FieldFiller.tableHangarFiller((DefaultTableModel) tableHangar2.getModel(), hangar2.getMesAvions());
         }else if(comboBoxHangar2.getSelectedItem() == "" || comboBoxHangar2.getSelectedIndex() == 0){
             txtNbAvion2.setText("");
             txtTotalLocation2.setText("");
