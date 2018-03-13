@@ -41,6 +41,8 @@ public class Utilitaire {
         double prixLocationTotal = 0;
         ArrayList<Avion> lesAvions = h.getMesAvions();
         for(Avion a: lesAvions){
+            System.out.println(a);
+            System.out.println(a.getMonBail().getTarifBaux());
             prixLocationTotal += a.getMonBail().getTarifBaux();
         }
         return prixLocationTotal;

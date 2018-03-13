@@ -23,18 +23,12 @@ public class Baux implements Serializable {
     public Baux() {
     }
 
-    public Baux(int idBaux, int duree, Client leClient, Avion monAvion) {
+    public Baux(int idBaux, int duree, Client leClient, Avion monAvion, double tarifBaux) {
         this.duree = duree;
         this.idBaux = idBaux;
         this.leClient = leClient;
         this.monAvion = monAvion;
-    }
-
-    public Baux(int duree, String dateDebut, String dateFin, Client leClient) {
-        this.duree = duree;
-        this.dateDebut = dateDebut;
-        this.dateFin = dateFin;
-        this.leClient =leClient;
+        this.tarifBaux = tarifBaux;
     }
 
     public double getTarifBaux() {
@@ -43,7 +37,7 @@ public class Baux implements Serializable {
 
     @Override
     public String toString() {
-        return "Baux{" + "duree=" + duree + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin + ", tarifBaux=" + tarifBaux + ", idBaux=" + idBaux + ", leClient=" + leClient + ", monAvion=" + monAvion + '}';
+        return "Baux{" + "duree=" + duree + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin + ", tarifBaux=" + tarifBaux + ", idBaux=" + idBaux + ", leClient=" + leClient + ", monAvionID=" + monAvion.getIdAvion() + '}';
     }
 
 
