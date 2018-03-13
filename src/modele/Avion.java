@@ -49,6 +49,14 @@ public class Avion implements Serializable {
         this.statut = statut;
     }
 
+    public Client getClient() {
+        return client;
+    }
+
+    public int getIdAvion() {
+        return idAvion;
+    }
+
     @Override
     public String toString() {
         return "Avion{" + "modele=" + modele + ", statut=" + statut + ", idAvion=" + idAvion + ", client=" + client + ", hangar=" + hangar.getIdHangar() + ", monBail=" + monBail + '}';
