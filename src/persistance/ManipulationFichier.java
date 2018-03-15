@@ -165,7 +165,6 @@ public class ManipulationFichier {
             try{
                 monObjet = (T) in.readObject();
                 mesObjets.add(monObjet);
-                System.out.println(monObjet);
             } catch(EOFException e){
                 eof = true;
             }
