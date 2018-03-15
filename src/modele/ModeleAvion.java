@@ -17,6 +17,9 @@ public class ModeleAvion implements Serializable  {
     private String type;
     private int idModeleAvion;
 
+    /**
+     *
+     */
     public ModeleAvion() {
     }
 
@@ -25,6 +28,13 @@ public class ModeleAvion implements Serializable  {
         return "ModeleAvion{" + "modele=" + modele + ", superficieAvion=" + superficieAvion + ", type=" + type + ", idModeleAvion=" + idModeleAvion + '}';
     }
 
+    /**
+     *
+     * @param idModeleAvion ID du modele d'avion
+     * @param modele Modele d'avion
+     * @param superficie Superficie du modèle
+     * @param type Type de modèle
+     */
     public ModeleAvion(int idModeleAvion, String modele, double superficie, String type) {
         this.idModeleAvion = idModeleAvion;
         this.modele = modele;
@@ -32,26 +42,50 @@ public class ModeleAvion implements Serializable  {
         this.type = type;
     }
 
+    /**
+     *
+     * @return Retourne le modele.
+     */
     public String getModele() {
         return modele;
     }
 
+    /**
+     *
+     * @param modele modele de l'avion
+     */
     public void setModele(String modele) {
         this.modele = modele;
     }
 
+    /**
+     *
+     * @return Retourne la superficie du modele
+     */
     public double getSuperficie() {
         return superficieAvion;
     }
 
+    /**
+     *
+     * @param superficie Superficie du modèle.
+     */
     public void setSuperficie(double superficie) {
         this.superficieAvion = superficie;
     }
 
+    /**
+     *
+     * @return Retourne le type de modèle
+     */
     public String getType() {
         return type;
     }
 
+    /**
+     *
+     * @param type Type du modèle.
+     */
     public void setType(String type) {
         this.type = type;
     }

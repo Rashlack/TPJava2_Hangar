@@ -5,16 +5,11 @@
  */
 package vue;
 
-import java.awt.event.KeyEvent;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modele.*;
 
-import persistance.ManipulationFichier;
 import utils.FieldFiller;
 import utils.Utilitaire;
 
@@ -28,8 +23,6 @@ public class GuiPrincipal extends javax.swing.JFrame {
     private ArrayList<Avion> mesAvions;
     private ArrayList<ModeleAvion> mesModeleAvion;
     private ArrayList<Client>mesClients;
-    private DefaultTableModel model;
-    private DefaultTableModel model2;
     private double[] mesPrix;
     /**
      * Creates new form GuiPrincipal
@@ -53,22 +46,13 @@ public class GuiPrincipal extends javax.swing.JFrame {
         FieldFiller.comboBoxFiller(comboBoxHangar1, mesHangars);
         FieldFiller.comboBoxFiller(comboBoxHangar2, mesHangars);
         FieldFiller.comboBoxFiller(comboBoxChoixHangar, mesHangars);
+        System.out.println(mesHangars.get(0));
         comboBoxHangar1.setSelectedItem(mesHangars.get(0));
         comboBoxHangar2.setSelectedItem(mesHangars.get(1));
-        DefaultTableModel model = (DefaultTableModel) tableHangar1.getModel();
         Hangar hangar1 = (Hangar) comboBoxHangar1.getSelectedItem();
         FieldFiller.tableHangarFiller((DefaultTableModel) tableHangar1.getModel(), hangar1.getMesAvions());
         Hangar hangar2 = (Hangar) comboBoxHangar2.getSelectedItem();
         FieldFiller.tableHangarFiller((DefaultTableModel) tableHangar2.getModel(), hangar2.getMesAvions());
-
-
-        
-//        String[] titreTable = {"IdAvion", "Modele", "Superficie", "Client"};
-//        String[][] donnees = {{"1"}, {"2"}};
-//        tableHangar2.setModel(new ListeAvionModele(donnees, titreTable));
-//        tableHangar2.setModel(new ModeleStatique());
-        
-
     }
 
     /**
@@ -264,15 +248,20 @@ public class GuiPrincipal extends javax.swing.JFrame {
 
         tableHangar2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Id Avion", "Modele", "Superficie", "Title 4"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tableHangar2.setEnabled(false);
         jScrollPane1.setViewportView(tableHangar2);
 
@@ -580,14 +569,16 @@ public class GuiPrincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, champs);
             return;
         }
-        //int nouveauID = mesBaux.size() + 1;
-        //String leModele = Utilitaire.ligneSplitPremierMot((String)comboBoxModeleAvion.getSelectedItem());
-        //int leClient = Integer.parseInt(Utilitaire.ligneSplitMotPositionX((String)comboBoxClient.getSelectedItem(),3));
-        //System.out.println(leModele);
-        //System.out.println(Utilitaire.trouverModeleAvion(leModele, mesModeleAvion));
+
         Hangar hangar = (Hangar) comboBoxChoixHangar.getSelectedItem();
         Avion avion = new Avion(mesAvions.size() + 1, (ModeleAvion) comboBoxModeleAvion.getSelectedItem(), (Client) comboBoxClient.getSelectedItem(), (Hangar) comboBoxChoixHangar.getSelectedItem());
         Client leClient = (Client) comboBoxClient.getSelectedItem();
+        System.out.println(hangar.calculerSuperficieRestante());
+        System.out.println(avion.getModele().getSuperficie());
+        if(hangar.calculerSuperficieRestante() < avion.getModele().getSuperficie()){
+            JOptionPane.showMessageDialog(null,"Le hangar choisi n'a pas assez d'espace pour acceuillir le nouvel avion, veuillez en choisir un autre.");
+            return;
+        }
         
         String messageSauvegarde = "Veuillez valider les informations et cliquer sur OK pour sauvegarder." + "\nImmatriculation : " + txtImmatriculation.getText()
                                     + "\nClient : " + leClient.getNom() + " " + leClient.getPrenom()
@@ -595,14 +586,13 @@ public class GuiPrincipal extends javax.swing.JFrame {
                                     + "\nHangar : " + hangar.getIdHangar()
                                     + "\nDurée du bail : " + txtDureeContrat.getText() + " jour(s)";
         int input = JOptionPane.showConfirmDialog(null, messageSauvegarde, "Nouveau bail",
-				JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
+				JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
         if(input == 2){
             return;
         }
- 
+        
         mesAvions.add(avion);
         hangar.ajouterAvion(avion);
-        //Baux monBail = new Baux(mesBaux.size() + 1, Integer.parseInt(txtDureeContrat.getText()), (Client) comboBoxClient.getSelectedItem(), avion);
         mesBaux.add(new Baux(mesBaux.size() + 1, Integer.parseInt(txtDureeContrat.getText()), (Client) comboBoxClient.getSelectedItem(), avion, Double.parseDouble(txtPrixContrat.getText())));
         avion.setMonBail(mesBaux.get(mesBaux.size()-1));
         Hangar hangar1 = (Hangar) comboBoxHangar1.getSelectedItem();
@@ -616,10 +606,8 @@ public class GuiPrincipal extends javax.swing.JFrame {
             FieldFiller.labelFiller(hangar, txtTotalLocation2, txtSuperficieDispo2, txtNbAvion2, tableHangar2);
             
         }
-        //txtTotalLocation1.setText("salut");
         
-//        JOptionPane.showMessageDialog(null,"Bail enregistré");
-        //System.out.println(hangar);
+        JOptionPane.showMessageDialog(null,"Bail enregistré");
 //        try {
 //            ManipulationFichier.sauvegardeListeObjet("Baux.dat", mesBaux);
 //            ManipulationFichier.sauvegardeListeObjet("Avion.dat", mesAvions);
@@ -675,6 +663,12 @@ public class GuiPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtPrixContratKeyTyped
 
+    
+    /**
+     * Cette méthode affiche et calcule le tarif de location
+     * Si la durée n'est pas = à ""
+     * @param evt évenement 
+     */
     private void txtDureeContratKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDureeContratKeyReleased
         System.out.println(txtDureeContrat.getText());
         if(!("".equals(txtDureeContrat.getText()))){
@@ -682,8 +676,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
             ModeleAvion leModelAvion = (ModeleAvion) comboBoxModeleAvion.getSelectedItem();
             txtPrixContrat.setText(String.valueOf(Utilitaire.calculerTarifLocation(leModelAvion.getSuperficie(), Integer.parseInt(txtDureeContrat.getText()), mesPrix)));     
             }
-        }
-        
+        }      
     }//GEN-LAST:event_txtDureeContratKeyReleased
 
 

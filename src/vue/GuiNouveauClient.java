@@ -10,11 +10,10 @@ import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import modele.Client;
-import persistance.ManipulationFichier;
-import modele.ListeClient;
 /**
  *
  * @author 1795511
+ * 
  */
 public class GuiNouveauClient extends javax.swing.JFrame {
     private ArrayList<Client>mesClients;
@@ -22,6 +21,8 @@ public class GuiNouveauClient extends javax.swing.JFrame {
     private JComboBox cb;
     /**
      * Creates new form GuiNouveauContrat
+     * @param mesClients ArrayList contenant des client
+     * @param cb JComboBox contenant des client
      */
     public GuiNouveauClient(ArrayList<Client> mesClients,JComboBox cb) {
         initComponents();
@@ -237,7 +238,7 @@ public class GuiNouveauClient extends javax.swing.JFrame {
     }//GEN-LAST:event_txtTelephoneKeyTyped
 
     /**
-     * @param args the command line arguments
+     * 
      */
 //    public static void main(String args[]) {
 //        /* Set the Nimbus look and feel */

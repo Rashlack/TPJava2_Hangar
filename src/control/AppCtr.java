@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import modele.*;
 import persistance.ManipulationFichier;
-import utils.InitialisationObjets;
+import utils.FieldFiller;
 import utils.Utilitaire;
 import vue.GuiPrincipal;
 
@@ -25,28 +25,10 @@ public class AppCtr {
     public static void main(String[] args) throws Exception{
         ArrayList<Baux> mesBaux = new ArrayList(ManipulationFichier.lireObjectInputStream("Baux.dat"));
         ArrayList<Avion> mesAvions = new ArrayList(ManipulationFichier.lireObjectInputStream("Avion.dat"));
-        ArrayList<Hangar> mesHangars = new ArrayList(ManipulationFichier.lireObjectInputStream("Hangar.dat"));
+        ArrayList<Hangar> mesHangars = new ArrayList(ManipulationFichier.lireObjectInputStream("Hangar.dat"));      
         ArrayList<ModeleAvion> mesModeleAvion = new ArrayList(ManipulationFichier.lireObjectInputStream("ModeleAvion.dat"));
         ArrayList<Client>mesClients = new ArrayList(ManipulationFichier.lireObjectInputStream("Client.dat"));
-        //String mesPrixTexte = ManipulationFichier.lireFichier("ListePrix.txt");
-        //String[] stringSplit = mesPrixTexte.split(" ");
         double[]mesPrix = Utilitaire.convertirTableStringDouble(ManipulationFichier.lireFichier("ListePrix.txt").split(" "));
-        for (int i = 0; i<mesPrix.length;i++){
-            System.out.println(mesPrix[i]);
-        }
-        
-        //InitialisationObjets.initialisationClient("Client.txt", mesClients);
-        //InitialisationObjets.initialisationModeleAvion("ModeleAvion.txt", mesModeleAvion);
-        //ManipulationFichier.sauvegardeListeObjet("Client.dat", mesClients);
-//        ManipulationFichier.lireObjectInputStream("Client.dat", mesClients);
-//        ManipulationFichier.lireObjectInputSream("ModeleAvion.dat", mesModeleAvion);
-//        ManipulationFichier.lireObjectInputStream("Baux.dat", mesBaux);
-//        ManipulationFichier.lireObjectInputStream("Avion.dat", mesAvions);
-        //ManipulationFichier.lireObjectInputStream("hangar.dat", mesHangars);
-        
-//        for(ModeleAvion m: mesModeleAvion){
-//            System.out.println(m);
-//        }
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
