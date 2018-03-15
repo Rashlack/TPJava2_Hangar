@@ -26,6 +26,12 @@ public class GuiPrincipal extends javax.swing.JFrame {
     private double[] mesPrix;
     /**
      * Creates new form GuiPrincipal
+     * @param mesHangars ArrayList de type Hangar
+     * @param mesAvions ArrayList de type Avion
+     * @param mesBaux ArrayList de type Baux
+     * @param mesModeleAvion ArrayList de type ModeleAvion
+     * @param mesClients ArrayList de type Client
+     * @param mesPrix double[] contenant la liste de prix
      */
     public GuiPrincipal(ArrayList<Hangar> mesHangars, ArrayList<Baux> mesBaux, ArrayList<Avion> mesAvions, ArrayList<ModeleAvion> mesModeleAvion,
             ArrayList<Client>mesClients, double[] mesPrix) {

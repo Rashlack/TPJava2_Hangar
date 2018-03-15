@@ -83,10 +83,6 @@ public class Utilitaire {
         return liste.length;
     }
       
-    public static int comparerID(String stringID){
-            
-        return 0;
-    }
     
     public static int nouveauID(String idTexte){ 
         if("ID".equals(idTexte)== true){

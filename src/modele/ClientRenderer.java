@@ -12,6 +12,7 @@ import javax.swing.JList;
 /**
  *
  * @author Rashlack
+ * Méthode pour gérer l'affichage d'objet de type client dans un JcomboBox
  */
 public class ClientRenderer extends DefaultListCellRenderer {
     public Component getListCellRendererComponent(

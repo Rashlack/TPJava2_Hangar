@@ -21,6 +21,7 @@ public class AppCtr {
 //
     /**
      * @param args the command line arguments22
+     * @throws Exception Pour lancer les exceptions
      */
     public static void main(String[] args) throws Exception{
         ArrayList<Baux> mesBaux = new ArrayList(ManipulationFichier.lireObjectInputStream("Baux.dat"));
@@ -30,6 +31,11 @@ public class AppCtr {
         ArrayList<Client>mesClients = new ArrayList(ManipulationFichier.lireObjectInputStream("Client.dat"));
         double[]mesPrix = Utilitaire.convertirTableStringDouble(ManipulationFichier.lireFichier("ListePrix.txt").split(" "));
         
+//        FieldFiller.initialisationHangars("Hangar.txt", mesHangars);
+//        ManipulationFichier.sauvegardeListeObjet("Hangar.dat", mesHangars);
+//        FieldFiller.initialisationClient("Client.txt", mesClients);
+//        ManipulationFichier.sauvegardeListeObjet("Client.dat", mesClients);
+//        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new GuiPrincipal(mesHangars, mesBaux, mesAvions, mesModeleAvion, mesClients, mesPrix).setVisible(true);

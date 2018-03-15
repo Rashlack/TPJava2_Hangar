@@ -6,7 +6,6 @@
 package utils;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -23,8 +22,8 @@ public class FieldFiller {
     /**
      *
      * @param <T> Paramètre générique
-     * @param cb JComboBox contenant des Objets de type <T>
-     * @param list ArrayList<T>
+     * @param cb JComboBox contenant des Objets de type T
+     * @param list ArrayList de type T
      */
     public static <T> void comboBoxFiller(JComboBox cb, ArrayList<T> list){
         cb.removeAllItems();
@@ -38,7 +37,7 @@ public class FieldFiller {
     /**
      *
      * @param model DefaltTableModel
-     * @param list ArrayList<Avion>
+     * @param list ArrayList de type Avion
      */
     public static void tableHangarFiller(DefaultTableModel model, ArrayList<Avion> list){
         model.setRowCount(0);
@@ -62,4 +61,20 @@ public class FieldFiller {
         FieldFiller.tableHangarFiller((DefaultTableModel) tableHangar.getModel(), h.getMesAvions());
     }
 
+//        public static void initialisationHangars(String fichier, ArrayList<Hangar> listeHangar){
+//        ArrayList<String> mesAttributs = new ArrayList();
+//        mesAttributs = ManipulationFichier.lireFichier2(fichier);
+//        for(int i = 0; i < mesAttributs.size(); i++){
+//             String[] liste = Utilitaire.ligneSplitXMots(mesAttributs.get(i));
+//             listeHangar.add(new Hangar(Integer.parseInt(liste[0]), liste[1], Double.parseDouble(liste[2])));                        
+//        }   
+//    }
+//          public static void initialisationClient(String fichier, ArrayList<Client> listeClient){
+//        ArrayList<String> mesAttributs = new ArrayList();
+//        mesAttributs = ManipulationFichier.lireFichier2(fichier);
+//        for(int i = 0; i < mesAttributs.size(); i++){
+//            String[] liste = Utilitaire.ligneSplitXMots(mesAttributs.get(i));
+//            listeClient.add(new Client(Integer.parseInt(liste[0]), liste[1], liste[2], liste[3], liste[4]));            
+//            }       
+//    }
 }

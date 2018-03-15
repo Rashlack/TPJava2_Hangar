@@ -26,94 +26,94 @@ import utils.Utilitaire;
  * @author 1795511
  */
 public class ManipulationFichier {
-    public static ArrayList<String> lireMotsLigne(String fichier, ArrayList mesPositions){
-        File file = new File(fichier);
-        FileReader fr = null;
-        BufferedReader br = null;
-        ArrayList<String> mots = new ArrayList();
-        try {
-            fr = new FileReader(file);
-            br =  new BufferedReader(fr);
-            String ligne;
-            
-            while((ligne = br.readLine()) != null){
-                mots.add(Utilitaire.ligneSplitXMots(ligne, mesPositions));
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(ManipulationFichier.class.getName()).log(Level.SEVERE, null, ex);
-        }finally{
-            if(fr != null){
-                try {
-                        fr.close();
-                        br.close();
-                } catch (IOException ex) {
-                    Logger.getLogger(ManipulationFichier.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-           return mots; 
-        }
-    }
+//    public static ArrayList<String> lireMotsLigne(String fichier, ArrayList mesPositions){
+//        File file = new File(fichier);
+//        FileReader fr = null;
+//        BufferedReader br = null;
+//        ArrayList<String> mots = new ArrayList();
+//        try {
+//            fr = new FileReader(file);
+//            br =  new BufferedReader(fr);
+//            String ligne;
+//            
+//            while((ligne = br.readLine()) != null){
+//                mots.add(Utilitaire.ligneSplitXMots(ligne, mesPositions));
+//            }
+//        } catch (IOException ex) {
+//            Logger.getLogger(ManipulationFichier.class.getName()).log(Level.SEVERE, null, ex);
+//        }finally{
+//            if(fr != null){
+//                try {
+//                        fr.close();
+//                        br.close();
+//                } catch (IOException ex) {
+//                    Logger.getLogger(ManipulationFichier.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//            }
+//           return mots; 
+//        }
+//    }
 
-    public static int lirePremiereLigne(String fichier){
-        File file = new File(fichier);
-        FileReader fr = null;
-        BufferedReader br = null;
-        int inventaire = 0;
-        try {
-            fr = new FileReader(file);
-            br =  new BufferedReader(fr);
-            String ligne;
-            
-            ligne = br.readLine();
-                inventaire = Utilitaire.compterMotsLigne(ligne);
-            
-        } catch (IOException ex) {
-            Logger.getLogger(ManipulationFichier.class.getName()).log(Level.SEVERE, null, ex);
-        }finally{
-            if(fr != null){
-                try {
-
-                        fr.close();
-                        br.close();
-                } catch (IOException ex) {
-                    Logger.getLogger(ManipulationFichier.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-           return inventaire; 
-        }
-    }
+//    public static int lirePremiereLigne(String fichier){
+//        File file = new File(fichier);
+//        FileReader fr = null;
+//        BufferedReader br = null;
+//        int inventaire = 0;
+//        try {
+//            fr = new FileReader(file);
+//            br =  new BufferedReader(fr);
+//            String ligne;
+//            
+//            ligne = br.readLine();
+//                inventaire = Utilitaire.compterMotsLigne(ligne);
+//            
+//        } catch (IOException ex) {
+//            Logger.getLogger(ManipulationFichier.class.getName()).log(Level.SEVERE, null, ex);
+//        }finally{
+//            if(fr != null){
+//                try {
+//
+//                        fr.close();
+//                        br.close();
+//                } catch (IOException ex) {
+//                    Logger.getLogger(ManipulationFichier.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//            }
+//           return inventaire; 
+//        }
+//    }
     
-    public static int lireID(String fichier){
-        File file = new File(fichier);
-        FileReader fr = null;
-        BufferedReader br = null;
-        String mots = "";
-
-        try {
-            fr = new FileReader(file);
-            br =  new BufferedReader(fr);
-            String ligne;
-            
-            while((ligne = br.readLine()) != null){
-                mots = (Utilitaire.ligneSplitPremierMot(ligne));
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(ManipulationFichier.class.getName()).log(Level.SEVERE, null, ex);
-        }finally{
-            if(fr != null){
-                try {
-                        fr.close();
-                        br.close();
-                } catch (IOException ex) {
-                    Logger.getLogger(ManipulationFichier.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-           int nouveauID = Utilitaire.nouveauID(mots);
-           return nouveauID; 
-        }
-    }
+//    public static int lireID2(String fichier){
+//        File file = new File(fichier);
+//        FileReader fr = null;
+//        BufferedReader br = null;
+//        String mots = "";
+//
+//        try {
+//            fr = new FileReader(file);
+//            br =  new BufferedReader(fr);
+//            String ligne;
+//            
+//            while((ligne = br.readLine()) != null){
+//                mots = (Utilitaire.ligneSplitPremierMot(ligne));
+//            }
+//        } catch (IOException ex) {
+//            Logger.getLogger(ManipulationFichier.class.getName()).log(Level.SEVERE, null, ex);
+//        }finally{
+//            if(fr != null){
+//                try {
+//                        fr.close();
+//                        br.close();
+//                } catch (IOException ex) {
+//                    Logger.getLogger(ManipulationFichier.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//            }
+//           int nouveauID = Utilitaire.nouveauID(mots);
+//           return nouveauID; 
+//        }
+//    }
     
-    
+    // Méthode pour lire un fichier txt
     public static String lireFichier(String fichier){
         File file = new File(fichier);
         FileReader fr = null;
@@ -141,7 +141,8 @@ public class ManipulationFichier {
            return mots; 
         }
     }
-        
+    
+    // Méthode pour sauvegarder des objet sur fichier binaire
     public static void sauvegardeListeObjet(String fichier, ArrayList maListe) throws IOException{
         ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fichier));
         for(int i = 0; i < maListe.size(); i++){
@@ -149,8 +150,8 @@ public class ManipulationFichier {
             out.writeObject(maListe.get(i));
         }     
     }
-    //
     
+    //Méthode pour lire des objet sur fichier binaire
     public static <T> ArrayList<T> lireObjectInputStream(String fichier) throws Exception{
         System.out.println("Maintenant la lecture du fichier " + fichier );
         ArrayList<T> mesObjets = new ArrayList();
@@ -177,4 +178,32 @@ public class ManipulationFichier {
         }
     return mesObjets;
     }
+    
+//    public static ArrayList<String> lireFichier2(String fichier){
+//        File file = new File(fichier);
+//        FileReader fr = null;
+//        BufferedReader br = null;
+//        ArrayList<String> mots = new ArrayList();
+//        try {
+//            fr = new FileReader(file);
+//            br =  new BufferedReader(fr);
+//            String ligne;
+//            
+//            while((ligne = br.readLine()) != null){
+//                mots.add(ligne);
+//            }
+//        } catch (IOException ex) {
+//            Logger.getLogger(ManipulationFichier.class.getName()).log(Level.SEVERE, null, ex);
+//        }finally{
+//            if(fr != null){
+//                try {
+//                        fr.close();
+//                        br.close();
+//                } catch (IOException ex) {
+//                    Logger.getLogger(ManipulationFichier.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//            }
+//           return mots; 
+//        }
+//    }
 }
