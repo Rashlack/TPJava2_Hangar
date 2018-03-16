@@ -108,6 +108,14 @@ public class Client implements Serializable {
         return telephone;
     }
 
+    public void ajouterAvion(Avion monAvion) {
+        this.mesAvions.add(monAvion);
+    }
+
+    public ArrayList<Avion> getMesAvions() {
+        return mesAvions;
+    }
+
     /**
      *
      * @param telephone Numéro de téléphone du client

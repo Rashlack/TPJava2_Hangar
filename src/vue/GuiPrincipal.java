@@ -5,6 +5,7 @@
  */
 package vue;
 
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -42,8 +43,10 @@ public class GuiPrincipal extends javax.swing.JFrame {
         this.mesModeleAvion = mesModeleAvion;
         this.mesClients=mesClients;
         this.mesPrix = mesPrix;
+        ModeleAvionRenderer modeleAvionRenderer = new ModeleAvionRenderer();
+        AvionRenderer avionRenderer = new AvionRenderer();
         comboBoxClient.setRenderer(new ClientRenderer());
-        comboBoxModeleAvion.setRenderer(new ModeleAvionRenderer());
+        comboBoxModeleAvion.setRenderer(modeleAvionRenderer);
         comboBoxHangar1.setRenderer(new HangarRenderer());
         comboBoxHangar2.setRenderer(new HangarRenderer());
         comboBoxChoixHangar.setRenderer(new HangarRenderer());
@@ -58,6 +61,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
         FieldFiller.tableHangarFiller((DefaultTableModel) tableHangar1.getModel(), hangar1.getMesAvions());
         Hangar hangar2 = (Hangar) comboBoxHangar2.getSelectedItem();
         FieldFiller.tableHangarFiller((DefaultTableModel) tableHangar2.getModel(), hangar2.getMesAvions());
+        radioNouvel.setSelected(true);
     }
 
     /**
@@ -70,6 +74,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        radioGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         lblNbAvion1 = new javax.swing.JLabel();
         txtNbAvion1 = new javax.swing.JTextField();
@@ -113,9 +118,14 @@ public class GuiPrincipal extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         txtPrixContrat = new javax.swing.JTextField();
         btnQuitter = new javax.swing.JButton();
+        radioNouvel = new javax.swing.JRadioButton();
+        radioAncien = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
+
+        radioGroup1.add(radioAncien);
+        radioGroup1.add(radioNouvel);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -362,6 +372,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
         txtImmatriculation.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         comboBoxModeleAvion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxModeleAvion.setAutoscrolls(true);
         comboBoxModeleAvion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxModeleAvionActionPerformed(evt);
@@ -376,6 +387,9 @@ public class GuiPrincipal extends javax.swing.JFrame {
         txtDureeContrat.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtDureeContratKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDureeContratKeyTyped(evt);
             }
         });
 
@@ -398,8 +412,20 @@ public class GuiPrincipal extends javax.swing.JFrame {
         jLabel3.setText("jour(s)");
 
         comboBoxClient.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxClient.setAutoscrolls(true);
+        comboBoxClient.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboBoxClientItemStateChanged(evt);
+            }
+        });
+        comboBoxClient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxClientActionPerformed(evt);
+            }
+        });
 
         comboBoxChoixHangar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxChoixHangar.setAutoscrolls(true);
 
         btnNouveauClient.setText("Nouveau client");
         btnNouveauClient.addActionListener(new java.awt.event.ActionListener() {
@@ -423,16 +449,25 @@ public class GuiPrincipal extends javax.swing.JFrame {
         jLabel9.setText("Prix de la location :");
 
         txtPrixContrat.setEnabled(false);
-        txtPrixContrat.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtPrixContratKeyTyped(evt);
-            }
-        });
 
         btnQuitter.setText("Quitter");
         btnQuitter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnQuitterActionPerformed(evt);
+            }
+        });
+
+        radioNouvel.setText("Nouvel Avion");
+        radioNouvel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioNouvelActionPerformed(evt);
+            }
+        });
+
+        radioAncien.setText("Ancien Avion");
+        radioAncien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioAncienActionPerformed(evt);
             }
         });
 
@@ -443,22 +478,6 @@ public class GuiPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(lblBail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(151, 151, 151))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(comboBoxClient, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(comboBoxModeleAvion, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(comboBoxChoixHangar, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -486,13 +505,37 @@ public class GuiPrincipal extends javax.swing.JFrame {
                                         .addComponent(btnConfirmer, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(btnQuitter, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(15, 15, 15))))
+                        .addGap(15, 15, 15))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(comboBoxClient, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(comboBoxModeleAvion, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(comboBoxChoixHangar, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(lblBail, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(radioNouvel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(radioAncien)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblBail, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblBail, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(radioNouvel)
+                    .addComponent(radioAncien))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblImmatriculation)
@@ -626,6 +669,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
         hangar.ajouterAvion(avion);
         mesBaux.add(new Baux(mesBaux.size() + 1, Integer.parseInt(txtDureeContrat.getText()), (Client) comboBoxClient.getSelectedItem(), avion, Double.parseDouble(txtPrixContrat.getText())));
         avion.setMonBail(mesBaux.get(mesBaux.size()-1));
+        leClient.ajouterAvion(avion);
         Hangar hangar1 = (Hangar) comboBoxHangar1.getSelectedItem();
         FieldFiller.tableHangarFiller((DefaultTableModel) tableHangar1.getModel(), hangar1.getMesAvions());
         Hangar hangar2 = (Hangar) comboBoxHangar2.getSelectedItem();
@@ -673,25 +717,24 @@ public class GuiPrincipal extends javax.swing.JFrame {
     private void comboBoxModeleAvionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxModeleAvionActionPerformed
 
         if(comboBoxModeleAvion.getSelectedIndex() > 0){
-            if(!("".equals(txtDureeContrat.getText()))){
-                ModeleAvion leModelAvion = (ModeleAvion) comboBoxModeleAvion.getSelectedItem();
-                txtPrixContrat.setText(String.valueOf(Utilitaire.calculerTarifLocation(leModelAvion.getSuperficie(), Integer.parseInt(txtDureeContrat.getText()), mesPrix)));
-            }else{
-                txtPrixContrat.setText("0.00");
+            if(radioNouvel.isSelected()){
+                if(!("".equals(txtDureeContrat.getText()))){
+                    ModeleAvion leModelAvion = (ModeleAvion) comboBoxModeleAvion.getSelectedItem();
+                    txtPrixContrat.setText(String.valueOf(Utilitaire.calculerTarifLocation(leModelAvion.getSuperficie(), Integer.parseInt(txtDureeContrat.getText()), mesPrix)));
+                }
+            }else if(radioAncien.isSelected()){
+                if(!("".equals(txtDureeContrat.getText()))){
+                    Avion a = (Avion)comboBoxModeleAvion.getSelectedItem();
+                    txtPrixContrat.setText(String.valueOf(Utilitaire.calculerTarifLocation(a.getModele().getSuperficie(), Integer.parseInt(txtDureeContrat.getText()), mesPrix))); 
+                }
+                
             }
+            
         }else if(comboBoxModeleAvion.getSelectedIndex()== 0){
             txtPrixContrat.setText("0.00");
         }
         
     }//GEN-LAST:event_comboBoxModeleAvionActionPerformed
-
-    private void txtPrixContratKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrixContratKeyTyped
-        if(comboBoxModeleAvion.getSelectedIndex() > 0){
-            ModeleAvion leModelAvion = (ModeleAvion) comboBoxModeleAvion.getSelectedItem();
-            txtPrixContrat.setText(String.valueOf(Utilitaire.calculerTarifLocation(leModelAvion.getSuperficie(), Integer.parseInt(txtDureeContrat.getText()), mesPrix)));
-            
-        }
-    }//GEN-LAST:event_txtPrixContratKeyTyped
 
     
     /**
@@ -701,10 +744,18 @@ public class GuiPrincipal extends javax.swing.JFrame {
      */
     private void txtDureeContratKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDureeContratKeyReleased
         if(!("".equals(txtDureeContrat.getText()))){
-            if(comboBoxModeleAvion.getSelectedIndex() > 0){
-            ModeleAvion leModelAvion = (ModeleAvion) comboBoxModeleAvion.getSelectedItem();
-            txtPrixContrat.setText(String.valueOf(Utilitaire.calculerTarifLocation(leModelAvion.getSuperficie(), Integer.parseInt(txtDureeContrat.getText()), mesPrix)));     
+            if(radioNouvel.isSelected()){
+                if(comboBoxModeleAvion.getSelectedIndex() > 0){
+                    ModeleAvion leModelAvion = (ModeleAvion) comboBoxModeleAvion.getSelectedItem();
+                    txtPrixContrat.setText(String.valueOf(Utilitaire.calculerTarifLocation(leModelAvion.getSuperficie(), Integer.parseInt(txtDureeContrat.getText()), mesPrix)));     
+                }
+            }else if(radioAncien.isSelected()){
+                if(comboBoxModeleAvion.getSelectedIndex() > 0){
+                    Avion a = (Avion)comboBoxModeleAvion.getSelectedItem();
+                    txtPrixContrat.setText(String.valueOf(Utilitaire.calculerTarifLocation(a.getModele().getSuperficie(), Integer.parseInt(txtDureeContrat.getText()), mesPrix)));
+                }
             }
+            
         }      
     }//GEN-LAST:event_txtDureeContratKeyReleased
 
@@ -747,6 +798,61 @@ public class GuiPrincipal extends javax.swing.JFrame {
         FieldFiller.labelFiller(h, txtTotalLocation2, txtSuperficieDispo2, txtNbAvion2, tableHangar2);
     }//GEN-LAST:event_btnEnleverAvion2ActionPerformed
 
+    private void radioNouvelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioNouvelActionPerformed
+        if(radioNouvel.isSelected()){
+            System.out.println("radioNouvel");
+            comboBoxModeleAvion.setEnabled(true);
+            txtImmatriculation.setEditable(true);
+            //FieldFiller.comboBoxFiller(comboBoxModeleAvion, mesAvions);        
+        }
+    }//GEN-LAST:event_radioNouvelActionPerformed
+
+    private void radioAncienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioAncienActionPerformed
+        if(radioAncien.isSelected()){
+            System.out.println("radioNouveau");
+            comboBoxModeleAvion.setEnabled(false);
+            txtImmatriculation.setEditable(false);
+            FieldFiller.comboBoxFiller(comboBoxModeleAvion, mesModeleAvion);        
+        }
+    }//GEN-LAST:event_radioAncienActionPerformed
+
+    private void comboBoxClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxClientActionPerformed
+        System.out.println(radioAncien.isSelected());
+        if(radioAncien.isSelected()){
+            if(!(comboBoxClient.getSelectedIndex() == 0)){       
+                comboBoxModeleAvion.setRenderer(new AvionRenderer());
+                System.out.println("Tralala");
+                Client c = (Client)comboBoxClient.getSelectedItem();
+                ArrayList<Avion> avionsClient = c.getMesAvions();
+                FieldFiller.comboBoxFiller(comboBoxModeleAvion, avionsClient);
+                comboBoxModeleAvion.setEnabled(true);
+            }else{
+                comboBoxModeleAvion.setEnabled(false);
+            }
+        }
+        
+    }//GEN-LAST:event_comboBoxClientActionPerformed
+
+    private void comboBoxClientItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboBoxClientItemStateChanged
+//        System.out.println(radioAncien.isSelected());
+//        if(radioNouvel.isSelected()){
+//            System.out.println("Tralala");
+//            Client c = (Client)comboBoxClient.getSelectedItem();
+//            ArrayList<Avion> avionsClient = c.getMesAvions();
+//            FieldFiller.comboBoxFiller(comboBoxModeleAvion, avionsClient);
+//            comboBoxModeleAvion.setEnabled(true);
+//        }
+    }//GEN-LAST:event_comboBoxClientItemStateChanged
+
+    private void txtDureeContratKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDureeContratKeyTyped
+                 char vChar = evt.getKeyChar();
+        if(!(Character.isDigit(vChar))
+                ||(vChar ==  KeyEvent.VK_BACK_SPACE)
+                ||(vChar == KeyEvent.VK_DELETE)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtDureeContratKeyTyped
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -784,6 +890,9 @@ public class GuiPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblNbAvion1;
     private javax.swing.JLabel lblNbAvion2;
     private javax.swing.JLabel lblTotalLoc1;
+    private javax.swing.JRadioButton radioAncien;
+    private javax.swing.ButtonGroup radioGroup1;
+    private javax.swing.JRadioButton radioNouvel;
     private javax.swing.JTable tableHangar1;
     private javax.swing.JTable tableHangar2;
     private javax.swing.JTextField txtDureeContrat;

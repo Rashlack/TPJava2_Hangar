@@ -12,17 +12,16 @@ import javax.swing.JList;
 /**
  *
  * @author Rashlack
- * Méthode pour gérer l'affichage d'objet de type client dans un JcomboBox
  */
-public class ClientRenderer extends DefaultListCellRenderer {
+public class AvionRenderer extends DefaultListCellRenderer {
     public Component getListCellRendererComponent(
                                    JList list,
                                    Object value,
                                    int index,
                                    boolean isSelected,
                                    boolean cellHasFocus) {
-        if (value instanceof Client) {
-            value = ((Client)value).getNom() + " " + ((Client)value).getPrenom() + " " + ((Client)value).getTelephone();
+        if (value instanceof Avion) {
+            value = ((Avion)value).getIdAvion() + " " + ((Avion)value).getModele().getModele() + " " + ((Avion)value).getModele().getSuperficie() + ((Avion)value).getModele().getType();
         }
         super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
         return this;
