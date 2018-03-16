@@ -21,7 +21,6 @@ public class Utilitaire {
         double prixLocationTotal = 0;
         ArrayList<Avion> lesAvions = h.getMesAvions();
         for(Avion a: lesAvions){
-//            System.out.println(a.getMonBail().getTarifBaux());
             prixLocationTotal += a.getMonBail().getTarifBaux();
         }
         return prixLocationTotal;
@@ -58,6 +57,18 @@ public class Utilitaire {
             mesDoubles[i] = Double.parseDouble(ligne[i]);
         }
         return mesDoubles;
+    }
+    
+    public static Boolean trouverAvion(Hangar h, int idAvion){
+        ArrayList<Avion> mesAvions = h.getMesAvions();
+        Boolean retirer = false;
+        int i = 0;
+        while(!(mesAvions.get(i).getIdAvion() == idAvion)){
+            i++; 
+            }
+        mesAvions.remove(i);
+        retirer = true;
+        return retirer;     
     }
 }
 

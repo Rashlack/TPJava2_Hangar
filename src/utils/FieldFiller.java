@@ -11,7 +11,6 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import modele.*;
-import persistance.ManipulationFichier;
 
 /**
  *
@@ -42,7 +41,7 @@ public class FieldFiller {
     public static void tableHangarFiller(DefaultTableModel model, ArrayList<Avion> list){
         model.setRowCount(0);
         for(Avion a: list){
-        model.addRow(new Object[]{a.getIdAvion(), a.getModele().getModele(), a.getModele().getSuperficie(), a.getClient().getNom() + ", " + a.getClient().getPrenom()}); 
+        model.addRow(new Object[]{a.getIdAvion(), a.getModele().getModele(), a.getModele().getSuperficie(), a.getClient().getNom() + ", " + a.getClient().getPrenom()});
         }
     }
     
@@ -59,6 +58,14 @@ public class FieldFiller {
         txtSuperficieDispo.setText(String.valueOf(h.calculerSuperficieRestante()));
         txtNbAvion.setText(String.valueOf(h.getMesAvions().size()));
         FieldFiller.tableHangarFiller((DefaultTableModel) tableHangar.getModel(), h.getMesAvions());
+    }
+    
+    public static void labelContratReini(JTextField txtDureeContrat, JTextField txtImmatriculation, JTextField txtTarif, JComboBox comboClient, JComboBox comboModele, JComboBox comboHangar){
+        txtDureeContrat.setText("");
+        txtImmatriculation.setText("");
+        comboClient.setSelectedIndex(0);
+        comboModele.setSelectedIndex(0);
+        comboHangar.setSelectedIndex(0);
     }
 
 }

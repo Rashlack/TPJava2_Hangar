@@ -98,9 +98,14 @@
                           <EmptySpace min="-2" pref="168" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
-                          <Component id="lblNbAvion1" min="-2" pref="154" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="txtNbAvion1" min="-2" pref="107" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="lblNbAvion1" min="-2" pref="154" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="txtNbAvion1" min="-2" pref="107" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="btnEnleverAvion1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -128,7 +133,9 @@
                       <Component id="lblTotalLoc1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtTotalLocation1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="btnEnleverAvion1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                   <Component id="jScrollPane2" min="-2" pref="240" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -270,6 +277,14 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
+        <Component class="javax.swing.JButton" name="btnEnleverAvion1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Retirer Avion Selectionn&#xe9;e"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEnleverAvion1ActionPerformed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="jPanel2">
@@ -285,24 +300,29 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="comboBoxHangar2" alignment="0" max="32767" attributes="0"/>
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jScrollPane1" alignment="0" pref="464" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="lblNbAvion2" max="32767" attributes="0"/>
-                              <Component id="jLabel7" alignment="1" pref="154" max="32767" attributes="0"/>
-                              <Component id="lbl" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="lblNbAvion2" max="32767" attributes="0"/>
+                                      <Component id="jLabel7" alignment="1" pref="154" max="32767" attributes="0"/>
+                                      <Component id="lbl" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="txtTotalLocation2" pref="107" max="32767" attributes="0"/>
+                                      <Component id="txtNbAvion2" max="32767" attributes="0"/>
+                                      <Component id="txtSuperficieDispo2" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="btnEnleverAvion2" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtTotalLocation2" pref="107" max="32767" attributes="0"/>
-                              <Component id="txtNbAvion2" max="32767" attributes="0"/>
-                              <Component id="txtSuperficieDispo2" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -330,7 +350,9 @@
                       <Component id="lbl" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtTotalLocation2" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                  <Component id="btnEnleverAvion2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="240" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -426,7 +448,6 @@
                     <Column editable="false" title="Title 4" type="java.lang.Object"/>
                   </Table>
                 </Property>
-                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -448,6 +469,14 @@
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnEnleverAvion2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Retirer Avion Selectionn&#xe9;e"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEnleverAvion2ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -482,15 +511,10 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="jLabel11" min="-2" pref="135" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="comboBoxChoixHangar" min="-2" pref="254" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="jLabel11" min="-2" pref="135" max="-2" attributes="0"/>
+                              <Component id="comboBoxChoixHangar" min="-2" pref="254" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -564,11 +588,13 @@
                       <Component id="txtDureeContrat" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="btnReinitialiser" alignment="0" min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="btnNouveauClient" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnConfirmer" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="btnQuitter" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnNouveauClient" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnConfirmer" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                          <Component id="btnQuitter" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
               </Group>
@@ -752,6 +778,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtPrixContrat">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
           <Events>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtPrixContratKeyTyped"/>
           </Events>

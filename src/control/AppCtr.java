@@ -5,11 +5,9 @@
  */
 package control;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import modele.*;
 import persistance.ManipulationFichier;
-import utils.FieldFiller;
 import utils.Utilitaire;
 import vue.GuiPrincipal;
 
@@ -30,7 +28,7 @@ public class AppCtr {
         ArrayList<ModeleAvion> mesModeleAvion = new ArrayList(ManipulationFichier.lireObjectInputStream("ModeleAvion.dat"));
         ArrayList<Client>mesClients = new ArrayList(ManipulationFichier.lireObjectInputStream("Client.dat"));
         double[]mesPrix = Utilitaire.convertirTableStringDouble(ManipulationFichier.lireFichier("ListePrix.txt").split(" "));
-                 
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new GuiPrincipal(mesHangars, mesBaux, mesAvions, mesModeleAvion, mesClients, mesPrix).setVisible(true);

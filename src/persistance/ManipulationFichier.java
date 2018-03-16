@@ -17,8 +17,6 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import modele.Hangar;
-import utils.Utilitaire;
 
 
 /**
@@ -92,4 +90,5 @@ public class ManipulationFichier {
     return mesObjets;
     }
     
+
 }

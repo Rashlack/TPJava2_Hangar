@@ -81,6 +81,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tableHangar1 = new javax.swing.JTable();
         comboBoxHangar1 = new javax.swing.JComboBox<>();
+        btnEnleverAvion1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         lblNbAvion2 = new javax.swing.JLabel();
         txtNbAvion2 = new javax.swing.JTextField();
@@ -92,6 +93,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tableHangar2 = new javax.swing.JTable();
         comboBoxHangar2 = new javax.swing.JComboBox<>();
+        btnEnleverAvion2 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         lblBail = new javax.swing.JLabel();
         lblImmatriculation = new javax.swing.JLabel();
@@ -174,6 +176,13 @@ public class GuiPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btnEnleverAvion1.setText("Retirer Avion Selectionnée");
+        btnEnleverAvion1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnleverAvion1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -197,9 +206,12 @@ public class GuiPrincipal extends javax.swing.JFrame {
                         .addComponent(jLabel6)
                         .addGap(168, 168, 168))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblNbAvion1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtNbAvion1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblNbAvion1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtNbAvion1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnEnleverAvion1))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -220,7 +232,9 @@ public class GuiPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTotalLoc1)
                     .addComponent(txtTotalLocation1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(57, 57, 57)
+                .addGap(18, 18, 18)
+                .addComponent(btnEnleverAvion1)
+                .addGap(7, 7, 7)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -268,13 +282,19 @@ public class GuiPrincipal extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tableHangar2.setEnabled(false);
         jScrollPane1.setViewportView(tableHangar2);
 
         comboBoxHangar2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         comboBoxHangar2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxHangar2ActionPerformed(evt);
+            }
+        });
+
+        btnEnleverAvion2.setText("Retirer Avion Selectionnée");
+        btnEnleverAvion2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnleverAvion2ActionPerformed(evt);
             }
         });
 
@@ -288,17 +308,20 @@ public class GuiPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(lblNbAvion2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
-                            .addComponent(lbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtTotalLocation2, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
-                            .addComponent(txtNbAvion2)
-                            .addComponent(txtSuperficieDispo2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel8)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(lblNbAvion2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                                    .addComponent(lbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtTotalLocation2, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+                                    .addComponent(txtNbAvion2)
+                                    .addComponent(txtSuperficieDispo2))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel8))
+                            .addComponent(btnEnleverAvion2))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -319,7 +342,9 @@ public class GuiPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl)
                     .addComponent(txtTotalLocation2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(58, 58, 58)
+                .addGap(20, 20, 20)
+                .addComponent(btnEnleverAvion2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -397,6 +422,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
 
         jLabel9.setText("Prix de la location :");
 
+        txtPrixContrat.setEnabled(false);
         txtPrixContrat.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtPrixContratKeyTyped(evt);
@@ -430,12 +456,9 @@ public class GuiPrincipal extends javax.swing.JFrame {
                             .addComponent(comboBoxModeleAvion, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(comboBoxChoixHangar, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comboBoxChoixHangar, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -492,11 +515,12 @@ public class GuiPrincipal extends javax.swing.JFrame {
                     .addComponent(txtPrixContrat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtDureeContrat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnReinitialiser, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNouveauClient)
-                    .addComponent(btnConfirmer, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnQuitter))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnNouveauClient)
+                        .addComponent(btnConfirmer, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnQuitter)))
                 .addGap(47, 47, 47))
         );
 
@@ -542,10 +566,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNouveauClientActionPerformed
 
     private void btnReinitialiserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReinitialiserActionPerformed
-        txtDureeContrat.setText("0");
-        txtImmatriculation.setText("");
-        comboBoxModeleAvion.setSelectedIndex(0);
-        comboBoxClient.setSelectedIndex(0);
+        FieldFiller.labelContratReini(txtDureeContrat, txtImmatriculation, txtPrixContrat, comboBoxClient, comboBoxModeleAvion, comboBoxChoixHangar);
         
     }//GEN-LAST:event_btnReinitialiserActionPerformed
 
@@ -624,6 +645,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
 //        } catch (IOException ex) {
 //            System.out.println("Erreur de sauvegarde");
 //        }
+        FieldFiller.labelContratReini(txtDureeContrat, txtImmatriculation, txtPrixContrat, comboBoxClient, comboBoxModeleAvion, comboBoxChoixHangar);
     }//GEN-LAST:event_btnConfirmerActionPerformed
 
     private void comboBoxHangar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxHangar1ActionPerformed
@@ -690,10 +712,47 @@ public class GuiPrincipal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_btnQuitterActionPerformed
 
+    private void btnEnleverAvion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnleverAvion1ActionPerformed
+        if(tableHangar1.getSelectedRow() == -1){
+            return;
+        }
+        int idAvion =(int) tableHangar1.getValueAt(tableHangar1.getSelectedRow(), 0);
+        int input = JOptionPane.showConfirmDialog(null, "Voulez-vous retirer l'avion : " + idAvion + " du hangar 1", "ATTENTION",
+				JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
+        if (input == 2){
+            return;
+        }
+        System.out.println(idAvion);
+        Hangar h = (Hangar) comboBoxHangar1.getSelectedItem();
+        Utilitaire.trouverAvion(h, idAvion);
+        FieldFiller.labelFiller(h, txtTotalLocation1, txtSuperficieDispo1, txtNbAvion1, tableHangar1);
+        
+        
+        
+    }//GEN-LAST:event_btnEnleverAvion1ActionPerformed
+
+    private void btnEnleverAvion2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnleverAvion2ActionPerformed
+        if(tableHangar2.getSelectedRow() == -1){
+            return;
+        }
+        int idAvion =(int) tableHangar2.getValueAt(tableHangar2.getSelectedRow(), 0);
+        int input = JOptionPane.showConfirmDialog(null, "Voulez-vous retirer l'avion : " + idAvion + " du hangar 2", "ATTENTION",
+				JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
+        if (input == 2){
+            return;
+        }
+        System.out.println(idAvion);
+        Hangar h = (Hangar) comboBoxHangar2.getSelectedItem();
+        Utilitaire.trouverAvion(h, idAvion);
+        FieldFiller.labelFiller(h, txtTotalLocation2, txtSuperficieDispo2, txtNbAvion2, tableHangar2);
+    }//GEN-LAST:event_btnEnleverAvion2ActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConfirmer;
+    private javax.swing.JButton btnEnleverAvion1;
+    private javax.swing.JButton btnEnleverAvion2;
     private javax.swing.JButton btnNouveauClient;
     private javax.swing.JButton btnQuitter;
     private javax.swing.JButton btnReinitialiser;
