@@ -15,13 +15,21 @@ import java.util.ArrayList;
 public class Hangar implements Serializable {
     private double superficieHangar;
     private String type;
-    private boolean statut;
     private int idHangar;
     private ArrayList<Avion>mesAvions;
 
+    /**
+     *
+     */
     public Hangar() {
     }
     
+    /**
+     *
+     * @param idHangar ID du hangar
+     * @param type Type de hangar
+     * @param superficie Superficie total du hangar
+     */
     public Hangar(int idHangar, String type, double superficie) {
         this.superficieHangar = superficie;
         this.type = type;
@@ -29,39 +37,60 @@ public class Hangar implements Serializable {
         mesAvions=new ArrayList();
     }
 
-    public boolean isStatut() {
-        return statut;
-    }
-
-    public void setStatut(boolean statut) {
-        this.statut = statut;
-    }
-
+    /**
+     *
+     * @return retourne la liste d'avion du Hangar
+     */
     public ArrayList<Avion> getMesAvions() {
         return mesAvions;
     }
 
+    /**
+     *
+     * @return retourne la supperficie(int) du hangar
+     */
     public double getSuperficieHangar() {
         return superficieHangar;
     }
     
+    /**
+     *
+     * @return retourne le type de hangar
+     */
     public String getType() {
         return type;
     }
 
+    /**
+     *
+     * @return retourne le ID du hangar
+     */
     public int getIdHangar() {
         return idHangar;
     }
+
     @Override
     public String toString() {
-        return "Hangar{" + "superficie=" + superficieHangar + ", type=" + type + ", statut=" + statut + ", idHangar=" + idHangar + ", mesAvions=" + mesAvions + '}';
+        String maString = "";
+        maString = maString + "HangarID = " + idHangar;
+        maString = maString         + "\nSuperficie = " + superficieHangar;
+        maString = maString         + "\nAvion = " + mesAvions;
+        return maString;
     }
-    
+
+    /**
+     *
+     * @return Retourne le nombre d'avion dans le hangar
+     */
     public int calculerNbrAvion(){
         int nbrAvion = mesAvions.size();
         return nbrAvion;
     }
     
+    /**
+     * 
+     * @return retourn la superficie restante dans le hangar
+     */
     public double calculerSuperficieRestante(){
         double superficieTotalAvion = 0.0;
         for(int i = 0; i < mesAvions.size(); i++){
@@ -71,11 +100,11 @@ public class Hangar implements Serializable {
         return superficieRestante;
     }
     
+    /**
+     * Ajoute un Objet de type avion dans la arrayList mesAvions de Hangar
+     * @param a Type Avion
+     */
     public void ajouterAvion(Avion a){
-        double superficieRestante = calculerSuperficieRestante();
-        if(superficieRestante < a.getModele().getSuperficie()){
-            return;
-        }
         mesAvions.add(a);
     }
 }

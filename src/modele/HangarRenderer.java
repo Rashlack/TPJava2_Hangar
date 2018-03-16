@@ -12,6 +12,7 @@ import javax.swing.JList;
 /**
  *
  * @author Rashlack
+ * Méthode pour gérer l'affichage d'objet de type hangar dans un JcomboBox
  */
 public class HangarRenderer extends DefaultListCellRenderer {
     public Component getListCellRendererComponent(

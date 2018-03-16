@@ -5,23 +5,31 @@
  */
 package vue;
 
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import modele.Client;
-import persistance.ManipulationFichier;
-import modele.ListeClient;
 /**
  *
  * @author 1795511
+ * 
  */
 public class GuiNouveauClient extends javax.swing.JFrame {
     private ArrayList<Client>mesClients;
+    private int nouveauID;
+    private JComboBox cb;
     /**
      * Creates new form GuiNouveauContrat
+     * @param mesClients ArrayList contenant des client
+     * @param cb JComboBox contenant des client
      */
-    public GuiNouveauClient(ArrayList<Client> mesClients) {
+    public GuiNouveauClient(ArrayList<Client> mesClients,JComboBox cb) {
         initComponents();
         this.mesClients=mesClients;
+        nouveauID = mesClients.size()+1;
+        txtClientID.setText(String.valueOf(mesClients.size()+1));
+        this.cb=cb;
     }
 
     /**
@@ -44,8 +52,9 @@ public class GuiNouveauClient extends javax.swing.JFrame {
         txtPrenom = new javax.swing.JTextField();
         txtCompagnie = new javax.swing.JTextField();
         txtTelephone = new javax.swing.JTextField();
-        btnAnnuler = new javax.swing.JButton();
+        btnReinitialiser = new javax.swing.JButton();
         btnConfirmer = new javax.swing.JButton();
+        btnQuitter = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Nouveau Client");
@@ -86,11 +95,16 @@ public class GuiNouveauClient extends javax.swing.JFrame {
 
         txtTelephone.setToolTipText("");
         txtTelephone.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txtTelephone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelephoneKeyTyped(evt);
+            }
+        });
 
-        btnAnnuler.setText("Annuler");
-        btnAnnuler.addActionListener(new java.awt.event.ActionListener() {
+        btnReinitialiser.setText("Réinitialiser");
+        btnReinitialiser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAnnulerActionPerformed(evt);
+                btnReinitialiserActionPerformed(evt);
             }
         });
 
@@ -98,6 +112,13 @@ public class GuiNouveauClient extends javax.swing.JFrame {
         btnConfirmer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConfirmerActionPerformed(evt);
+            }
+        });
+
+        btnQuitter.setText("Quitter");
+        btnQuitter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQuitterActionPerformed(evt);
             }
         });
 
@@ -127,13 +148,16 @@ public class GuiNouveauClient extends javax.swing.JFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txtClientID, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txtTelephone, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(0, 0, Short.MAX_VALUE))))))
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(btnAnnuler, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(53, 53, 53)
-                        .addComponent(btnConfirmer)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                        .addGap(108, 108, 108)
+                        .addComponent(btnReinitialiser, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnConfirmer)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnQuitter, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,8 +186,9 @@ public class GuiNouveauClient extends javax.swing.JFrame {
                     .addComponent(txtTelephone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAnnuler)
-                    .addComponent(btnConfirmer))
+                    .addComponent(btnReinitialiser)
+                    .addComponent(btnConfirmer)
+                    .addComponent(btnQuitter))
                 .addContainerGap(13, Short.MAX_VALUE))
         );
 
@@ -171,12 +196,12 @@ public class GuiNouveauClient extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAnnulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnnulerActionPerformed
+    private void btnReinitialiserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReinitialiserActionPerformed
         txtNom.setText("");
         txtPrenom.setText("");
         txtCompagnie.setText("");
         txtTelephone.setText("");
-    }//GEN-LAST:event_btnAnnulerActionPerformed
+    }//GEN-LAST:event_btnReinitialiserActionPerformed
 
     private void btnConfirmerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmerActionPerformed
             String champs = "Veuillez remplir les choix suivants: ";
@@ -201,20 +226,36 @@ public class GuiNouveauClient extends javax.swing.JFrame {
             champs = champs + "\nTelephone";
         }
         
-        System.out.println(champs);
         if(plein == false){
-            JOptionPane.showMessageDialog(null, champs);
+            JOptionPane.showMessageDialog(null, champs, "Erreur", JOptionPane.ERROR_MESSAGE);
             return;
         }
-            int nouveauID = ManipulationFichier.lireID("Client.txt");
-            int telephone = Integer.parseInt(txtTelephone.getText());
+           
             Client c = new Client(nouveauID, txtNom.getText(),txtPrenom.getText(),txtCompagnie.getText(),txtTelephone.getText());
             mesClients.add(c);
+            cb.addItem(c);
+            JOptionPane.showMessageDialog(null,"Client sauvegardé", "Confirmation", JOptionPane.INFORMATION_MESSAGE);
             super.dispose();
+            
     }//GEN-LAST:event_btnConfirmerActionPerformed
 
+    private void txtTelephoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelephoneKeyTyped
+         char vChar = evt.getKeyChar();
+        if(!(Character.isDigit(vChar))
+                ||(vChar ==  KeyEvent.VK_BACK_SPACE)
+                ||(vChar == KeyEvent.VK_DELETE)){
+            evt.consume();
+        }
+        
+        
+    }//GEN-LAST:event_txtTelephoneKeyTyped
+
+    private void btnQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitterActionPerformed
+        super.dispose();
+    }//GEN-LAST:event_btnQuitterActionPerformed
+
     /**
-     * @param args the command line arguments
+     * 
      */
 //    public static void main(String args[]) {
 //        /* Set the Nimbus look and feel */
@@ -249,8 +290,9 @@ public class GuiNouveauClient extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAnnuler;
     private javax.swing.JButton btnConfirmer;
+    private javax.swing.JButton btnQuitter;
+    private javax.swing.JButton btnReinitialiser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -13,45 +13,91 @@ import java.io.Serializable;
  */
 public class Avion implements Serializable {
     private ModeleAvion modele;
-    private boolean statut;
     private int idAvion;
     private Client client;
     private Hangar hangar;
     private Baux monBail;
     
+    /**
+     *
+     */
     public Avion() {
     }
 
+    /**
+     *
+     * @param idAvion ID de l'avion
+     * @param modele Modele de l'avion
+     * @param client Client de l'avion
+     * @param hangar Hangar de l'avion
+     */
     public Avion( int idAvion, ModeleAvion modele, Client client, Hangar hangar) {
         this.modele = modele;
         this.idAvion = idAvion;
         this.client = client;
         this.hangar = hangar;
-        //this.monBail = monBail;
+        this.monBail = monBail;
     }
 
-    
-    public Avion(boolean statut, Client client){ 
-        
-        this.statut = statut;
-        this.client=client;
-    }
-
+    /**
+     *
+     * @return Retourne le modele d'avion
+     */
     public ModeleAvion getModele() {
         return modele;
     }
 
-    public boolean isStatut() {
-        return statut;
+    /**
+     *
+     * @return Retourne le Hangar de l'avion
+     */
+    public Hangar getHangar() {
+        return hangar;
     }
 
-    public void setStatut(boolean statut) {
-        this.statut = statut;
+    /**
+     *
+     * @param hangar Assigne un hangar à l'avion
+     */
+    public void setHangar(Hangar hangar) {
+        this.hangar = hangar;
+    }
+
+    /**
+     *
+     * @return Retourne le bail(type baux) de l'avion
+     */
+    public Baux getMonBail() {
+        return monBail;
+    }
+
+    /**
+     *
+     * @param monBail Assigne un bail (type baux) à l'avion
+     */
+    public void setMonBail(Baux monBail) {
+        this.monBail = monBail;
+    }
+
+    /**
+     *
+     * @return Retourne le client associé à l'avion
+     */
+    public Client getClient() {
+        return client;
+    }
+
+    /**
+     *
+     * @return Retourne le ID de l'avion
+     */
+    public int getIdAvion() {
+        return idAvion;
     }
 
     @Override
     public String toString() {
-        return "Avion{" + "modele=" + modele + ", statut=" + statut + ", idAvion=" + idAvion + ", client=" + client + ", hangar=" + hangar + ", monBail=" + monBail + '}';
+        return "Avion{" + "modele=" + modele + ", idAvion=" + idAvion + ", client=" + client + ", hangar=" + hangar.getIdHangar() + ", monBailID=" + monBail.getIdBaux()+ '}';
     }
 
     

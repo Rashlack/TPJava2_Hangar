@@ -12,6 +12,7 @@ import javax.swing.JList;
 /**
  *
  * @author Rashlack
+ * Méthode pour gérer l'affichage d'objet de type ModeleAvion dans un JcomboBox
  */
 public class ModeleAvionRenderer extends DefaultListCellRenderer {
     public Component getListCellRendererComponent(

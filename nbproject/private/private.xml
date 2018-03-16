@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/D:/Prog/TPJava2_Hangar/src/modele/ClientRenderer.java</file>
             <file>file:/D:/Prog/TPJava2_Hangar/src/Control/AppCtr.java</file>
             <file>file:/D:/Prog/TPJava2_Hangar/src/utils/ComboBoxFiller.java</file>
@@ -13,6 +14,19 @@
             <file>file:/D:/Prog/TPJava2_Hangar/src/modele/Avion.java</file>
             <file>file:/D:/Prog/TPJava2_Hangar/src/vue/GuiPrincipal.java</file>
             <file>file:/D:/Prog/TPJava2_Hangar/src/modele/ModeleAvionRenderer.java</file>
+=======
+            <file>file:/E:/Prog/TPJava2_Hangar/src/vue/GuiPrincipal.java</file>
+            <file>file:/E:/Prog/TPJava2_Hangar/src/utils/FieldFiller.java</file>
+            <file>file:/E:/Prog/TPJava2_Hangar/src/persistance/ManipulationFichier.java</file>
+            <file>file:/E:/Prog/TPJava2_Hangar/src/modele/Hangar.java</file>
+            <file>file:/E:/Prog/TPJava2_Hangar/src/utils/Utilitaire.java</file>
+            <file>file:/E:/Prog/TPJava2_Hangar/src/control/AppCtr.java</file>
+        </group>
+        <group>
+            <file>file:/G:/Prog/TPJava2_Hangar/src/vue/GuiPrincipal.java</file>
+            <file>file:/G:/Prog/TPJava2_Hangar/src/utils/Utilitaire.java</file>
+            <file>file:/G:/Prog/TPJava2_Hangar/src/utils/FieldFiller.java</file>
+>>>>>>> 86c492d1ffa6edfa493229bc98d99a68e3782c1f
         </group>
     </open-files>
 </project-private>
