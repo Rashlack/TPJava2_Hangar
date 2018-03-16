@@ -30,12 +30,7 @@ public class AppCtr {
         ArrayList<ModeleAvion> mesModeleAvion = new ArrayList(ManipulationFichier.lireObjectInputStream("ModeleAvion.dat"));
         ArrayList<Client>mesClients = new ArrayList(ManipulationFichier.lireObjectInputStream("Client.dat"));
         double[]mesPrix = Utilitaire.convertirTableStringDouble(ManipulationFichier.lireFichier("ListePrix.txt").split(" "));
-        
-//        FieldFiller.initialisationHangars("Hangar.txt", mesHangars);
-//        ManipulationFichier.sauvegardeListeObjet("Hangar.dat", mesHangars);
-//        FieldFiller.initialisationClient("Client.txt", mesClients);
-//        ManipulationFichier.sauvegardeListeObjet("Client.dat", mesClients);
-//        
+                 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new GuiPrincipal(mesHangars, mesBaux, mesAvions, mesModeleAvion, mesClients, mesPrix).setVisible(true);
