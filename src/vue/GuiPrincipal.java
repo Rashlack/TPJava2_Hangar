@@ -6,10 +6,12 @@
 package vue;
 
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modele.*;
+import persistance.ManipulationFichier;
 
 import utils.FieldFiller;
 import utils.Utilitaire;
@@ -128,6 +130,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
         radioGroup1.add(radioNouvel);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Executive Flight Services");
         setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -413,11 +416,6 @@ public class GuiPrincipal extends javax.swing.JFrame {
 
         comboBoxClient.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         comboBoxClient.setAutoscrolls(true);
-        comboBoxClient.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                comboBoxClientItemStateChanged(evt);
-            }
-        });
         comboBoxClient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxClientActionPerformed(evt);
@@ -645,10 +643,24 @@ public class GuiPrincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, champs);
             return;
         }
-
-        Hangar hangar = (Hangar) comboBoxChoixHangar.getSelectedItem();
-        Avion avion = new Avion(mesAvions.size() + 1, (ModeleAvion) comboBoxModeleAvion.getSelectedItem(), (Client) comboBoxClient.getSelectedItem(), (Hangar) comboBoxChoixHangar.getSelectedItem());
         Client leClient = (Client) comboBoxClient.getSelectedItem();
+        Hangar hangar = (Hangar) comboBoxChoixHangar.getSelectedItem();
+        Avion avion = new Avion();
+        if(radioNouvel.isSelected()){
+        avion = new Avion(mesAvions.size() + 1, (ModeleAvion) comboBoxModeleAvion.getSelectedItem(), (Client) comboBoxClient.getSelectedItem(), (Hangar) comboBoxChoixHangar.getSelectedItem(), txtImmatriculation.getText());
+        }else{
+            avion = (Avion) comboBoxModeleAvion.getSelectedItem();
+            for(int i = 0; i < mesHangars.size(); i++){
+                for(Avion a:mesHangars.get(i).getMesAvions()){
+                    if(a.getIdAvion() == avion.getIdAvion()){
+                        JOptionPane.showMessageDialog(null,"L'avion est déjà dans le hangar " + mesHangars.get(i).getIdHangar());
+                        return;
+                    }
+                }
+            }
+            
+            
+        }
         if(hangar.calculerSuperficieRestante() < avion.getModele().getSuperficie()){
             JOptionPane.showMessageDialog(null,"Le hangar choisi n'a pas assez d'espace pour acceuillir le nouvel avion, veuillez en choisir un autre.", "Espace insuffisant", JOptionPane.ERROR_MESSAGE);
             return;
@@ -669,7 +681,9 @@ public class GuiPrincipal extends javax.swing.JFrame {
         hangar.ajouterAvion(avion);
         mesBaux.add(new Baux(mesBaux.size() + 1, Integer.parseInt(txtDureeContrat.getText()), (Client) comboBoxClient.getSelectedItem(), avion, Double.parseDouble(txtPrixContrat.getText())));
         avion.setMonBail(mesBaux.get(mesBaux.size()-1));
-        leClient.ajouterAvion(avion);
+        if(radioNouvel.isSelected()){
+            leClient.ajouterAvion(avion);
+        }
         Hangar hangar1 = (Hangar) comboBoxHangar1.getSelectedItem();
         FieldFiller.tableHangarFiller((DefaultTableModel) tableHangar1.getModel(), hangar1.getMesAvions());
         Hangar hangar2 = (Hangar) comboBoxHangar2.getSelectedItem();
@@ -682,13 +696,15 @@ public class GuiPrincipal extends javax.swing.JFrame {
             
         }
         
-        JOptionPane.showMessageDialog(null,"Bail enregistré");
-//        try {
-//            ManipulationFichier.sauvegardeListeObjet("Baux.dat", mesBaux);
-//            ManipulationFichier.sauvegardeListeObjet("Avion.dat", mesAvions);
-//        } catch (IOException ex) {
-//            System.out.println("Erreur de sauvegarde");
-//        }
+        JOptionPane.showMessageDialog(null,"Bail enregistré","Confirmation", JOptionPane.INFORMATION_MESSAGE);
+        try {
+            ManipulationFichier.sauvegardeListeObjet("Baux.dat", mesBaux);
+            ManipulationFichier.sauvegardeListeObjet("Avion.dat", mesAvions);
+            ManipulationFichier.sauvegardeListeObjet("Client.dat", mesClients);
+            ManipulationFichier.sauvegardeListeObjet("Hangar.dat", mesHangars);
+        } catch (IOException ex) {
+            System.out.println("Erreur de sauvegarde");
+        }
         FieldFiller.labelContratReini(txtDureeContrat, txtImmatriculation, txtPrixContrat, comboBoxClient, comboBoxModeleAvion, comboBoxChoixHangar);
     }//GEN-LAST:event_btnConfirmerActionPerformed
 
@@ -723,9 +739,10 @@ public class GuiPrincipal extends javax.swing.JFrame {
                     txtPrixContrat.setText(String.valueOf(Utilitaire.calculerTarifLocation(leModelAvion.getSuperficie(), Integer.parseInt(txtDureeContrat.getText()), mesPrix)));
                 }
             }else if(radioAncien.isSelected()){
+                Avion a = (Avion)comboBoxModeleAvion.getSelectedItem();
+                txtImmatriculation.setText(a.getImmatriculation());
                 if(!("".equals(txtDureeContrat.getText()))){
-                    Avion a = (Avion)comboBoxModeleAvion.getSelectedItem();
-                    txtPrixContrat.setText(String.valueOf(Utilitaire.calculerTarifLocation(a.getModele().getSuperficie(), Integer.parseInt(txtDureeContrat.getText()), mesPrix))); 
+                    txtPrixContrat.setText(String.valueOf(Utilitaire.calculerTarifLocation(a.getModele().getSuperficie(), Integer.parseInt(txtDureeContrat.getText()), mesPrix)));
                 }
                 
             }
@@ -773,7 +790,6 @@ public class GuiPrincipal extends javax.swing.JFrame {
         if (input == 2){
             return;
         }
-        System.out.println(idAvion);
         Hangar h = (Hangar) comboBoxHangar1.getSelectedItem();
         Utilitaire.trouverAvion(h, idAvion);
         FieldFiller.labelFiller(h, txtTotalLocation1, txtSuperficieDispo1, txtNbAvion1, tableHangar1);
@@ -800,28 +816,35 @@ public class GuiPrincipal extends javax.swing.JFrame {
 
     private void radioNouvelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioNouvelActionPerformed
         if(radioNouvel.isSelected()){
-            System.out.println("radioNouvel");
+            comboBoxModeleAvion.setRenderer(new ModeleAvionRenderer());
             comboBoxModeleAvion.setEnabled(true);
             txtImmatriculation.setEditable(true);
-            //FieldFiller.comboBoxFiller(comboBoxModeleAvion, mesAvions);        
+            txtImmatriculation.setText("");
+            FieldFiller.comboBoxFiller(comboBoxModeleAvion, mesModeleAvion);        
         }
     }//GEN-LAST:event_radioNouvelActionPerformed
 
     private void radioAncienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioAncienActionPerformed
         if(radioAncien.isSelected()){
-            System.out.println("radioNouveau");
-            comboBoxModeleAvion.setEnabled(false);
+            txtImmatriculation.setText("");
             txtImmatriculation.setEditable(false);
-            FieldFiller.comboBoxFiller(comboBoxModeleAvion, mesModeleAvion);        
+            if(comboBoxClient.getSelectedIndex()== 0){              
+                comboBoxModeleAvion.setEnabled(false);
+            }
+            if(!(comboBoxClient.getSelectedIndex() == 0)){  
+            comboBoxModeleAvion.setRenderer(new AvionRenderer());
+            Client c = (Client)comboBoxClient.getSelectedItem();
+            ArrayList<Avion> avionsClient = c.getMesAvions();
+            FieldFiller.comboBoxFiller(comboBoxModeleAvion, avionsClient);
+            }    
         }
     }//GEN-LAST:event_radioAncienActionPerformed
 
     private void comboBoxClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxClientActionPerformed
-        System.out.println(radioAncien.isSelected());
         if(radioAncien.isSelected()){
+            txtImmatriculation.setText("");
             if(!(comboBoxClient.getSelectedIndex() == 0)){       
                 comboBoxModeleAvion.setRenderer(new AvionRenderer());
-                System.out.println("Tralala");
                 Client c = (Client)comboBoxClient.getSelectedItem();
                 ArrayList<Avion> avionsClient = c.getMesAvions();
                 FieldFiller.comboBoxFiller(comboBoxModeleAvion, avionsClient);
@@ -832,17 +855,6 @@ public class GuiPrincipal extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_comboBoxClientActionPerformed
-
-    private void comboBoxClientItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboBoxClientItemStateChanged
-//        System.out.println(radioAncien.isSelected());
-//        if(radioNouvel.isSelected()){
-//            System.out.println("Tralala");
-//            Client c = (Client)comboBoxClient.getSelectedItem();
-//            ArrayList<Avion> avionsClient = c.getMesAvions();
-//            FieldFiller.comboBoxFiller(comboBoxModeleAvion, avionsClient);
-//            comboBoxModeleAvion.setEnabled(true);
-//        }
-    }//GEN-LAST:event_comboBoxClientItemStateChanged
 
     private void txtDureeContratKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDureeContratKeyTyped
                  char vChar = evt.getKeyChar();

@@ -6,10 +6,14 @@
 package vue;
 
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import modele.Client;
+import persistance.ManipulationFichier;
 /**
  *
  * @author 1795511
@@ -204,7 +208,7 @@ public class GuiNouveauClient extends javax.swing.JFrame {
     }//GEN-LAST:event_btnReinitialiserActionPerformed
 
     private void btnConfirmerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmerActionPerformed
-            String champs = "Veuillez remplir les choix suivants: ";
+        String champs = "Veuillez remplir les choix suivants: ";
         boolean plein = true;
         if("".equals(txtNom.getText()) || txtNom.getText() == null){
             plein = false;
@@ -234,6 +238,11 @@ public class GuiNouveauClient extends javax.swing.JFrame {
             Client c = new Client(nouveauID, txtNom.getText(),txtPrenom.getText(),txtCompagnie.getText(),txtTelephone.getText());
             mesClients.add(c);
             cb.addItem(c);
+        try {
+            ManipulationFichier.sauvegardeListeObjet("Client.dat", mesClients);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null,"Malheureusement le client n'a pu être sauvegarder dans le fichier, le système fera un enregistrement lorsque vous quitterai le logiciel", "Confirmation", JOptionPane.INFORMATION_MESSAGE);
+        }
             JOptionPane.showMessageDialog(null,"Client sauvegardé", "Confirmation", JOptionPane.INFORMATION_MESSAGE);
             super.dispose();
             

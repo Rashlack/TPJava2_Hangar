@@ -17,6 +17,7 @@ public class Avion implements Serializable {
     private Client client;
     private Hangar hangar;
     private Baux monBail;
+    private String immatriculation;
     
     /**
      *
@@ -31,12 +32,12 @@ public class Avion implements Serializable {
      * @param client Client de l'avion
      * @param hangar Hangar de l'avion
      */
-    public Avion( int idAvion, ModeleAvion modele, Client client, Hangar hangar) {
+    public Avion( int idAvion, ModeleAvion modele, Client client, Hangar hangar, String immatriculation) {
         this.modele = modele;
         this.idAvion = idAvion;
         this.client = client;
         this.hangar = hangar;
-        this.monBail = monBail;
+        this.immatriculation = immatriculation;
     }
 
     /**
@@ -85,6 +86,14 @@ public class Avion implements Serializable {
      */
     public Client getClient() {
         return client;
+    }
+
+    public String getImmatriculation() {
+        return immatriculation;
+    }
+
+    public void setImmatriculation(String immatriculation) {
+        this.immatriculation = immatriculation;
     }
 
     /**
